@@ -3,7 +3,7 @@
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
 ## About
-#### Acorn is the foundation on which Open Idea Station - an open source web application - is built. For more information visit [Open Idea Station] (https://open-idea-station.io).
+#### Acorn is the foundation on which Open Idea Station - an open source web application - is built. For more information visit [Open Idea Station](https://open-idea-station.io).
 
 ## Technology Stack
 Acorn is written in:
@@ -25,7 +25,7 @@ Acorn is written in:
 
 2. Install [Rails](http://rubyonrails.org/). [v5.0.1] or higher `required`
 
-3. Install [PostgreSQL`](https://www.postgresql.org/download/) `required`
+3. Install [PostgreSQL](https://www.postgresql.org/download/) `required`
 
 4. Install [RubyGems](https://rubygems.org/) and [Bundler](http://bundler.io/) to help you manage dependencies in your [Gemfile](Gemfile).
 
