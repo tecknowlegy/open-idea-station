@@ -1,10 +1,9 @@
 # Acorn
 
-# PostIt
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
 ## About
-#### Acorn is the foundation on which Open Idea Station - an open source web application - is built for more information visit [Open Idea Station] (https://open-idea-station.io).
+#### Acorn is the foundation on which Open Idea Station - an open source web application - is built. For more information visit [Open Idea Station] (https://open-idea-station.io).
 
 ## Technology Stack
 Acorn is written in:
