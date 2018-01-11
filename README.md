@@ -13,9 +13,6 @@ Acorn is written in:
 ## Authentication and Code Base Organization
   - Written in Ruby and uses JWT for authentication.  
   - Uses [Airbnb Ruby Style Guide](https://github.com/airbnb/ruby) for Code Organization
-    
-## Style Checking and Best Practices
-  - Uses ESLINT which was configured to use Airbnb Ruby Style Guide
 
 ## Usage
 
