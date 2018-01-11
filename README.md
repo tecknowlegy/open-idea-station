@@ -39,13 +39,42 @@ Acorn is written in:
     Run `bundle install` to install all required gems
     ```
 
-7. Run database migrations
+6. Install dependencies
 
     ```
-    Run `rake db:setup`, to run migrations.
+    Run `figaro install` to automatically generate `application.yml`
+    file for setting environment variables
+    ```
+    
+7. Configure database
+
+    ```
+    Open `config/application.yml` and add the following configuration:
+    
+    LOGIN_URL: ''
+    LOGOUT_URL: ''
+    ACORN_DB_USERNAME: 'postgres'
+    ACORN_DB_PASSWORD: 'Andela'
+    ACORN_HOST: 'localhost'
+    ACORN_DB: 'acorn_db'
+    ACORN_TEST_DB: 'acorn_test_db'
+    TEST_URL: ''
     ```
 
-8. Load and edit host configuration - for mac
+8. Run database creation
+
+    ```
+    Run `rake db:setup`, to setup database using the provided
+    configurations.
+    ```
+
+8. Run database migrations
+
+    ```
+    Run `rake db:migrate`, to perform migrations
+    ```
+
+9. Load and edit host configuration - local deploy for mac
 
     ```
     Run `sudo nano /etc/hosts`. 
@@ -65,6 +94,7 @@ Acorn is written in:
     go to: http://open-idea-station.io:3000
     ```
 ## Testing
+- Run test with `rspec spec`
 
 ## Api Docs
 
