@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idea_id: 1
+  time_viewed: 2018-01-13 19:30:49
+  viewer_ip: MyString
+
+two:
+  idea_id: 1
+  time_viewed: 2018-01-13 19:30:49
+  viewer_ip: MyString

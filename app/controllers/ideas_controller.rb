@@ -10,6 +10,12 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
+    view_record = ViewHistory.new(
+                                  :idea_id => @idea.id,
+                                  :time_viewed => Time.now,
+                                  :viewer_ip => request.remote_ip
+                                  )
+    view_record.save
   end
 
   # GET /ideas/new

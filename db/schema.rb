@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113130435) do
+ActiveRecord::Schema.define(version: 20180113183049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20180113130435) do
     t.string "username"
     t.string "email"
     t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "view_histories", force: :cascade do |t|
+    t.integer "idea_id"
+    t.datetime "time_viewed"
+    t.string "viewer_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
