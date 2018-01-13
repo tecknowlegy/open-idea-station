@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @idea.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @idea.description %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @idea.author %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @idea.organization %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @idea.url %>
+</p>
+
+<%= link_to 'Edit', edit_idea_path(@idea) %> |
+<%= link_to 'Back', ideas_path %>

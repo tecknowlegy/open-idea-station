@@ -38,7 +38,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -50,12 +49,23 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  gem "chromedriver-helper"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
+  gem "database_cleaner"
+  gem "rails-controller-testing"
+  gem "rspec-rails", "~> 3.5"
+  gem "selenium-webdriver", "~> 3.4.3"
+  gem "should_not"
+  gem "shoulda-matchers", "~> 3.1"
+  gem "simplecov"
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'nokogiri'
 gem 'rack', '~> 2.0.1'
-gem 'rspec'
 
 # Use fontawesome for icons
 gem "font-awesome-rails"
@@ -65,3 +75,6 @@ gem "jwt"
 
 # For env variables
 gem "figaro"
+
+# add cloudinary to serve static images
+gem 'cloudinary'
