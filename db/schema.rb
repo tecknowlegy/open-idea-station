@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113183049) do
+ActiveRecord::Schema.define(version: 20180118142836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,11 +34,13 @@ ActiveRecord::Schema.define(version: 20180113183049) do
   end
 
   create_table "view_histories", force: :cascade do |t|
-    t.integer "idea_id"
     t.datetime "time_viewed"
     t.string "viewer_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "idea_id"
+    t.index ["idea_id"], name: "index_view_histories_on_idea_id"
   end
 
+  add_foreign_key "view_histories", "ideas"
 end

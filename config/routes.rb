@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   get 'user/signup'
 
   get 'user/login'
@@ -6,6 +8,8 @@ Rails.application.routes.draw do
   get 'user/edit_profile'
 
   root to: "index#index", as: "index"
-  resources :ideas
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  resources :ideas do
+    get 'viewed' 
+  end
 end

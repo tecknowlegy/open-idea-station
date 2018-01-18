@@ -1,2 +1,18 @@
 <h1>User#signup</h1>
 <p>Find me in app/views/user/signup.html.erb</p>
+
+<%= form_with scope: :signup, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

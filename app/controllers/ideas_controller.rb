@@ -1,6 +1,17 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
 
+  # Get data on viewed ideas
+  def viewed
+    # define local variable as its not needed in the view
+    ideas = Idea.find(params[:idea_id])
+    @views = ideas.view_histories
+  end
+
+  # def require_auth
+  #   render :text => 'Access denied', :status => 403 if params[:id] && params[:id].to_i < 2
+  # end
+
   # GET /ideas
   # GET /ideas.json
   def index
@@ -75,6 +86,8 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:name, :description, :author, :organization, :url)
+      params.require(:idea).permit( :id, :name, :description, :author, :organization, :url)
     end
+
+    
 end
