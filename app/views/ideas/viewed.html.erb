@@ -2,21 +2,25 @@
 
 <h1>View History</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Date</th>
-      <th>IP</th>
-    </tr>
-  </thead>
+  <% if @views.length < 1 %>
+    <p class="empty-content">No Views Yet</p>
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>IP</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @views.each do |view| %>
-      <tr>
-        <td><%= view.time_viewed %></td>
-        <td><%= view.viewer_ip %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @views.each do |view| %>
+          <tr>
+            <td><%= view.time_viewed %></td>
+            <td><%= view.viewer_ip %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<%= link_to 'Back to Ideas', ideas_path %>

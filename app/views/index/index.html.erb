@@ -1,2 +1,36 @@
-<h1>Welcome to Open Idea Station</h1>
-<h3><%= @base_app -%> is our base app</h3>
+<div class="super-box-2" id="landing">
+<header>
+  <div class="navbar">
+    <nav class="main-nav">
+      <div class="nav-wrapper">
+        <aside class="left">
+          <a href="#" data-activates="mobile-demo" class="button-collapse">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </aside>
+        
+        <ul class="right app-menu hide-on-med-and-down">
+          <li><%= link_to 'Ideas', ideas_path, :class => "nav-item" %></li>
+          <li><%= link_to 'Login', user_login_path, :class => "nav-item" %></li>
+          <li>
+            <%= link_to 'Signup', user_signup_path, :class => "btn register-btn" %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+</header>
+
+<section class="headline">
+  <h1>Open Idea Station</h1>
+  <h6>
+    We’re now living in an Idea Economy where success is defined by the ability to turn ideas
+    into value faster and more collaboratively.
+  </h6>
+  <%= link_to 'Get Started', new_idea_path, :class => "btn btn-large get-started-btn" %>
+</section>
+
+</div>
