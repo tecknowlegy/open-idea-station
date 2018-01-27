@@ -5,6 +5,8 @@
   color: $white !important;
   font-family: $secondary-font;
   font-weight: bold;
+  font-size: 1.6rem !important;
+  text-transform: capitalize !important;
   &:hover, &:focus {
     background-color: $primary-color-hover !important;
   }

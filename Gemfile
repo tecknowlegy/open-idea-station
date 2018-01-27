@@ -78,3 +78,15 @@ gem "figaro"
 
 # add cloudinary to serve static images
 gem 'cloudinary'
+
+# add jQuery support for Turbolinks
+gem "jquery-turbolinks"
+
+# add jquery validation
+gem "jquery-validation-rails"
+
+# add jquery autocomplete
+gem "jquery-ui-rails"
+
+# For flash messages
+gem "puffly"

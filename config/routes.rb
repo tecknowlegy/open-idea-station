@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   root to: "index#index", as: "index"
   
   resources :ideas do
-    get 'viewed' 
+    get 'viewed'
   end
 end

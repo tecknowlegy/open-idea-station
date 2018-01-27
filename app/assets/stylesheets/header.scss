@@ -2,6 +2,7 @@
 
 nav.main-nav {
   background: transparent;
+  margin-top: -15px;
   box-shadow: none;
   height: 80px;
   height: 8rem;
@@ -16,4 +17,10 @@ nav.main-nav li a {
   margin-top: 8px;
 	text-decoration: none;
 	color: #757575;
+}
+
+.add-background {
+  background: rgba(0,0,0, .70) !important;
+  box-shadow: 0 0 12px 3px $primary-black !important;
+  position: fixed;
 }
