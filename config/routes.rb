@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'user/signup'
-
-  get 'user/login'
-
-  get 'user/edit_profile'
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+  get '/login' => 'users#new_login'
+  post '/login' => 'users#create_login'
+  get '/logout' => 'users#logout'
+  # put 'users/edit_profile' => 'users#edit_profile'
+  # resources :users
 
   root to: "index#index", as: "index"
   

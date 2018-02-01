@@ -1,0 +1,34 @@
+<h1>Users#signup</h1>
+
+<%= form_with(model: @user, url: '/signup', local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited your account from being created:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div div class="field">
+    <%= form.label :username %><br>
+    Username: <%= form.text_field :username, id: :username %>
+  </div>
+
+  <div div class="field">
+    <%= form.label :email %><br>
+    Email: <%= form.text_field :email, id: :user_email %>
+  </div>
+
+  <div div class="field">
+    <%= form.label :password %><br>
+    Password: <%= form.password_field :password, id: :user_password %>
+  </div>
+ 
+  <div class="actions">
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>
