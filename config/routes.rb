@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   
   resources :ideas do
     get 'viewed'
+    resources :comments
   end
 end

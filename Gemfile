@@ -82,6 +82,9 @@ gem 'cloudinary'
 # add jQuery support for Turbolinks
 gem "jquery-turbolinks"
 
+# Use jquery as the JavaScript library
+gem "jquery-rails"
+
 # add jquery validation
 gem "jquery-validation-rails"
 
