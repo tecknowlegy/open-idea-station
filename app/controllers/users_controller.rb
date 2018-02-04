@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:new_login, :new, :create]
+  skip_before_action :authorize, only: [:new_login, :create_login, :new, :create]
   
   # GET /users/signup
   def new

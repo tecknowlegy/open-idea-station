@@ -1,14 +1,27 @@
 @import 'base';
 
 .register-btn {
-  background-color: $primary-color !important;
+  height: 40px;
+  line-height: 40px;
+  margin-right: -15px !important;
+  background: linear-gradient($offset-color-hover, $offset-color) !important;
   color: $white !important;
   font-family: $secondary-font;
   font-weight: bold;
-  font-size: 1.6rem !important;
-  text-transform: capitalize !important;
+  border-radius: none !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 0 2px $primary-black2;
+  letter-spacing: 0.1em;
   &:hover, &:focus {
-    background-color: $primary-color-hover !important;
+    background: linear-gradient($primary-color, $primary-color-hover) !important;
+  }
+}
+
+.signout-btn {
+  @extend .register-btn;
+  &:hover, &:focus {
+    background: $acorn-red !important;
   }
 }
 
@@ -25,15 +38,5 @@
   &:hover, &:focus {
     background-color: $white !important;
     color: $primary-color !important;
-  }
-}
-
-.nav-item {
-  color: $white !important;
-  font-weight: bold;
-  background: none;
-  &:hover, &:focus {
-    color: $primary-color !important;
-    background: none;
   }
 }

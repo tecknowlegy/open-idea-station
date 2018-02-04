@@ -4,14 +4,16 @@
 
 // Colors
 $primary-color: #4CAF50;
-$offset-color: #7A1EA1;
 $primary-color-hover: #388E3C;
+$offset-color: #1A237E;
+$offset-color-hover: #303F9F;
 $white: #FFF;
 $primary-black: #212121;
 $primary-black2: #424242;
 $primary-black3: #757575;
 $primary-black4: #9E9E9E;
-$primary-black5: #eee;
+$primary-black5: #FAFAFA;
+$acorn-red: #D50000;
 $margin: 15px;
 
 // Margin
@@ -26,9 +28,14 @@ $break-point-large-tablet: 839px;
 $break-point-desktop: 1076px;
 $break-point-large: 1500px;
 
+// Background
+.bgd-transparent {
+  background: rgba(0,0,0, .50) !important;
+}
 
-// Font family
-$font-family1: Rubik;
+.bgd-brand {
+  background: $primary-color !important;
+}
 
 // Dropdown
 $dropdown-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.12);

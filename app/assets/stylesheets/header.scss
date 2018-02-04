@@ -1,26 +1,36 @@
 @import 'base';
 
 nav.main-nav {
-  background: transparent;
-  margin-top: -15px;
+  margin-top: 0;
   box-shadow: none;
-  height: 80px;
-  height: 8rem;
+  height: 40px;
+  line-height: 40px;
+  text-transform: uppercase;
   vertical-align: middle;
-  padding: 2.5rem 1.5rem;
+  padding: 0 1rem;
+  z-index: 1000;
+}
+
+.nav-item {
+  height: 40px;
+  line-height: 40px;
+  color: $white !important;
+  font-weight: bold;
+  background: none;
+  &:hover, &:focus {
+    color: $white !important;
+    background: linear-gradient($primary-color, $primary-color-hover) !important;
+  }
 }
 
 nav.main-nav li a {
-	font-family: $secondary-font;
+  font-family: $secondary-font;
+  letter-spacing: 0.07em;
 	color: inherit;
-  font-size: 1.6rem;
-  margin-top: 8px;
-	text-decoration: none;
-	color: #757575;
+  font-size: 12px;
+  
 }
 
-.add-background {
-  background: rgba(0,0,0, .70) !important;
-  box-shadow: 0 0 12px 3px $primary-black !important;
+.fix-it {
   position: fixed;
 }
