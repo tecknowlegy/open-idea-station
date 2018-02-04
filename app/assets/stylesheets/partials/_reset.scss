@@ -59,19 +59,19 @@ box-sizing: border-box;
 }
 
 /*==========================
-	Clearfix==================*/
-	
-	.group:before,
-	.group:after {
+Clearfix==================*/
+
+.group:before,
+.group:after {
 	content: "";
 	display: table;
-	}
-	
-	.group:after {
+}
+
+.group:after {
 	clear: both;
-	}
-	
-	.group {
+}
+
+.group {
 	clear: both;
 	*zoom: 1;
-	}
+}

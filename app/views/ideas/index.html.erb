@@ -1,41 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="super-box" id="category-headline">
+  <h1 class="white-text">Ideas</h1>
+</div>
 
-<h1>Ideas</h1>
+<button class="create-idea-button blue">Create Idea</button>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th>Organization</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<section class="super-box group" id="ideas-gallery">
 
-  <tbody>
+  <h5>Discover open source projects and Ideas that connects with you</h5>
+  <p id="notice"><%= notice %></p>
+
+  <div class="box ideas-wrapper">
+
+    <!-- First Card -->
     <% @ideas.each do |idea| %>
-      <tr>
-        <td><%= idea.name %></td>
-        <td><%= idea.description %></td>
-        <td><%= idea.author %></td>
-        <td><%= idea.organization %></td>
-        <td><%= idea.url %></td>
-        <td><%= link_to 'Show', idea %></td>
-        <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-        <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h6 class="mdl-card__title-text truncate"><i class="fa fa-puzzle-piece"></i>&nbsp;<%= link_to idea.name ,idea %></h6>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <%= idea.description %>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="idea-icons">
+          <i class="fa fa-eye"></i>&nbsp;<%= idea.view_histories.size %>
+        </a>
+        <a class="idea-icons">
+          <i class="fa fa-heart"></i>&nbsp;0
+        </a>
+        <a class="idea-icons">
+          <i class="fa fa-comment"></i>&nbsp;0
+        </a>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Idea', new_idea_path %>
-
-<section class="super-box" id="gallery">
-  <div class="row">
-  
   </div>
+
+  
 </section>

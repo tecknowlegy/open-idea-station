@@ -1,8 +1,27 @@
 // Place all the styles related to the Ideas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'index';
+@import 'base';
 
-#gallery {
-  display: flex;
+#ideas-gallery {
+  background: $primary-black5;
+}
+.ideas-wrapper {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+}
+@media screen and (max-width: 1280px) {
+  .ideas-wrapper {
+    justify-content: center;
+  }
+}
+#category-headline {
+  height: 40rem !important;
+  background: $primary-black;
+}
+
+.create-idea-button {
+  display: none;
 }
