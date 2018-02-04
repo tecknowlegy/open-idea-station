@@ -23,11 +23,6 @@ Idea.create(
 User.create(
             username: "Dinobi",
             email: "dinobi.kenkwo@andela.com",
-            password: ""
+            password: "DinoAcorn45"
             )
-
-User.create(
-            username: "Dinobi",
-            email: "dinobi.kenkwo@andela.com",
-            password: ""
-            )
+            

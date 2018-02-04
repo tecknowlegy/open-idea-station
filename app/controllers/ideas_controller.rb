@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+  skip_before_action :authorize, only: :index
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
 
   # Get data on viewed ideas
