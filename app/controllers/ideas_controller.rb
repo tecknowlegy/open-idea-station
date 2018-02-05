@@ -35,10 +35,6 @@ class IdeasController < ApplicationController
     @idea = Idea.new
   end
 
-  # GET /ideas/1/edit
-  def edit
-  end
-
   # POST /ideas
   # POST /ideas.json
   def create
@@ -53,6 +49,10 @@ class IdeasController < ApplicationController
         format.json { render json: @idea.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /ideas/1/edit
+  def edit
   end
 
   # PATCH/PUT /ideas/1
