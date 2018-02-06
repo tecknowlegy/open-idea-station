@@ -28,24 +28,14 @@ ideas_list.each do |name, description, author, organization|
                 )
 end
 
-
-# Idea.create(
-#             name: "Open Idea Station",
-#             description: "This is the OIS base application built with Ruby on Rails",
-#             author: "Dinobi",
-#             organization: "OIS"
-#             )
-
-# Idea.create(
-#             name: "Quadnate",
-#             description: "4 spaces of cordination",
-#             author: "Dinobi",
-#             organization: "Quadnate"
-#             )
-
 User.create(
             username: "Dinobi",
             email: "dinobi.kenkwo@andela.com",
             password: "DinoAcorn45"
             )
             
+User.create(
+            username: "Melvzone",
+            email: "melvzone07@gmail.com",
+            password: "ThugLife"
+            )
