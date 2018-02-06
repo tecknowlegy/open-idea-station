@@ -245,6 +245,15 @@ label {
     }
   }
 
+  .lead {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+  }
+
   .field_with_errors {
     border-bottom: 2px solid red;
     background: none;

@@ -3,6 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'base';
 
+#ideas-gallery-headline, #category-headline {
+  color: $white;
+  height: 46rem !important;
+  background: $primary-black;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
 #ideas-gallery {
   background: $primary-background;
 }
@@ -16,10 +24,6 @@
   .ideas-wrapper {
     justify-content: center;
   }
-}
-#category-headline {
-  height: 40rem !important;
-  background: $primary-black;
 }
 
 .create-idea-button {
