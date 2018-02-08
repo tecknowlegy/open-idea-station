@@ -9,24 +9,15 @@
 
 ideas_list = [
   [ "Open Idea Station", "This is the OIS base application built with Ruby on Rails", "https://github.com/Open-Idea-Station", 1 ],
-  [ "Quadnate", "4 spaces of cordination", "https://github.com/Open-Idea-Station", 1  ],
+  [ "Quadnate", "4 spaces of cordination", "https://github.com/Open-Idea-Station", 1 ],
   [ "Happy Helpers", "A code description of how methods should be named in ruby", "https://github.com/Open-Idea-Station", 1 ],
   [ "PostIt", "A group messaging app", "https://github.com/Open-Idea-Station", 1 ],
   [ "PosticoDB", "An open source database system", "https://github.com/Open-Idea-Station", 1 ],
   [ "Paale", "Connect with loved ones", "https://github.com/Open-Idea-Station", 1 ],
-  [ "Cookerel", "Food as a service", "https://github.com/Open-Idea-Station", 1 ],
+  [ "Cookerel", "Food as a service", "https://github.com/Open-Idea-Station", 2 ],
   [ "SportyVite", "Know what your favourite sportman is listening to in realtime", "https://github.com/Open-Idea-Station", 1 ],
-
+  [ "Gylfi", "Real time chat application", "https://github.com/gylfi", 1 ]
 ]
-
-ideas_list.each do |name, description, url, user_id|
-  Idea.create(
-                name: name,
-                description: description,
-                url: url,
-                user_id: user_id
-              )
-end
 
 User.create(
             username: "Dinobi",

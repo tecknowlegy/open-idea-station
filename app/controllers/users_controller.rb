@@ -8,15 +8,10 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    # if user.save
-    #   session[:user_id] = user.id
-    #   redirect_to '/ideas'
-    # else
-    #   redirect_to '/signup'
-    # end
     respond_to do |format|
       if user.save
         session[:user_id] = user.id
+        cookies.signed[:user_id] = user.id
         format.html { redirect_to '/ideas', notice: 'User account was successfully created.' }
       else
         format.html { render :new }
@@ -37,6 +32,7 @@ class UsersController < ApplicationController
       # Save the user id inside the browser cookie. This keeps the user 
       # logged in when they navigate around our website.
       session[:user_id] = user.id
+      cookies.signed[:user_id] = user.id
       redirect_to '/ideas'
     else
       # If user's login doesn't work, send them back to the login form.
@@ -47,6 +43,7 @@ class UsersController < ApplicationController
 
   def logout
     session[:user_id] = nil
+    cookies.signed[:user_id] = nil
     redirect_to '/login'
   end
 

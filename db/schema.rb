@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207124930) do
+ActiveRecord::Schema.define(version: 20180217063931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,13 @@ ActiveRecord::Schema.define(version: 20180207124930) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
     t.text "body"
     t.bigint "idea_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["idea_id"], name: "index_comments_on_idea_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "idea_categories", force: :cascade do |t|
@@ -44,20 +45,22 @@ ActiveRecord::Schema.define(version: 20180207124930) do
     t.string "name"
     t.text "description"
     t.string "url"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_ideas_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "receiver_id"
+    t.integer "recipient_id"
     t.integer "actor_id"
+    t.boolean "is_read"
     t.string "action"
-    t.datetime "read_at"
-    t.integer "notifiable_id"
     t.string "notifiable_type"
+    t.bigint "notifiable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,5 +82,7 @@ ActiveRecord::Schema.define(version: 20180207124930) do
 
   add_foreign_key "categories", "ideas"
   add_foreign_key "comments", "ideas"
+  add_foreign_key "comments", "users"
+  add_foreign_key "ideas", "users"
   add_foreign_key "view_histories", "ideas"
 end

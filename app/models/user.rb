@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
   validates_uniqueness_of :email
 
-  has_many :notifications, foreign_key: :receiver_id
+  has_many :ideas, dependent: :destroy
   has_many :comments
-  has_many :ideas
+  has_many :notifications, foreign_key: :recipient_id
 end

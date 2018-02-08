@@ -21,11 +21,4 @@ class ApplicationController < ActionController::Base
       flash.discard
     end
   end
-
-  def create_notification
-    receivers.each do |receiver|
-      Notification.create(receiver: receiver, actor: self.user,
-        action: 'posted', notifiable: self)
-    end
-  end
 end

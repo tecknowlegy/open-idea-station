@@ -4,7 +4,6 @@ class CreateIdeas < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :description
       t.string :url
-      t.integer :user_id
 
       t.timestamps
     end
