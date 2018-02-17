@@ -29,3 +29,4 @@
 //= require material/tabs
 //= require material/tooltip
 //= require_tree .
+//= require_tree ./channels

@@ -11,20 +11,34 @@
 </p>
 
 <p>
-  <strong>Author:</strong>
-  <%= @idea.author %>
-</p>
-
-<p>
-  <strong>Organization:</strong>
-  <%= @idea.organization %>
-</p>
-
-<p>
-  <strong>Url:</strong>
+  <strong>Idea Url:</strong>
   <%= @idea.url %>
 </p>
+<!-- Display created Comment -->
+<h2>Comments</h2>
+<% @idea.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.user[:username] %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
 
+<!-- Add a new comment -->
+<p>Add a comment</p>
+<%= form_with(model: [ @idea, @idea.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Views', idea_viewed_path(@idea.id) %> |
 <%= link_to 'Back', ideas_path %>

@@ -1,5 +1,10 @@
 @import 'base';
 
+header#page-tray {
+  height: 140px;
+  color: $white;
+  background: $primary-black;
+}
 nav.main-nav {
   margin-top: 0;
   box-shadow: none;
@@ -9,6 +14,9 @@ nav.main-nav {
   vertical-align: middle;
   padding: 0 1rem;
   z-index: 10;
+  position: fixed;
+  background: #212121;
+  border-bottom: 1px solid #424242;
 }
 
 .nav-item {
@@ -28,9 +36,4 @@ nav.main-nav li a {
   letter-spacing: 0.07em;
 	color: inherit;
   font-size: 12px;
-  
-}
-
-.fix-it {
-  position: fixed;
 }

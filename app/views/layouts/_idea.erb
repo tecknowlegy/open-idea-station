@@ -1,0 +1,7 @@
+<div class="idea-notification" data-id="<%= idea[:id] %>">
+  <div class="notification-content-header">
+    <span class="unread-notif-icon" data-type="<%= idea[:status] == 'saved' ? 'idea-icon' : 'delete-icon' %>"></span>
+    <span class="notification-time" tabindex="0"><%= idea[:created_at].localtime.strftime("%I:%M %p") %></span>
+    <span class="close-button" tabindex="0"></span>
+  </div>
+</div>

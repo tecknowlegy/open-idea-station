@@ -88,4 +88,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Setup action cable default URL
+  config.action_cable.url = ‘ws://open-idea-station.io:3001/cable'
 end

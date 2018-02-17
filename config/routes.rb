@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     get 'viewed'
     resources :comments
   end
+  
+  resources :notifications, only: [:index]
 end

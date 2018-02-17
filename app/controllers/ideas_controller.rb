@@ -16,18 +16,21 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.includes(:view_histories).all
+    @ideas = Idea.includes(:view_histories, :comments).all
+    @ideas
   end
 
   # GET /ideas/1
   # GET /ideas/1.json
   def show
-    view_record = ViewHistory.new(
-                                  :idea_id => @idea.id,
-                                  :time_viewed => Time.now,
-                                  :viewer_ip => request.remote_ip
-                                  )
-    view_record.save
+    if @current_user.ideas.find_by(id: @idea.id) == nil
+      view_record = ViewHistory.new(
+                                    :idea_id => @idea.id,
+                                    :time_viewed => Time.now,
+                                    :viewer_ip => request.remote_ip
+                                    )
+      view_record.save
+    end
   end
 
   # GET /ideas/new
@@ -38,8 +41,7 @@ class IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.json
   def create
-    @idea = Idea.new(idea_params)
-
+    @idea = @current_user.ideas.new(idea_params)
     respond_to do |format|
       if @idea.save
         format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
@@ -87,7 +89,7 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit( :id, :name, :description, :author, :organization, :url)
+      params.require(:idea).permit( :name, :description, :url)
     end
 
     

@@ -8,40 +8,16 @@
 
 
 ideas_list = [
-  [ "Open Idea Station", "This is the OIS base application built with Ruby on Rails", "Dinobi", "OIS" ],
-  [ "Quadnate", "4 spaces of cordination", "Dinobi", "OIS" ],
-  [ "Happy Helpers", "A code description of how methods should be named in ruby", "Dinobi", "OIS" ],
-  [ "PostIt", "A group messaging app", "Dinobi", "Andela" ],
-  [ "PosticoDB", "An open source database system", "Adam", "Postico" ],
-  [ "Paale", "Connect with loved ones", "Philip", "PJN-LLC" ],
-  [ "Cookerel", "Food as a service", "Dinobi", "OIS" ],
-  [ "SportyVite", "Know what your favourite sportman is listening to in realtime", "Dinobi", "OIS" ],
-
+  [ "Open Idea Station", "This is the OIS base application built with Ruby on Rails", "https://github.com/Open-Idea-Station", 1 ],
+  [ "Quadnate", "4 spaces of cordination", "https://github.com/Open-Idea-Station", 1 ],
+  [ "Happy Helpers", "A code description of how methods should be named in ruby", "https://github.com/Open-Idea-Station", 1 ],
+  [ "PostIt", "A group messaging app", "https://github.com/Open-Idea-Station", 1 ],
+  [ "PosticoDB", "An open source database system", "https://github.com/Open-Idea-Station", 1 ],
+  [ "Paale", "Connect with loved ones", "https://github.com/Open-Idea-Station", 1 ],
+  [ "Cookerel", "Food as a service", "https://github.com/Open-Idea-Station", 2 ],
+  [ "SportyVite", "Know what your favourite sportman is listening to in realtime", "https://github.com/Open-Idea-Station", 1 ],
+  [ "Gylfi", "Real time chat application", "https://github.com/gylfi", 1 ]
 ]
-
-ideas_list.each do |name, description, author, organization|
-  Idea.create(
-                  name: name,
-                  description: description,
-                  author: author,
-                  organization: organization
-                )
-end
-
-
-# Idea.create(
-#             name: "Open Idea Station",
-#             description: "This is the OIS base application built with Ruby on Rails",
-#             author: "Dinobi",
-#             organization: "OIS"
-#             )
-
-# Idea.create(
-#             name: "Quadnate",
-#             description: "4 spaces of cordination",
-#             author: "Dinobi",
-#             organization: "Quadnate"
-#             )
 
 User.create(
             username: "Dinobi",
@@ -49,3 +25,8 @@ User.create(
             password: "DinoAcorn45"
             )
             
+User.create(
+            username: "Melvzone",
+            email: "melvzone07@gmail.com",
+            password: "ThugLife"
+            )

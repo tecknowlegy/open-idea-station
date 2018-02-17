@@ -5,12 +5,14 @@
 
 #ideas-gallery-headline, #category-headline {
   color: $white;
-  height: 46rem !important;
+  min-height: 46rem !important;
   background: $primary-black;
   padding-top: 10rem;
   padding-bottom: 10rem;
+  h6 {
+    color: $primary-black4;
+  }
 }
-
 #ideas-gallery {
   background: $primary-background;
 }
