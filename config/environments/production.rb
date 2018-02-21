@@ -90,5 +90,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Setup action cable default URL
-  config.action_cable.url = ‘ws://open-idea-station.io:3001/cable'
+  config.action_cable.url = 'ws://open-idea-station.io:3001/cable'
 end

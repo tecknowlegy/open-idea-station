@@ -6,42 +6,42 @@
       from organizations, developers, and teams all over the world
     <h6>
   <div>
-  <div class="features">
-    <div class="github"><i class="fa fa-github white-text"></i><h6>Github</h6><div>
-  <div>
 </section>
 
 <button class="create-idea-button blue">Create Idea</button>
 
 <section class="super-box group" id="ideas-gallery">
 
-  <div class="box ideas-wrapper">
+  <div class="box">
+    <div class="ideas-wrapper">
 
-    <!-- Ideas -->
-    <% @ideas.each do |idea| %>
-      <div class="mdl-card with-shadow">
-        <div class="mdl-card__title">
-          <h6 class="mdl-card__title-text truncate">
-            <i class="fa fa-puzzle-piece"></i>
-            &nbsp;<%= link_to idea.name ,idea %>
-          </h6>
+      <!-- Ideas -->
+      <% @ideas.each do |idea| %>
+        <div class="mdl-card with-shadow">
+          <div class="mdl-card__title">
+            <h6 class="mdl-card__title-text truncate">
+              <i class="fa fa-puzzle-piece"></i>
+              &nbsp;<%= link_to idea.name ,idea %>
+            </h6>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <%= idea.description %>
+          </div>
+          <div class="mdl-card__actions">
+            <a class="idea-icons">
+              <i class="fa fa-eye"></i> <%= idea.view_histories.size %>
+            </a>
+            <a class="idea-icons">
+              <i class="fa fa-heart"></i> 0
+            </a>
+            <a class="idea-icons">
+              <i class="fa fa-comment"></i></i> <%= idea.comments.size %>
+            </a>
+          </div>
         </div>
-        <div class="mdl-card__supporting-text">
-          <%= idea.description %>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="idea-icons">
-            <i class="fa fa-eye"></i> <%= idea.view_histories.size %>
-          </a>
-          <a class="idea-icons">
-            <i class="fa fa-heart"></i> 0
-          </a>
-          <a class="idea-icons">
-            <i class="fa fa-comment"></i></i> <%= idea.comments.size %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
 
+    </div>
   </div>
 
   

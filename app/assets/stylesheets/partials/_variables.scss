@@ -4,6 +4,7 @@
 
 // Colors
 $primary-color: #4CAF50;
+$primary-color-main: #02BF8F;
 $primary-color-hover: #388E3C;
 $offset-color: #1A237E;
 $offset-color-hover: #303F9F;
@@ -13,8 +14,10 @@ $primary-black2: #424242;
 $primary-black3: #757575;
 $primary-black4: #9E9E9E;
 $primary-background: #f4f4f4;
+$primary-background2: #fafbfc;
 $acorn-red: #D50000;
 $margin: 15px;
+$blue: rgb(66, 133, 244);
 
 // Margin
 $main-margin: 15px;
@@ -48,7 +51,37 @@ $shadow-opacity2: 0.14 !default;
 $shadow-opacity3: 0.12 !default;
 
 .with-shadow {
-  box-shadow: 0 2px 2px 0 rgba(150, 150, 150, $shadow-opacity1),
+  box-shadow: 0 0px 1px 0 rgba(150, 150, 150, $shadow-opacity1),
               0 3px 1px -2px rgba(150, 150, 150, $shadow-opacity2),
               0 1px 5px 0 rgba(150, 150, 150, $shadow-opacity3);
+}
+
+// Break point
+$break-point-smobile: 320px;
+$break-point-nmobile: 400px;
+$break-point-mmobile: 480px;
+$break-point-lmobile: 576px;
+$break-point-ntablet: 768px;
+$break-point-ltablet: 996px;
+$break-point-nnotebook: 1200px;
+$break-point-lnotebook: 1280px;
+$break-point-desktop: 1320px;
+
+
+@mixin cameleon($media) {
+  @if $media == handhelds {
+    @media only screen and (min-width: $break-point-smobile) and (max-width: $break-point-lmobile) { @content; }
+  } @else if $media == mobile {
+    @media only screen and (min-width: $break-point-nmobile + 1) and (max-width: $break-point-ntablet) { @content; }
+  } @else if $media == tablet {
+    @media only screen and (min-width: $break-point-ntablet + 1) and (max-width: $break-point-ltablet) { @content; }
+  } @else if $media == notebook {
+    @media only screen and (min-width: $break-point-ltablet + 1) and (max-width: $break-point-nnotebook) { @content; }
+  } @else if $media == medium-notebook {
+    @media only screen and (min-width: $break-point-nnotebook + 1) and (max-width: $break-point-lnotebook) { @content; }
+  } @else if $media == wide-screen {
+    @media only screen and (min-width: $break-point-lnotebook) and (max-width: $break-point-desktop) { @content; }
+  } @else if $media == wider-screen {
+    @media only screen and (min-width: $break-point-desktop + 1) { @content; }
+  }
 }

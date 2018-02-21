@@ -16,7 +16,9 @@ ideas_list = [
   [ "Paale", "Connect with loved ones", "https://github.com/Open-Idea-Station", 1 ],
   [ "Cookerel", "Food as a service", "https://github.com/Open-Idea-Station", 2 ],
   [ "SportyVite", "Know what your favourite sportman is listening to in realtime", "https://github.com/Open-Idea-Station", 1 ],
-  [ "Gylfi", "Real time chat application", "https://github.com/gylfi", 1 ]
+  [ "Gylfi", "Real time chat application", "https://github.com/gylfi", 1 ],
+  [ "EOFy"],
+  [ "Interrupt", "Maintains a stable connection when internet is down"]
 ]
 
 User.create(

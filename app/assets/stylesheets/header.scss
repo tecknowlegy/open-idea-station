@@ -1,11 +1,13 @@
 @import 'base';
 
-header#page-tray {
-  height: 140px;
-  color: $white;
-  background: $primary-black;
+#page-tray {
+  height: 14rem;
+  color: $primary-black;
+  background: $white;
+  position: relative;
+  border-bottom: 1px solid #eee;
 }
-nav.main-nav {
+.main-nav {
   margin-top: 0;
   box-shadow: none;
   height: 40px;
@@ -15,25 +17,119 @@ nav.main-nav {
   padding: 0 1rem;
   z-index: 10;
   position: fixed;
-  background: #212121;
-  border-bottom: 1px solid #424242;
+  background: $primary-background2;
+  position: relative;
 }
 
 .nav-item {
-  height: 40px;
-  line-height: 40px;
-  color: $white !important;
-  font-weight: bold;
+  color: $primary-black3 !important;
   background: none;
   &:hover, &:focus {
-    color: $white !important;
-    background: linear-gradient($primary-color, $primary-color-hover) !important;
+    color: $primary-black !important;
   }
 }
+.auth-nav-item {
+  @extend .nav-item;
+}
 
-nav.main-nav li a {
+.main-nav li.nav-item a, .register-btn {
   font-family: $secondary-font;
   letter-spacing: 0.07em;
 	color: inherit;
   font-size: 12px;
+  font-weight: bold !important;
+  height: 24px;
+  line-height: 24px;
+  margin-top: 8px;
+  border-radius: 5px;
+  &:hover, &:focus {
+    background: $primary-background;
+  }
+}
+.main-nav li.auth-nav-item a {
+  font-family: $secondary-font;
+  letter-spacing: 0.07em;
+	color: inherit;
+  font-size: 20px;
+  font-weight: bold !important;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 5px !important;
+  margin: 0 10px;
+  &:hover, &:focus {
+    background: none !important;
+  }
+}
+img.open-idea-station-logo {
+  max-height: 8rem;
+  max-width: 8rem;
+  position: absolute;
+  left: 1.5rem;
+  top: 5rem;
+  border-radius: 5px;
+  background-image: image-url('OIS-ico.png');
+}
+
+nav.main-nav li a {
+  i {
+    height: 40px;
+    line-height: 40px;
+  }
+}
+
+.logout-btn {
+  position: absolute;
+  font-family: $secondary-font;
+  background: $acorn-red !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  top: 44px;
+  right: 0;
+}
+.hide-btn {
+  display: none !important;
+}
+
+a.menu-pane {
+  display: inline-block;
+  width: 2rem;
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  text-align: center;
+  cursor: pointer;
+  span {
+    transition: all 0.5s ease-in-out;
+    margin: 0 auto;
+    display: block;
+    height: 3px;
+    width: 50%;
+    background: $primary-black3;
+    margin-bottom: 5px;
+  }
+  &:hover {
+    span {
+      background: $primary-black;
+      &:nth-child(2) {
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+}
+
+a.current-user {
+  background: $primary-black !important;
+  margin-top: 5px;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  color: $white !important;
+  font-family: $secondary-font;
+  font-weight: bold;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em;
+  padding: 0 !important
 }

@@ -6,7 +6,7 @@
 
 html{
 	color: $primary-black;
-	margin: 0;
+  margin: 0;
 }
 
 @media screen and (max-width:575px){
@@ -35,11 +35,12 @@ html{
 	}
 }
 body {
-	font-family: $primary-font;
+	font-family: $secondary-font;
 	width: 100%;
 	padding: 0 auto;
 	font-size: 1.6rem;
-	color: $primary-black;
+  color: $primary-black;
+  background: $primary-background;
 	text-align: center;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
@@ -186,32 +187,54 @@ label {
     padding-bottom: 1.5rem;
     margin: 0 auto;
   }
+
+  @include cameleon(handhelds) {
+    .box {
+      width: 90%;
+    }
+  }
+  @include cameleon(mobile) {
+    .box {
+      max-width: $break-point-ntablet - 120px;
+    }
+  }
+  
+
   @media screen and (min-width: 768px) {
-  .box {
-    width: 768px;
-  }
-  }
-  @media screen and (min-width: 992px) {
     .box {
-      width: 992px;
+      width: 720px;
     }
-  }
-  @media screen and (min-width: 1200px) {
-    .box {
-      width: 1000px;
     }
-    header.box {
+    @media screen and (min-width: 992px) {
+      .box {
+        width: 992px;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      .box {
+        width: 1124px;
+      }
+      header.box {
+        width: 1200px;
+      }
+    }
+    @media screen and (min-width: 1280px) {
+     .box {
       width: 1200px;
+      }
+      header .box {
+        width: 1280px;
+      }
     }
-  }
-  @media screen and (min-width: 1280px) {
-   .box {
-    width: 1080px;
-    }
-    header .box {
-      width: 1280px;
-    }
-  }
+    @media screen and (min-width: 1320px) {
+      .box {
+       width: 90%;
+       }
+       header .box {
+         width: 90%;
+       }
+     }
+  
 
   p.empty-content {
     font-size: 3rem;
@@ -229,19 +252,31 @@ label {
     color: $white;
     height: 920px;
   }
+  #landing {
+    background: url('components-background.png') repeat $white;
+    height: 70vh;
+    color: $primary-black
+  }
   .headline {
-    margin: 18rem auto !important;
+    margin: 12vh auto !important;
     width: 60%;
     h1 {
       font-size: 9rem;
       line-height: 10rem;
-      text-shadow: 0 0 8px #000;
     }
     h6 {
       margin-top: 40px;
       font-size: 2.4rem;
       line-height: 3rem;
-      text-shadow: 0 0 8px #000;
+    }
+    .emphasize {
+      text-decoration: underline;
+    }
+  }
+  @media screen and (max-width:767px) {
+    .headline {
+      margin: 4rem auto !important;
+      width: 80%;
     }
   }
 
@@ -257,4 +292,16 @@ label {
   .field_with_errors {
     border-bottom: 2px solid red;
     background: none;
+  }
+
+  mark {
+    border-radius: 120px 180px  30px 40px;
+    border: 1px solid $primary-black;
+    background: none;
+    padding: 2px;
+  }
+
+  #about-ois {
+    background: $primary-black;
+    color: $white;
   }

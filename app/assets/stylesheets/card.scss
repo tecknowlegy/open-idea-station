@@ -3,15 +3,13 @@
 
 .ideas-wrapper {
   .mdl-card {
-    width: 31.5rem;
+    width: 100%;
     height: 24rem;
-    padding: 0;
-    margin: 1.6666%;
     font-family: $secondary-font;
+    z-index: 0 !important;
   }
   .mdl-card__title {
     align-items: center;
-    display: block;
     display: flex;
     padding: 5px 10px;
     height: 15%;
@@ -30,7 +28,11 @@
     font-size: 14px;
     text-align: left;
     padding: 10px 10px;
-   color: $primary-black4;
+    overflow: wrap;
+    color: $primary-black4;
+    &:hover {
+      background: #fafbfc;
+    }
   }
   .mdl-card__actions {
     display: flex;
@@ -47,7 +49,7 @@
       margin-left: 10px;
       color: $primary-black4;
       &:hover {
-        color: $primary-black;
+        color: $primary-black3;
       }
     }
   }
