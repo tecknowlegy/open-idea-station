@@ -1,34 +1,26 @@
 class IdeasController < ApplicationController
   skip_before_action :authorize, only: :index
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_idea, only: %i[show edit update destroy]
 
   # Get data on viewed ideas
   def viewed
     # define local variable as its not needed in the view
     ideas = Idea.find(params[:idea_id])
-    @views = ideas.view_histories
+    @views = ideas.viewers
   end
 
-  # def require_auth
-  #   render :text => 'Access denied', :status => 403 if params[:id] && params[:id].to_i < 2
-  # end
-
-  # GET /ideas
-  # GET /ideas.json
+  # Load ideas with its associated attributes
   def index
-    @ideas = Idea.includes(:view_histories, :comments).all
-    @ideas
+    @ideas = Idea.includes(:viewers, :comments).all
   end
 
-  # GET /ideas/1
-  # GET /ideas/1.json
   def show
-    if @current_user.ideas.find_by(id: @idea.id) == nil
-      view_record = ViewHistory.new(
-                                    :idea_id => @idea.id,
-                                    :time_viewed => Time.now,
-                                    :viewer_ip => request.remote_ip
-                                    )
+    if @current_user.ideas.find_by(id: @idea.id).nil?
+      view_record = Viewer.new(
+        idea_id: @idea.id,
+        time_viewed: Time.now,
+        viewer_ip: request.remote_ip
+      )
       view_record.save
     end
   end
@@ -54,8 +46,7 @@ class IdeasController < ApplicationController
   end
 
   # GET /ideas/1/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
@@ -71,26 +62,25 @@ class IdeasController < ApplicationController
     end
   end
 
-  # DELETE /ideas/1
-  # DELETE /ideas/1.json
-  def destroy
-    @idea.destroy
+  # PATCH/PUT /ideas/1
+  # PATCH/PUT /ideas/1.json
+  def archive
+    @idea.update(is_archived: true)
     respond_to do |format|
-      format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
+      format.html { redirect_to ideas_url, notice: 'Idea was archived.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_idea
-      @idea = Idea.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def idea_params
-      params.require(:idea).permit( :name, :description, :url)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_idea
+    @idea = Idea.find(params[:id])
+  end
 
-    
+  # Never trust parameters from the scary internet, only allow the white list
+  def idea_params
+    params.require(:idea).permit(:name, :description, :url)
+  end
 end

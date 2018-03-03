@@ -71,18 +71,18 @@ ActiveRecord::Schema.define(version: 20180217063931) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "view_histories", force: :cascade do |t|
+  create_table "viewers", force: :cascade do |t|
     t.datetime "time_viewed"
     t.string "viewer_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "idea_id"
-    t.index ["idea_id"], name: "index_view_histories_on_idea_id"
+    t.index ["idea_id"], name: "index_viewers_on_idea_id"
   end
 
   add_foreign_key "categories", "ideas"
   add_foreign_key "comments", "ideas"
   add_foreign_key "comments", "users"
   add_foreign_key "ideas", "users"
-  add_foreign_key "view_histories", "ideas"
+  add_foreign_key "viewers", "ideas"
 end

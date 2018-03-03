@@ -97,7 +97,7 @@ a {
 }
 
 p {
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 16px;
 	font-size: 1.6rem;
 	line-height: 3rem;
@@ -301,7 +301,7 @@ label {
     padding: 2px;
   }
 
-  #about-ois {
-    background: $primary-black;
+  #ois-features {
+    background: linear-gradient(to bottom right, $offset-color3, $offset-color2, $offset-color);
     color: $white;
   }

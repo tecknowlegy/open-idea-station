@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -37,7 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
@@ -45,54 +44,54 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
-  gem "chromedriver-helper"
-  gem "codeclimate-test-reporter", "~> 1.0.0"
-  gem "database_cleaner"
-  gem "rails-controller-testing"
-  gem "rspec-rails", "~> 3.5"
-  gem "selenium-webdriver", "~> 3.4.3"
-  gem "should_not"
-  gem "shoulda-matchers", "~> 3.1"
-  gem "simplecov"
+  gem 'chromedriver-helper'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'selenium-webdriver', '~> 3.4.3'
+  gem 'should_not'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'nokogiri'
 gem 'rack', '~> 2.0.1'
 
 # Use fontawesome for icons
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # For jwt authentication
-gem "jwt"
+gem 'jwt'
 
 # For env variables
-gem "figaro"
+gem 'figaro'
 
 # add cloudinary to serve static images
 gem 'cloudinary'
 
 # add jQuery support for Turbolinks
-gem "jquery-turbolinks"
+gem 'jquery-turbolinks'
 
 # Use jquery as the JavaScript library
-gem "jquery-rails"
+gem 'jquery-rails'
 
 # add jquery validation
-gem "jquery-validation-rails"
+gem 'jquery-validation-rails'
 
 # add jquery autocomplete
-gem "jquery-ui-rails"
+gem 'jquery-ui-rails'
 
 # For flash messages
-gem "puffly"
+gem 'puffly'

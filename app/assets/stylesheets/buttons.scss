@@ -17,18 +17,18 @@
 }
 
 .get-started-btn {
-  background: linear-gradient($primary-color, $primary-color-hover) !important;
+  background: linear-gradient($offset-color, $offset-color2) !important;
   box-shadow: none;
   border-radius: 50px !important;
-  border: 1px solid $primary-color-hover !important;
+  border: 1px solid $offset-color !important;
   color: $white !important;
   font-family: $secondary-font;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 1.8rem !important;
-  min-width: 10%;
+  width: 240px;
   margin: 40px 0;
   &:hover, &:focus {
-    background: linear-gradient($primary-color) !important;
+    background: linear-gradient($offset-color) !important;
     color: $white !important;
   }
 }
