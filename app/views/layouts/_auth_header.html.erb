@@ -2,25 +2,23 @@
     <div class="navbar">
       <nav class="main-nav">
         <div class="nav-wrapper">
-          <aside class="left">
-            <a href="#" data-activates="mobile-demo" class="button-collapse">
-              <span></span>
-              <span></span>
-              <span></span>
-            </a>
-          </aside>
+          <a href="#" class="menu-pane">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+          <a href="/"><%= image_tag("OIS-ico.png", :class => 'open-idea-station-logo') %></a>
           
           <ul class="right app-menu">
-            <li><%= link_to 'Home', index_path, :class => "nav-item" %></li>
-            <li><%= link_to 'Ideas', ideas_path, :class => "nav-item" %></li>
-            <li><%= link_to 'Create New', new_idea_path, :class => "nav-item" %></li>
+            <li class="auth-nav-item"><a href="/notifications"><i class="material-icons">notifications_none</i></a></li>
+            <li class="auth-nav-item"><a href="/ideas"><i class="material-icons">cloud_queue</i></a></li>
+            <li class="auth-nav-item"><a href="/ideas/new"><i class="material-icons">subject</i></a></li>
             <li>
-              <%= link_to 'Signout', logout_path, :class => "signout-btn" %>
+              <a class="current-user"><%= current_user[:username][0,2] %></a>
             </li>
+            <a class="btn logout-btn hide-btn" href="/logout">Logout</a>
           </ul>
         </div>
       </nav>
     </div>
-
-    <ul class=""></ul>
   </header>

@@ -1,1 +1,2 @@
-window.acorn = {}
+window.Modal = {}
+window.Login = {}
