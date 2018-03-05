@@ -3,9 +3,8 @@
 
 .ideas-wrapper {
   .mdl-card {
-    width: 100%;
+    width: auto !important;
     height: 24rem;
-    font-family: $secondary-font;
     z-index: 0 !important;
   }
   .mdl-card__title {

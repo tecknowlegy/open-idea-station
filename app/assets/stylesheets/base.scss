@@ -1,16 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Open Sans");
+@import url("https://fonts.googleapis.com/css?family=Muli");
 @import url("https://fonts.googleapis.com/css?family=Lora");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css");
-@import 'material/tooltip';
-@import 'material/spinner';
-@import 'material/tabs';
-@import 'material/progress';
-@import "material/shadow";
-@import "material/card";
-@import "material/icon-toggle";
+@import 'material';
 @import 'partials/_variables';
 @import 'partials/_reset';
 @import "font-awesome";
 
-$primary-font: 'Lora', Georgia, serif;
-$secondary-font: 'Open Sans', verdana, sans-serif;
+$primary-font: 'Muli', verdana, sans-serif;

@@ -3,7 +3,6 @@
 .register-btn {
   background: linear-gradient($primary-color, $primary-color-hover) !important;
   color: $white !important;
-  font-family: $secondary-font;
   font-weight: bold;
   font-size: 12px !important;
   text-transform: uppercase !important;
@@ -16,19 +15,20 @@
   }
 }
 
+.btn, .btn-large {
+  font-weight: 900 !important;
+}
 .get-started-btn {
-  background: linear-gradient($offset-color, $offset-color2) !important;
-  box-shadow: none;
-  border-radius: 50px !important;
-  border: 1px solid $offset-color !important;
+  background: linear-gradient($primary-color, $primary-color-hover) !important;
+  border-radius: 5px !important;
+  border: 1px solid $primary-color-hover !important;
   color: $white !important;
-  font-family: $secondary-font;
-  font-weight: 900;
+  font-weight: 900 !important;
   font-size: 1.8rem !important;
-  width: 240px;
+  width: 200px;
   margin: 40px 0;
   &:hover, &:focus {
-    background: linear-gradient($offset-color) !important;
+    background: linear-gradient($primary-color-hover) !important;
     color: $white !important;
   }
 }
