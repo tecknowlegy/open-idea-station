@@ -19,15 +19,6 @@
 //= require jquery.validate.additional-methods
 //= require material/mdlComponentHandler
 //= require material/rAF
-//= require material/button
-//= require material/icon-toggle
-//= require material/progress
-//= require material/radio
-//= require material/ripple
-//= require material/slider
-//= require material/spinner
-//= require material/switch
-//= require material/tabs
-//= require material/tooltip
+//= require material
 //= require_tree .
 //= require_tree ./channels

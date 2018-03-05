@@ -17,7 +17,7 @@
   padding: 0 1rem;
   z-index: 10;
   position: fixed;
-  background: $primary-background2;
+  background: $white;
   position: relative;
 }
 
@@ -33,7 +33,6 @@
 }
 
 .main-nav li.nav-item a, .register-btn {
-  font-family: $secondary-font;
   letter-spacing: 0.07em;
 	color: inherit;
   font-size: 12px;
@@ -47,7 +46,6 @@
   }
 }
 .main-nav li.auth-nav-item a {
-  font-family: $secondary-font;
   letter-spacing: 0.07em;
 	color: inherit;
   font-size: 20px;
@@ -79,7 +77,6 @@ nav.main-nav li a {
 
 .logout-btn {
   position: absolute;
-  font-family: $secondary-font;
   background: $offset-color2 !important;
   height: 30px !important;
   line-height: 30px !important;
@@ -126,7 +123,6 @@ a.current-user {
   line-height: 30px;
   border-radius: 50%;
   color: $white !important;
-  font-family: $secondary-font;
   font-weight: bold;
   font-size: 12px !important;
   text-transform: uppercase !important;

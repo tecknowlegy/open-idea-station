@@ -7,6 +7,7 @@
 html{
 	color: $primary-black;
   margin: 0;
+  font-family: $primary-font;
 }
 
 @media screen and (max-width:575px){
@@ -35,7 +36,7 @@ html{
 	}
 }
 body {
-	font-family: $secondary-font;
+	font-family: $primary-font;
 	width: 100%;
 	padding: 0 auto;
 	font-size: 1.6rem;
@@ -47,10 +48,10 @@ body {
 }
 
 h1, h2, h3, h4, h5, a {
-	font-family: $primary-font;
+	font-weight: 900;
 }
 h6, p {
-	font-family: $secondary-font;
+	font-weight: normal;
 }
 
 h1 {
@@ -101,9 +102,8 @@ p {
 	font-size: 16px;
 	font-size: 1.6rem;
 	line-height: 3rem;
-	font-family: $secondary-font;
 	letter-spacing: .03rem;
-	word-spacing: .10rem;
+	word-spacing: .05rem;
 	}
 	
 a {
@@ -166,6 +166,9 @@ label {
   margin: 0 auto;
   min-height: 2px;
   }
+.grid-box {
+  display: grid !important;
+}
   .super-box {
     position: relative;
     left: 0;
@@ -190,12 +193,15 @@ label {
 
   @include cameleon(handhelds) {
     .box {
-      width: 90%;
+      width: 80%;
+    }
+    .grid-box {
+      width: 68%;
     }
   }
   @include cameleon(mobile) {
     .box {
-      max-width: $break-point-ntablet - 120px;
+      max-width: $break-point-ntablet - 240px;
     }
   }
   
@@ -254,8 +260,9 @@ label {
   }
   #landing {
     background: url('components-background.png') repeat $white;
-    height: 70vh;
-    color: $primary-black
+    min-height: 70vh;
+    color: $primary-black;
+    border-bottom: 1px solid #eee;
   }
   .headline {
     margin: 12vh auto !important;
@@ -300,8 +307,19 @@ label {
     background: none;
     padding: 2px;
   }
-
-  #ois-features {
-    background: linear-gradient(to bottom right, $offset-color3, $offset-color2, $offset-color);
-    color: $white;
+  .discover-illustration {
+  }
+  .about-ois {
+  }
+  #features {
+    background: $white;
+  }
+  .features-box {
+    width: 80%;
+    .mdl-grid {
+      margin-top: 3rem;
+    }
+  }
+  .features-box img {
+    height: 400px;
   }
