@@ -1,0 +1,117 @@
+@import 'base';
+
+#login-modal {
+  display: none;
+}
+
+[aria-describedby="login-modal"] {
+  height: 400px !important;
+  width: 400px !important;
+  background: #fff;
+  overflow: hidden !important;
+  box-sizing: border-box;
+  #login-modal {
+    padding: 20px 20px;
+    .modal-top {
+      .modal-header {
+        height: 4rem !important;
+      }
+      .modal-content {
+        font-size: 13px;
+        padding: 23px;
+        margin-top: 0;
+        max-height: 400px;
+        overflow-y: scroll;
+        form {
+          padding: 0 !important;
+          label {
+            color: $primary-color;
+          }
+          input {
+            display: block;
+            width: 100%;
+            height: 40px;
+            margin: 0 auto;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 2px;
+            font-size: 14px;
+            text-align: center;
+            &:focus {
+              box-shadow: none;
+            }
+          }
+          input[type=submit] {
+            color: $white;
+            background: $primary-color;
+            border: 1px solid $primary-color;
+            margin-top: 40px;
+            font-size: 18px;
+            &:focus {
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#signup-background {
+  background: url('ideas.jpg') no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: $white;
+  height: 98vh;
+  padding: 12rem;
+  .highlight {
+    border-radius: 1em 0 1em 0;
+    background-image: linear-gradient(-100deg, rgba(250,247,133,0.3),
+  rgba(250,247,133,0.7) 95%, rgba(250,247,133,0.1));
+  }
+  .signup-form {
+    form {
+      border: 1px solid rgba(0,0,0,.60);
+      background: rgba(0,0,0,.40);
+      width: 500px;
+      padding: 20px 40px;
+      min-height: 400px;
+      label {
+        color: $white;
+      }
+      input {
+        display: block;
+        width: 100%;
+        height: 40px;
+        margin: 0 auto;
+        font-weight: bold;
+        margin-bottom: 20px;
+        border: 1px solid rgba(0,0,0,.60);
+        background: rgba(0,0,0,.60);
+        border-radius: 2px;
+        font-size: 14px;
+        text-align: center;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      input[type=submit] {
+        color: $white;
+        background: $primary-black;
+        border: 1px solid $primary-black;
+        margin-top: 40px;
+        font-size: 18px;
+        text-align: center;
+        &:focus {
+          box-shadow: none;
+        }
+        &:hover {
+          background: #000;
+        }
+      }
+    }
+  }
+}

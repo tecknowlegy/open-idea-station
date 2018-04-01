@@ -1,6 +1,6 @@
 class Modal.App
-  constructor: (@element, width, maxWidth, height, maxHeight) ->
-    @ui = new Modal.UI(width, maxWidth, height, maxHeight)
+  constructor: (@element, width, maxWidth, maxHeight, height) ->
+    @ui = new Modal.UI(width, maxWidth, maxHeight, height)
   
   open: ->
     @ui.open(@element)

@@ -4,3 +4,4 @@ class Login.App
 
   start: =>
     @ui.showLoginForm()
+    @ui.closeLoginModal()

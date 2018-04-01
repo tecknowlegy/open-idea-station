@@ -1,10 +1,11 @@
 @import 'base';
 
 #page-tray {
-  height: 14rem;
   color: $primary-black;
-  background: $white;
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  width: 100%;
   border-bottom: 1px solid #eee;
 }
 .main-nav {

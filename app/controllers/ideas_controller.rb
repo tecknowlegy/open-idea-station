@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   skip_before_action :authorize, only: :index
-  before_action :set_idea, only: %i[show edit update destroy]
+  before_action :set_idea, only: %i[show edit update archive]
 
   # Get data on viewed ideas
   def viewed
@@ -11,17 +11,17 @@ class IdeasController < ApplicationController
 
   # Load ideas with its associated attributes
   def index
-    @ideas = Idea.includes(:viewers, :comments).all
+    @ideas = Idea.includes(:viewers, :comments, :categories)
+                 .where(is_archived: false)
   end
 
   def show
     if @current_user.ideas.find_by(id: @idea.id).nil?
-      view_record = Viewer.new(
+      Viewer.create!(
         idea_id: @idea.id,
         time_viewed: Time.now,
         viewer_ip: request.remote_ip
       )
-      view_record.save
     end
   end
 
