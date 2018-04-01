@@ -319,6 +319,12 @@ label {
     .mdl-grid {
       margin-top: 3rem;
     }
+    .divider {
+      width: 30rem;
+      margin: 3rem auto;
+      background: $primary-black;
+      height: 2px;
+    }
   }
   .features-box img {
     height: 400px;

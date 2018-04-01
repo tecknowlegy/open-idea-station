@@ -1,15 +1,17 @@
 class Modal.UI
-  constructor: (width, maxWidth, height, maxHeight) ->
+  constructor: (width, maxWidth, maxHeight, height) ->
     @width = width
     @maxWidth = maxWidth
-    @height = height
     @maxHeight = maxHeight
-
+    @height = height
+  
   open: (element) ->
     self = @
     $('.modal, .modal-bottom').css("display", "block")
     $(element).dialog({
       modal: true,
+      show: 'fade',
+      hide: 'fade'
       responsive: true,
       width: self.width,
       maxWidth: self.maxWidth,

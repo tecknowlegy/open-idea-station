@@ -93,5 +93,8 @@ gem 'jquery-validation-rails'
 # add jquery autocomplete
 gem 'jquery-ui-rails'
 
+# add kaminari for pagination
+gem "kaminari"
+
 # For flash messages
 gem 'puffly'
