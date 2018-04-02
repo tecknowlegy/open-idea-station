@@ -259,9 +259,9 @@ label {
     height: 920px;
   }
   #landing {
-    background: url('components-background.png') repeat $white;
+    background: url('components-background.png') repeat $primary-color;
     min-height: 70vh;
-    color: $primary-black;
+    color: $white;
     border-bottom: 1px solid #eee;
   }
   .headline {
@@ -293,6 +293,20 @@ label {
     margin-bottom: 3rem;
     h1 {
       margin-bottom: 1.5rem;
+    }
+  }
+
+  nav.external-links {
+    background: none;
+    box-shadow: none;
+    padding-top: 20px;
+    a {
+      margin: 0 10px;
+      font-weight: 400;
+      font-size: 14px;
+      &:hover, &:focus {
+        text-decoration: underline !important;
+      }
     }
   }
 

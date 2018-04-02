@@ -41,7 +41,7 @@
   height: 24px;
   line-height: 24px;
   margin-top: 8px;
-  border-radius: 5px;
+  border-radius: 3px;
   &:hover, &:focus {
     background: $primary-background;
   }
@@ -107,7 +107,7 @@ a.menu-pane {
   }
   &:hover {
     span {
-      background: $primary-black;
+      background: $primary-color;
       &:nth-child(2) {
         width: 100%;
         transition: all 0.5s ease-in-out;

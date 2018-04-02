@@ -6,7 +6,6 @@
   font-weight: bold;
   font-size: 12px !important;
   text-transform: uppercase !important;
-  text-shadow: 0 0 2px $primary-black2;
   letter-spacing: 0.1em;
   border: 1px solid $primary-color-hover;
   &:hover, &:focus {
@@ -15,20 +14,40 @@
   }
 }
 
-.btn, .btn-large {
-  font-weight: 900 !important;
+
+.acorn_btn {
+  height: 44px;
+  line-height: 44px;
+  font-size: 16px;
+  padding: 0 14px;
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: $white;
+  border: 1px solid transparent;
+  font-weight: bold;
+  display: inline-block;
+  
+  min-width: 120px !important;
+  transition: 0.2s ease-in-out;
+  border-radius: 3px;
+  text-align: center;
+  &:focus {
+    box-shadow: none;
+  }
+  &:hover {
+    background: transparent;
+    transition: 0.2s ease-in-out;
+  }
 }
-.get-started-btn {
-  background: linear-gradient($primary-color, $primary-color-hover) !important;
-  border-radius: 5px !important;
-  border: 1px solid $primary-color-hover !important;
+
+.get-started, .learn-more {
+  margin: 40px 10px !important;;
+  border-color: $white !important;
   color: $white !important;
-  font-weight: 900 !important;
-  font-size: 1.8rem !important;
-  width: 200px;
-  margin: 40px 0;
   &:hover, &:focus {
-    background: linear-gradient($primary-color-hover) !important;
-    color: $white !important;
+    border-color: $primary-black !important;
+    color: $primary-black !important;
   }
 }
