@@ -26,7 +26,7 @@
   color: $primary-black3 !important;
   background: none;
   &:hover, &:focus {
-    color: $primary-black !important;
+    color: $primary-color !important;
   }
 }
 .auth-nav-item {
@@ -35,18 +35,26 @@
 
 .main-nav li.nav-item a, .register-btn {
   letter-spacing: 0.07em;
+  background: transparent;
+  border: 1px solid transparent;
 	color: inherit;
   font-size: 12px;
   font-weight: bold !important;
   height: 24px;
   line-height: 24px;
   margin-top: 8px;
+  margin-right: 5px;
   border-radius: 3px;
-  &:hover, &:focus {
-    background: $primary-background;
+  transition: 0.2s ease-in-out;
+  &:hover, &:focus, .active {
+    transition: 0.2s ease-in-out;
+    background: transparent;
+    border: 1px solid $primary-color;
   }
 }
 .main-nav li.auth-nav-item a {
+  background: none;
+  border: 1px solid transparent;
   letter-spacing: 0.07em;
 	color: inherit;
   font-size: 20px;
@@ -57,6 +65,7 @@
   margin: 0 10px;
   &:hover, &:focus {
     background: none !important;
+    border: 1px solid transparent;
   }
 }
 img.open-idea-station-logo {
@@ -78,7 +87,7 @@ nav.main-nav li a {
 
 .logout-btn {
   position: absolute;
-  background: $offset-color2 !important;
+  background: $primary-black !important;
   height: 30px !important;
   line-height: 30px !important;
   top: 44px;
@@ -117,7 +126,7 @@ a.menu-pane {
 }
 
 a.current-user {
-  background: $primary-black !important;
+  background: $primary-color !important;
   margin-top: 5px;
   height: 30px;
   width: 30px;

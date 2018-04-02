@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    redirect_to '/login' unless current_user
+    redirect_to '/signup' unless current_user
   end
 
   def clear_xhr_flash
