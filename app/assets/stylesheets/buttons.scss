@@ -8,9 +8,11 @@
   text-transform: uppercase !important;
   letter-spacing: 0.1em;
   border: 1px solid $primary-color-hover;
+  transition: 0.2s ease-in-out;
   &:hover, &:focus {
     background: linear-gradient($primary-color-hover, $primary-color) !important;
-    border: 1px solid $primary-color-hover;
+    border: 1px solid $primary-color-hover !important;
+    transition: 0.2s ease-in-out;
   }
 }
 
@@ -28,7 +30,6 @@
   border: 1px solid transparent;
   font-weight: bold;
   display: inline-block;
-  
   min-width: 120px !important;
   transition: 0.2s ease-in-out;
   border-radius: 3px;

@@ -40,7 +40,8 @@
             font-size: 14px;
             text-align: center;
             &:focus {
-              box-shadow: none;
+              border: 1px solid $primary-color;
+              box-shadow: 0 0px 8px $primary-color;
             }
           }
           input[type=submit] {
@@ -60,28 +61,27 @@
 }
 
 #signup-background {
-  background: url('ideas.jpg') no-repeat center center; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  color: $white;
+  background: $white;
+  color: $primary-black;
   height: 96vh;
+  padding: 10rem;
   .signup-headline {
     display: inline-block;
-    width: 40%;
+    margin: 0 auto;
     margin-bottom: 40px;
+    padding: 30px;
+    background-color: $white;
   }
-  padding: 12rem;
   .signup-form {
     form {
-      border: 1px solid rgba(0,0,0,.60);
-      background: rgba(0,0,0,.40);
-      width: 500px;
+      border: 1px solid $profile-box-shadow;
+      border-radius: 5px;
+      background: $primary-background2;
+      width: 400px;
       padding: 20px 40px;
-      min-height: 400px;
+      min-height: 300px;
       label {
-        color: $white;
+        color: $primary-black;
       }
       input {
         display: block;
@@ -90,29 +90,43 @@
         margin: 0 auto;
         font-weight: bold;
         margin-bottom: 20px;
-        border: 1px solid rgba(0,0,0,.60);
-        background: rgba(0,0,0,.60);
+        border: 1px solid $profile-box-shadow;
+        background: $primary-background2;
         border-radius: 2px;
         font-size: 14px;
         text-align: center;
         &:focus {
-          box-shadow: none;
+          border: 1px solid $primary-color;
+          box-shadow: 0 0px 8px $primary-color;
+          background: $white;
         }
       }
       input[type=submit] {
         color: $white;
-        background: $primary-black;
-        border: 1px solid $primary-black;
+        background: $primary-color;
+        border: 1px solid $primary-color;
         margin-top: 40px;
         font-size: 18px;
+        transition: 0.2s ease-in-out;
         text-align: center;
         &:focus {
           box-shadow: none;
         }
         &:hover {
-          background: #000;
+          background: $primary-color-hover;
+          border: 1px solid $primary-color-hover;
+          transition: 0.2s ease-in-out;
         }
       }
     }
   }
+}
+.you {
+  border-color: $primary-black !important;
+  color: $primary-black !important;
+  padding: 14px;
+  border-radius: 50px;
+}
+.create-account {
+  margin-top: 30px;
 }

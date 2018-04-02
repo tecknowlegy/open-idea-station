@@ -2,11 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready =>
-  $(".current-user").click =>
-    $logoutBtn = $(".logout-btn") 
-    if $logoutBtn.hasClass('hide-btn')
-      $logoutBtn.removeClass('hide-btn')
+  $(document).click (event) ->
+    clickedElement = event.target
+    if !$(clickedElement).is('.current-user') and !$(clickedElement).parents().is('.current-user')
+      $(".user-profile-dropdown").css('display', 'none')
+    return
+
+  $(".current-user").click ->
+    $userProfile = $(".user-profile-dropdown")
+    if $userProfile.css('display') is 'none'
+      $userProfile.css('display', 'block')
     else
-      $logoutBtn.addClass('hide-btn')
+      $userProfile.css('display', 'none')
+    return
   
 

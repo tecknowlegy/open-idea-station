@@ -15,8 +15,31 @@
             <li class="auth-nav-item"><a href="/notifications"><i class="material-icons">notifications_none</i></a></li>
             <li>
               <a class="current-user"><%= current_user[:username][0,2] %></a>
+              <ul class="user-profile-dropdown">
+                <span class="popover-rect"></span>
+                <li class="user">
+                  <a class="greeting">
+                    Hi <%= current_user[:username] %>
+                  </a>
+                </li>
+                <li class="profile-link">
+                  <a class="my-profile-link" href="/profile">
+                    Your Profile
+                  </a>
+                </li>
+                <li class="profile-link">
+                  <a class="my-ideas-link" href="/my-ideas">
+                    Your Ideas
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="profile-link">
+                  <a class="logout-link" href="/logout">
+                    Log Out
+                  </a>
+                </li>
+              </ul>
             </li>
-            <a class="btn logout-btn hide-btn" href="/logout">Logout</a>
           </ul>
         </div>
       </nav>
