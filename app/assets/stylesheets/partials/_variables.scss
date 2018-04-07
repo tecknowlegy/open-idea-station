@@ -5,9 +5,9 @@
 // Colors
 $primary-color: #02BF8F;
 $primary-color-hover: #00B28F;
-$offset-color: #FF3D00;
-$offset-color3: #B22B00;
 $white: #FFF;
+$primary-blue: #091E42;
+$primary-blue2: #42526E;
 $primary-black: #212121;
 $primary-black2: #424242;
 $primary-black3: #757575;
@@ -16,6 +16,7 @@ $primary-background: #f4f4f4;
 $primary-background2: #fafbfc;
 $margin: 15px;
 $blue: rgb(66, 133, 244);
+
 
 // Margin
 $main-margin: 15px;
@@ -29,20 +30,15 @@ $break-point-large-tablet: 839px;
 $break-point-desktop: 1076px;
 $break-point-large: 1500px;
 
-// Background
-.bgd-transparent {
-  background: rgba(0,0,0, .50) !important;
-}
-
 .bgd-brand {
   background: $primary-color !important;
 }
 
 // Dropdown
-$dropdown-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.12);
+$dropdown-shadow: 0 3px 12px rgba(27,31,35,0.15);
 
 // Profile
-$profile-box-shadow: rgba(0, 0, 0, 0.03);
+$profile-box-shadow: rgba(27,31,35,0.15);
 
 $shadow-opacity1: 0.2 !default;
 $shadow-opacity2: 0.14 !default;

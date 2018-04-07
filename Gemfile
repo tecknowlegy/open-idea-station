@@ -94,7 +94,10 @@ gem 'jquery-validation-rails'
 gem 'jquery-ui-rails'
 
 # add kaminari for pagination
-gem "kaminari"
+gem 'kaminari'
+
+# add Redcarpet markdown parser
+gem 'redcarpet'
 
 # For flash messages
 gem 'puffly'

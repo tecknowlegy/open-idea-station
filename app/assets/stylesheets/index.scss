@@ -36,22 +36,16 @@ html{
 	}
 }
 body {
-	font-family: $primary-font;
 	width: 100%;
-	padding: 0 auto;
-	font-size: 1.6rem;
+  padding: 0 auto;
+  font-family: $primary-font;
+  font-size: 1.6rem;
+  font-weight: normal;
   color: $primary-black;
   background: $primary-background;
 	text-align: center;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
-}
-
-h1, h2, h3, h4, h5, a {
-	font-weight: 900;
-}
-h6, p {
-	font-weight: normal;
 }
 
 h1 {
@@ -84,80 +78,26 @@ h6 {
 	font-size: 2rem;
 	line-height: 3rem ;
 }
-p {
-	font-size: 16px;
-	font-size: 1.6rem;
-	line-height: 2rem
-}
 a {
-	text-decoration: none !important;
+  text-decoration: none !important;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  color: $primary-black3;
 	&:hover {
 		color: $primary-color-hover;
-		cursor: pointer;
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+    color: inherit;
 	}
 }
 
 p {
-	font-weight: 700;
-	font-size: 16px;
 	font-size: 1.6rem;
 	line-height: 3rem;
 	letter-spacing: .03rem;
-	word-spacing: .05rem;
-	}
-	
-a {
-	text-decoration: none;
-	font-family: inherit;
-	font-size: inherit;
-  cursor: pointer;
-  color: inherit;
-}
-a:hover, a:focus {
-	-webkit-transition: all .2s ease-in-out;
-	-moz-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;
-	text-decoration: none;
-	color: inherit;
-}
-
-
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px 7px 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px -7px 0;
-    background-color: #c00;
-    color: #fff;
+  word-spacing: .05rem;
+  color: $primary-black2;
   }
-
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
-}
-
-label {
-  display: block;
-}
 
 /*========================================== SET CONTAINER PROPERTIES =============================================*/		
 .box {
@@ -272,12 +212,12 @@ label {
     width: 60%;
     h1 {
       font-size: 9rem;
+      font-weight: 400; 
       line-height: 10rem;
     }
     h6 {
-      margin-top: 40px;
-      font-size: 2.4rem;
-      line-height: 3rem;
+      font-size: 3rem;
+      line-height: 4rem;
     }
     .emphasize {
       text-decoration: underline;
