@@ -1,45 +1,95 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @idea.name %>
-</p>
+<% present(@idea) do |idea| %>
+  <section class="super-box" id="idea-page">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--9-col mdl-cell--12-col-tablet main-tab">
+        <!-- Author details -->
+        <div class="author-details">
+          <section class="author-avatar"><%= idea.author_name[0,2] %></section>
+          <section class="name-details">
+            <h6 class="idea-author"><%= idea.author_name %></h6>
+            <div class="idea-author-bio">My bio goes here</div>
+          </section>
+        </div>
+        <!-- Idea details -->
+        <div class="idea-details">
+          <h3><%= idea.name %></h3>
+          <p><%= idea.description %></p>    
+        </div>
+        <!-- Comment details -->
+        <div class="comment-board">
+          <h6>Showing <%= @idea.comments.size %> Comments/Feedback</h6>
+          <% @idea.comments.each do |comment| %>
+            <div class="comment-area">
+              <section class="commenter-avatar"></section>
+              <section class="comment-detail">
+                <p class="commenter-name">
+                  <%= comment.user[:username] %>
+                </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @idea.description %>
-</p>
+                <p class="comment">
+                  <%= comment.body %>
+                </p>
+              </section>
+              <section class="comment-action"></section>
+            </div>
+          <% end %>
 
-<p>
-  <strong>Idea Url:</strong>
-  <%= @idea.url %>
-</p>
-<!-- Display created Comment -->
-<h2>Comments</h2>
-<% @idea.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.user[:username] %>
-  </p>
- 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
+          <!-- Add a new comment -->
+          <%= form_with(model: [ @idea, @idea.comments.build ], remote: true) do |form| %>
+            <section class="comment-form">
+              <p>Write a comment/feedback</p>
+              <div class="enter-comment">
+                <%= form.text_area :body %>
+                <%= form.hidden_field :user_id, value: current_user[:id]%>
+              </div>
+              <aside class="submit-comment">
+                <%= form.submit :Submit %>
+              </aside>
+            </section>
+          <% end %>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone actions-tab">
+        <div class="action-details">
+
+          <div class="action-wrapper publication-status">
+            <p><i class="fa fa-pencil"></i>&nbsp;<em>Status:</em>
+              <span><%= idea.publication_status %></span>
+            </p>
+          </div>
+
+          <div class="action-wrapper idea-actions">
+            <p><i class="fa fa-gear"></i>&nbsp;<em>Action Controls:</em></p>
+            <span><i class="fa fa-edit"></i>&nbsp;Edit</span>
+            <span><i class="fa fa-paper-plane-o"></i>&nbsp;Publish</span>
+            <span><i class="fa fa-archive"></i>&nbsp;Archive</span>
+          </div>
+
+          <div class="action-wrapper tags">
+            <p><i class="fa fa-tag"></i>&nbsp;<em>Tags:</em></p>
+            <span class="acorn-chip">Messaging</span>
+            <span class="acorn-chip">Technology</span>
+            <span class="acorn-chip">Software Developmentggvggv</span>
+          </div>
+
+          <div class="action-wrapper idea-filter">
+            <p><i class="fa fa-pie-chart"></i>&nbsp;<em>Stacks:</em></p>
+            <span class="image-chip ruby"></span>
+            <span class="image-chip rails"></span>
+            <span class="image-chip javascript"></span>
+          </div>
+
+          <section class="exit-section">
+            <a href="/ideas" class="acorn_btn back-btn">
+              <i class="fa fa-chevron-left"></i> &nbsp;Back to ideas
+            </a>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </section>
 <% end %>
 
-<!-- Add a new comment -->
-<p>Add a comment</p>
-<%= form_with(model: [ @idea, @idea.comments.build ], local: true) do |form| %>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-    <%= form.hidden_field :user_id, value: current_user[:id]%>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Views', idea_viewed_path(@idea.id) %> |
-<%= link_to 'Back', ideas_path %>
+

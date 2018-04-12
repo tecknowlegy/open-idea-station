@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324203505) do
+ActiveRecord::Schema.define(version: 20180217063931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,8 @@ ActiveRecord::Schema.define(version: 20180324203505) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.bigint "idea_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["idea_id"], name: "index_categories_on_idea_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -35,20 +33,23 @@ ActiveRecord::Schema.define(version: 20180324203505) do
   end
 
   create_table "idea_categories", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "idea_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "idea_id"
-    t.integer "category_id"
+    t.index ["category_id"], name: "index_idea_categories_on_category_id"
+    t.index ["idea_id"], name: "index_idea_categories_on_idea_id"
   end
 
   create_table "ideas", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "url"
+    t.boolean "is_archived"
+    t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.boolean "is_archived"
     t.index ["user_id"], name: "index_ideas_on_user_id"
   end
 
@@ -75,15 +76,16 @@ ActiveRecord::Schema.define(version: 20180324203505) do
   create_table "viewers", force: :cascade do |t|
     t.datetime "time_viewed"
     t.string "viewer_ip"
+    t.bigint "idea_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "idea_id"
     t.index ["idea_id"], name: "index_viewers_on_idea_id"
   end
 
-  add_foreign_key "categories", "ideas"
   add_foreign_key "comments", "ideas"
   add_foreign_key "comments", "users"
+  add_foreign_key "idea_categories", "categories"
+  add_foreign_key "idea_categories", "ideas"
   add_foreign_key "ideas", "users"
   add_foreign_key "viewers", "ideas"
 end

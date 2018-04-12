@@ -11,6 +11,11 @@ class Idea < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10 }
 
   after_destroy :broadcast_delete
+  after_initialize :set_is_archived
+
+  def set_is_archived
+    self.is_archived ||= false
+  end
 
   def broadcast_delete
     send_broadcast(status: 'delete', id: id, name: name)

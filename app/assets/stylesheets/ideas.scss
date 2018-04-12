@@ -27,3 +27,129 @@
 .create-idea-button {
   display: none;
 }
+
+#idea-page {
+  padding-left: 10rem;
+  padding-right: 10rem;
+  .author-details {
+    padding: 4rem 6rem;
+    background: $primary-background2;
+    text-align: left;
+    section {
+      display: inline-block;
+      vertical-align: top;
+    }
+    section.author-avatar {
+      text-align: center !important;
+      display: inline-block;
+      margin-right: 20px;
+      height: 50px;
+      width: 50px;
+      line-height: 50px;
+      border-radius: 50%;
+      color: $white;
+      font-weight: bold;
+      background: $primary-color;
+    }
+    section.name-details {
+      h6 {
+        font-weight: bold;
+      }
+      .idea-author-bio {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .idea-details {
+    padding: 4rem 6rem;
+    background: $primary-background2;
+    display: block;
+    h3 {
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+  }
+  .action-details {
+    @extend .author-details;
+    display: block;
+    padding: 3rem;
+    .action-wrapper {
+      border-bottom: 1px solid $profile-box-shadow;
+    }
+    .publication-status {
+      span{
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: $primary-blue2;
+      }
+    }
+    .idea-actions {
+      span{
+        display: inline-block;
+        margin-right: 1rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: $primary-blue2;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: 0.2s ease-in-out;
+        &:hover {
+          color: $primary-color;
+          transition: 0.2s ease-in-out;
+        }
+      }
+    }
+    p {
+      font-size: 1.4rem;
+    }
+    div {
+      padding-bottom: 1rem;
+    }
+    div ~ div {
+      margin-top: 1rem;
+    }
+  }
+}
+.acorn-chip {
+  display: inline-block;
+  min-width: 4rem;
+  max-width: 16rem;
+  margin: .25rem;
+  height: 3rem;
+  line-height: 3rem;
+  border-radius: .5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: $primary-blue2;
+  color: $white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+.image-chip {
+  display: inline-block;
+  margin: .25rem;
+  height: 3rem;
+  width: 3rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+.ruby {
+  background-image: image-url('Ruby.png');
+}
+.rails {
+  background-image: image-url('Rails.png');
+}
+.javascript {
+  background-image: image-url('JavaScript.png');
+}
+.exit-section {
+  display: block !important;
+  text-align: center !important;
+  margin-top: 6rem;
+}

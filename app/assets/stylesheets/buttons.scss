@@ -44,11 +44,20 @@
 }
 
 .get-started, .learn-more {
-  margin: 40px 10px !important;;
+  margin: 40px 10px !important;
   border-color: $white !important;
   color: $white !important;
   &:hover, &:focus {
     border-color: $primary-black !important;
     color: $primary-black !important;
+  }
+}
+.back-btn {
+  color: $primary-blue2 !important;
+  border-color: $primary-blue2 !important;
+  &:hover, &:focus {
+    border-color: $primary-color !important;
+    background: $primary-color !important;
+    color: $white !important;
   }
 }
