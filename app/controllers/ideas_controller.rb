@@ -2,17 +2,15 @@ class IdeasController < ApplicationController
   skip_before_action :authorize, only: :index
   before_action :set_idea, only: %i[show edit update archive]
 
-  # Get data on viewed ideas
+  def index
+    @ideas = Idea.includes(:categories)
+                 .where(is_archived: false).order(published_at: :desc)
+  end
+
   def viewed
     # define local variable as its not needed in the view
     ideas = Idea.find(params[:idea_id])
     @views = ideas.viewers
-  end
-
-  # Load ideas with its associated attributes
-  def index
-    @ideas = Idea.includes(:viewers, :comments, :categories)
-                 .where(is_archived: false)
   end
 
   def show
@@ -25,13 +23,10 @@ class IdeasController < ApplicationController
     end
   end
 
-  # GET /ideas/new
   def new
     @idea = Idea.new
   end
 
-  # POST /ideas
-  # POST /ideas.json
   def create
     @idea = @current_user.ideas.new(idea_params)
     respond_to do |format|
@@ -81,6 +76,6 @@ class IdeasController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list
   def idea_params
-    params.require(:idea).permit(:name, :description, :url)
+    params.require(:idea).permit(:name, :description, :url, :is_archived)
   end
 end

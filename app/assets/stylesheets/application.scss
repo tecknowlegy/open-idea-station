@@ -21,7 +21,9 @@ textarea:focus,
 button:focus {
 		outline: none;
 }
-
+em {
+  font-weight: 900;
+}
 .ui-state-hover, 
 .ui-widget-content .ui-state-hover, 
 .ui-widget-header .ui-state-hover, 

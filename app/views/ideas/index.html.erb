@@ -16,29 +16,31 @@
     <div class="grid ideas-wrapper">
 
       <!-- Ideas -->
-      <% @ideas.each do |idea| %>
-        <div class="mdl-card with-shadow">
-          <div class="mdl-card__title">
-            <h6 class="mdl-card__title-text truncate">
-              <i class="fa fa-puzzle-piece"></i>
-              &nbsp;<%= link_to idea.name ,idea %>
-            </h6>
+      <% @ideas.each do |i| %>
+        <% present(i) do |idea| %>
+          <div class="mdl-card with-shadow">
+            <div class="mdl-card__title">
+              <h6 class="mdl-card__title-text truncate">
+                <i class="fa fa-puzzle-piece"></i>
+                &nbsp;<%= link_to idea.name ,idea %>
+              </h6>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="stack-image"></span>
+            </div>
+            <div class="mdl-card__actions">
+              <a class="idea-icons">
+                <i class="fa fa-eye"></i> <%= idea.view_count %>
+              </a>
+              <a class="idea-icons">
+                <i class="fa fa-heart"></i> 0
+              </a>
+              <a class="idea-icons">
+                <i class="fa fa-comment"></i></i> <%= idea.comment_count %>
+              </a>
+            </div>
           </div>
-          <div class="mdl-card__supporting-text">
-            <%= idea.description %>
-          </div>
-          <div class="mdl-card__actions">
-            <a class="idea-icons">
-              <i class="fa fa-eye"></i> <%= idea.viewers.size %>
-            </a>
-            <a class="idea-icons">
-              <i class="fa fa-heart"></i> 0
-            </a>
-            <a class="idea-icons">
-              <i class="fa fa-comment"></i></i> <%= idea.comments.size %>
-            </a>
-          </div>
-        </div>
+        <% end %>
       <% end %>
 
     </div>
