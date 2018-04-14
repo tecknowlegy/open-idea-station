@@ -1,7 +1,7 @@
 class Login.App
   constructor: ->
-    @ui = new Login.UI()
+    @loginUI = new Login.UI
 
   start: =>
-    @ui.showLoginForm()
-    @ui.closeLoginModal()
+    @loginUI.showLoginForm()
+    @loginUI.closeLoginModal()
