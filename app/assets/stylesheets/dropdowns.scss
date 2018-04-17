@@ -73,9 +73,6 @@
     background-color: $profile-box-shadow;
   }
 }
-.user-profile-dropdown {
-  display: none;
-}
 
 .idea-action-dropdown {
   @extend .user-profile-dropdown;
@@ -90,7 +87,8 @@
     padding: 10px 20px;
     line-height: 2rem;
     text-align: left;
-    a {
+    a, input {
+      display: inline-block;
       background: transparent !important;
       color: $profile-box-shadow;
       border: 1px solid $profile-box-shadow;

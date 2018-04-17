@@ -7,7 +7,7 @@
 
     <div class="modal-content">
     
-      <%= form_with scope: :session, url: '/login', local: true do |form| %>
+      <%= form_with scope: :session, url: '/login', local: true, id: :global do |form| %>
         <div div class="field">
           <%= form.label :username %>
           <%= form.text_field :username, id: :username, placeholder: 'Enter your username' %>

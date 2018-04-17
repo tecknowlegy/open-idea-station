@@ -5,15 +5,15 @@ $(document).ready =>
   $(document).click (event) ->
     clickedElement = event.target
     if !$(clickedElement).is('.current-user') and !$(clickedElement).parents().is('.current-user')
-      $(".user-profile-dropdown").css('display', 'none')
+      $(".user-profile-dropdown").addClass('hidden')
     return
 
   $(".current-user").click ->
     $userProfile = $(".user-profile-dropdown")
-    if $userProfile.css('display') is 'none'
-      $userProfile.css('display', 'block')
+    if $userProfile.hasClass('hidden')
+      $userProfile.removeClass('hidden')
     else
-      $userProfile.css('display', 'none')
+      $userProfile.addClass('hidden')
     return
   
 

@@ -24,5 +24,7 @@ class IdeaPresenter < BasePresenter
       'Draft'
     end
   end
+
 end
+
 

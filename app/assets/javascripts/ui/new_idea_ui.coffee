@@ -56,7 +56,7 @@ class NewIdea.UI
         allCategories = self.getIdeaCategories()
         $('input[name="idea[category]"]').val('')
         if newCategory.length >= 1 && !allCategories.includes("#{newCategory}")
-          $('.category-tags').append """
+          $('.category_tags').append """
             <span class="mdl-chip mdl-chip--deletable acorn_modified_chip" id="category-#{categoryNumber}">
               <span class="mdl-chip__text">#{newCategory}</span>
               <button type="button" class="mdl-chip__action"><i class="material-icons remove-chip">close</i></button>
@@ -71,14 +71,14 @@ class NewIdea.UI
     $(document).click (event) ->
       clickedElement = event.target
       if !$(clickedElement).is('.new-idea-action') and !$(clickedElement).parents().is('.new-idea-action')
-        $(".idea-action-dropdown").css('display', 'none')
+        $(".idea-action-dropdown").addClass('hidden')
       return
 
     $(".new-idea-action").click ->
       $newIdeaAction = $(".idea-action-dropdown")
-      if $newIdeaAction.css('display') is 'none'
-        $newIdeaAction.css('display', 'block')
+      if $newIdeaAction.hasClass('hidden')
+        $newIdeaAction.removeClass('hidden')
       else
-        $newIdeaAction.css('display', 'none')
+        $newIdeaAction.addClass('hidden')
       return
   

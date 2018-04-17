@@ -31,6 +31,9 @@ class IdeasController < ApplicationController
     @idea = @current_user.ideas.new(idea_params)
     respond_to do |format|
       if @idea.save
+        if params[:commit] == 'Publish'
+          @idea.update_attribute('published_at', Time.now)
+        end
         format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
         format.json { render :show, status: :created, location: @idea }
       else
@@ -48,6 +51,9 @@ class IdeasController < ApplicationController
   def update
     respond_to do |format|
       if @idea.update(idea_params)
+        if params[:commit] == 'Publish'
+          @idea.update_attribute('published_at', Time.now)
+        end
         format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
         format.json { render :show, status: :ok, location: @idea }
       else
@@ -76,6 +82,6 @@ class IdeasController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list
   def idea_params
-    params.require(:idea).permit(:name, :description, :url, :is_archived)
+    params.require(:idea).permit(:name, :description, :url, :is_archived, :published_at)
   end
 end

@@ -1,18 +1,36 @@
-<%= form_with(model: idea, local: true) do |form| %>
-  
-  <section class="flex-wrapper">
-    <div class="name-section ">
-      <%= form.text_field :name, id: :idea_name, placeholder: "Enter your idea name" %>
-    </div>
+<% if @idea[:id] %>
+  <% present(@idea) do |idea| %>
+    <span class="acorn_chip green_chip"><%= idea.publication_status %></span>
+  <% end %>
+<% else %>
+  <span class="acorn_chip green_chip">Draft</span>
+<% end %>
+<%= form_with(model: idea, remote: true, id: :new_idea_form) do |form| %>
+  <div class="form-top">
+    <section class="flex-wrapper">
+      <div class="name-section ">
+        <%= form.text_field :name, id: :idea_name, placeholder: "Enter your idea name" %>
+      </div>
 
-    <div class="url-section">
-      <i class="fa fa-link"></i>
-      <%= form.text_field :url, id: :idea_url, placeholder: "Enter external link if any..." %>
-    </div>
-  </section>
+      <div class="url-section">
+        <i class="fa fa-link"></i>
+        <%= form.text_field :url, id: :idea_url, placeholder: "Enter external link if any..." %>
+      </div>
+    </section>
 
-  <div class="description-section">
-    <%= form.text_area :description, id: :idea_description, placeholder: "Tell the world about it...", rows: '1' %>
+    <div class="description-section">
+      <%= form.text_area :description, id: :idea_description, placeholder: "Tell the world about it...", rows: '1' %>
+    </div>
+    <section class="category-section">
+      <div class="enter-category-tags">
+        <span class="selector"></span>
+        <small><i class="fa fa-asterisk"></i>&nbsp;Add or update tags so the world knows what your idea is about:</small>
+        <%= form.text_field :category, class: :category_tags, id: :category_name, placeholder: "Press enter to add multiple tags..." %>
+      </div>
+      <aside class="category-tags-section">
+        <div class="category_tags"></div>
+      </aside>
+    </section>
   </div>
   <section class="category-section">
     <div class="enter-category-tags">
@@ -28,19 +46,17 @@
   <aside class="actions-section">
     <div class="publish-or-save">
       <span class="new-idea-action"><i class="fa fa-paper-plane-o"></i></span>
-      <ul class="idea-action-dropdown">
+      <ul class="idea-action-dropdown hidden">
         <span class="popover-rect bottom-right"></span>
-        <li class="save-action message">What would you like to do?</li>
-        <li class="save-action">
-          <a class="acorn-chip publish-btn" href="/profile">
-            Publish
-          </a>
-          <a class="acorn-chip draft_btn" href="/my-ideas">
-            Save Draft
-          </a>
+        <li class="save-action">What would you like to do?</li>
+        <li class="save-action save_buttons">
+          <% unless @idea.published_at %>
+            <%= form.submit :Publish, class: :acorn_chip, id: :publish_btn %>
+          <% end %>
+          <%= form.submit class: :acorn_chip, id: :draft_btn %>
+        </li>
       </ul>
     </div>
-    <!--<%= form.submit %>-->
   </aside>
   
 <% end %>
