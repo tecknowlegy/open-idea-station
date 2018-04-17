@@ -10,9 +10,9 @@
       <%= form_with scope: :session, url: '/login', local: true do |form| %>
         <div div class="field">
           <%= form.label :username %>
-          <%= form.text_field :username, id: :username %>
+          <%= form.text_field :username, id: :username, placeholder: 'Enter your username' %>
           <%= form.label :password %>
-          <%= form.password_field :password, id: :password %>
+          <%= form.password_field :password, id: :password, placeholder: 'Enter your password' %>
           <%= form.submit :login %>
         </div>
       <% end %>

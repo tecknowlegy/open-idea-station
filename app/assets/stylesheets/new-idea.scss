@@ -1,0 +1,179 @@
+// Place all the styles related to the Ideas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'base';
+
+#new-idea-page {
+  background: $white;
+  text-align: left;
+  height: 96vh;
+  form {
+    position: relative;
+    height: 83vh;
+    padding: 0;
+    margin: 0;
+    margin-top: 6rem;
+    overflow: hidden;
+    input {
+      font-size: 3.2rem;
+      margin: 0;
+      padding: 1rem;
+      border: none;
+      text-align: left;
+      box-shadow: none;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    textarea {
+      display: block;
+      min-height: 10rem;
+      max-height: 62vh;
+      font-size: 1.8rem;
+      line-height: 3rem;
+      padding: 2rem 1rem;
+      border: none;
+      box-shadow: none;
+      border-top: 1px solid $profile-box-shadow;
+      resize: none;
+      overflow: auto;
+      &:focus {
+        border-top-color: $primary-color;
+      }
+    }
+  }
+  #idea_url {
+    font-size: 1.8rem;
+  }
+  .flex-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+  }
+  .flex-wrapper > .name-section {
+    flex: auto;
+  }
+  .flex-wrapper > .url-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40rem;
+    i {
+      color: $primary-black4;
+    }
+  }
+  .category-section {
+    display: flex;
+    position: absolute;
+    width: 80%;
+    padding: 3px;
+    bottom: 0;
+    left: 0;
+    #category_name {
+      font-size: 1.4rem;
+    }
+    small {
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .enter-category-tags {}
+    .category-tags-section {
+      position: relative;
+      flex: 1;
+      .category-tags {
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        padding: 5px 15px;
+        span {
+          margin: 2.5px;
+        }
+      }
+    }
+  }
+  .actions-section {
+    position: absolute;
+    bottom: 2rem;
+    right: 0;
+    min-width: 20rem;
+    .publish-or-save {
+      position: relative;
+      width: 20rem;
+      text-align: right;
+    }
+    .new-idea-action {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid $primary-color;
+      border-radius: 50%;
+      transition: 0.2s ease-in-out;
+      color: $primary-color;
+      width: 8rem;
+      height: 8rem;
+      line-height: 8rem;
+      font-size: 2.4rem;
+      text-align: center;
+      &:hover, &:focus {
+        background: $primary-color;
+        color: $white;
+        transition: 0.2s ease-in-out;
+      }
+    }
+  }
+  @media screen and (max-width: 767px) { 
+    .actions-section {
+      bottom: 10rem;
+    }
+  }
+}
+
+.ui-autocomplete {
+  z-index: 1000;
+  background: $white;
+  margin: 2px 0 0 0;
+  font-size: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 40%;
+  min-height: 1%;
+  box-shadow: 0 0 12px $profile-box-shadow;
+}
+
+.ui-menu .ui-menu-item {
+  padding: 5px 15px !important;
+  list-style-image: none !important;
+  background: none !important;
+  font-size: 12px !important;
+  color: $primary-black3 !important;
+
+  &:hover, &:focus {
+    color: $primary-black !important;
+    font-size: 12px !important;
+    padding: 5px 15px !important;
+    cursor: pointer;
+  }
+}
+
+.ui-menu .ui-menu-item:first-child {
+  padding-top: 10px !important;
+}
+
+.ui-menu .ui-menu-item:last-child {
+  padding-bottom: 10px !important;
+}
+.ui-helper-hidden-accessible {
+  display: none !important;
+}
+.acorn_modified_chip {
+  background: $primary-blue2 !important;
+  color: $white !important;
+  border-radius: .5rem !important;
+  .mdl-chip__action {
+    transition: 0.2s ease-in-out;
+    &:hover, &:focus {
+      color: $white !important;
+      background: transparent;
+      transition: 0.2s ease-in-out;
+    }
+  }
+}

@@ -1,0 +1,106 @@
+@import 'base';
+
+.popover-rect {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  z-index: 90;
+  background-color: #fff;
+  border-radius: 1px;
+  border-top: 1px solid $profile-box-shadow;
+  border-left: 1px solid $profile-box-shadow;
+}
+
+.top-right {
+  top: -7.5px;
+  right: 10px;
+  transform: rotate(45deg);
+}
+.top-left {
+  top: -7.5px;
+  left: 10px;
+}
+.top-center {
+  top: -7.5px;
+}
+.bottom-right {
+  bottom: -7.5px;
+  right:3.2rem;
+  transform: rotate(225deg);
+}
+.bottom-center {
+  bottom: -7.5px;
+  transform: rotate(225deg);
+}
+
+.user-profile-dropdown {
+  top: 50px;
+  position: absolute;
+  display: inline-block;
+  margin: 0;
+  right: 0;
+  z-index: 100;
+  color: $primary-black;
+  max-width: 120px;
+  background-clip: padding-box;
+  border: 1px solid $profile-box-shadow;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: $dropdown-shadow;
+  li.profile-link, li.divider, li.user {
+    width: 100%;
+    min-height: 1px;
+    a {
+      text-align: left;
+      color: $primary-black3;
+      text-transform: capitalize;
+      font-size: 1.4rem;
+      font-weight: bold;
+      &:hover {
+        background-color: $primary-color;;
+        color: $white; 
+      }
+    }
+    .greeting {
+      color: #000 !important;
+      &:hover {
+        background-color: $white !important;
+      }
+    }
+  }
+  li.divider {
+    background-color: $profile-box-shadow;
+  }
+}
+.user-profile-dropdown {
+  display: none;
+}
+
+.idea-action-dropdown {
+  @extend .user-profile-dropdown;
+  left: 0;
+  max-width: 300px;
+  min-height: 100px;
+  top: -120px;
+  box-shadow: $dropdown-shadow-inverse;
+  li.save-action {
+    width: 100%;
+    min-height: 20px;
+    padding: 10px 20px;
+    line-height: 2rem;
+    text-align: left;
+    a {
+      background: transparent !important;
+      color: $profile-box-shadow;
+      border: 1px solid $profile-box-shadow;
+      border-radius: 3px;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        background: $primary-color !important;
+        color: $white !important;
+        transition: 0.2s ease-in-out;
+      }
+    }
+  }
+}

@@ -19,9 +19,10 @@ class IdeaPresenter < BasePresenter
 
   def publication_status
     if @model.published_at?
-      current_view.time_ago_in_words(@model.publication_status)
+      "Published #{current_view.time_ago_in_words(@model.published_at)} ago"
     else
       'Draft'
     end
   end
 end
+

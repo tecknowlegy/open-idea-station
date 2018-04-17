@@ -80,7 +80,7 @@
       span{
         font-size: 1.6rem;
         font-weight: bold;
-        color: $primary-blue2;
+        color: $primary-black3;
       }
     }
     .idea-actions {
@@ -89,14 +89,16 @@
         margin-right: 1rem;
         font-size: 1.6rem;
         font-weight: bold;
-        color: $primary-blue2;
         cursor: pointer;
         white-space: nowrap;
         overflow: hidden;
         transition: 0.2s ease-in-out;
-        &:hover {
-          color: $primary-color;
+        a {
           transition: 0.2s ease-in-out;
+          &:hover {
+            color: $primary-color;
+            transition: 0.2s ease-in-out;
+          }
         }
       }
     }

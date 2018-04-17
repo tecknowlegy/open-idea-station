@@ -14,7 +14,7 @@
         <!-- Idea details -->
         <div class="idea-details">
           <h3><%= idea.name %></h3>
-          <p><%= idea.description %></p>    
+          <p><%= idea.markdown(idea.description) %></p>    
         </div>
         <!-- Comment details -->
         <div class="comment-board">
@@ -61,9 +61,9 @@
 
           <div class="action-wrapper idea-actions">
             <p><i class="fa fa-gear"></i>&nbsp;<em>Action Controls:</em></p>
-            <span><i class="fa fa-edit"></i>&nbsp;Edit</span>
-            <span><i class="fa fa-paper-plane-o"></i>&nbsp;Publish</span>
-            <span><i class="fa fa-archive"></i>&nbsp;Archive</span>
+            <span><a class="edit-idea" href="<%= idea.id %>/edit"><i class="fa fa-edit"></i>&nbsp;Edit</a></span>
+            <span><a class="publish-idea"><i class="fa fa-paper-plane-o"></i>&nbsp;Publish</a></span>
+            <span><a class="archive-idea"><i class="fa fa-archive"></i>&nbsp;Archive</a></span>
           </div>
 
           <div class="action-wrapper tags">
