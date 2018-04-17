@@ -7,23 +7,19 @@
     <%= form_with scope: :user, url: '/signup', local: true do |form| %>
 
       <div div class="field">
-        <%= form.label :username %><br>
-        <%= form.text_field :username, id: :username %>
+        <%= form.text_field :username, id: :username, placeholder: 'Username' %>
       </div>
 
       <div div class="field">
-        <%= form.label :email %><br>
-        <%= form.text_field :email, id: :email %>
+        <%= form.text_field :email, id: :email, placeholder: 'Email' %>
       </div>
 
       <div div class="field">
-        <%= form.label :password %><br>
-        <%= form.password_field :password, id: :password %>
+        <%= form.password_field :password, id: :password, placeholder: 'Password' %>
       </div>
 
       <div div class="field">
-        <%= form.label :password_confirmation %><br>
-        <%= form.password_field :password_confirmation, id: :password_confirmation %>
+        <%= form.password_field :password_confirmation, id: :password_confirmation, placeholder: 'Confirm password' %>
       </div>
     
       <div class="actions">

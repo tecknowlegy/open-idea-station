@@ -1,32 +1,46 @@
 <%= form_with(model: idea, local: true) do |form| %>
-  <% if idea.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+  
+  <section class="flex-wrapper">
+    <div class="name-section ">
+      <%= form.text_field :name, id: :idea_name, placeholder: "Enter your idea name" %>
+    </div>
 
-      <ul>
-      <% idea.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+    <div class="url-section">
+      <i class="fa fa-link"></i>
+      <%= form.text_field :url, id: :idea_url, placeholder: "Enter external link if any..." %>
+    </div>
+  </section>
+
+  <div class="description-section">
+    <%= form.text_area :description, id: :idea_description, placeholder: "Tell the world about it...", rows: '1' %>
+  </div>
+  <section class="category-section">
+    <div class="enter-category-tags">
+      <span class="selector"></span>
+      <small><i class="fa fa-asterisk"></i>&nbsp;Add or update tags so the world knows what your idea is about:</small>
+      <%= form.text_field :category, id: :category_name, placeholder: "Press enter to add multiple tags..." %>
+    </div>
+    <aside class="category-tags-section">
+      <div class="category-tags"></div>
+    </aside>
+  </section>
+
+  <aside class="actions-section">
+    <div class="publish-or-save">
+      <span class="new-idea-action"><i class="fa fa-paper-plane-o"></i></span>
+      <ul class="idea-action-dropdown">
+        <span class="popover-rect bottom-right"></span>
+        <li class="save-action message">What would you like to do?</li>
+        <li class="save-action">
+          <a class="acorn-chip publish-btn" href="/profile">
+            Publish
+          </a>
+          <a class="acorn-chip draft_btn" href="/my-ideas">
+            Save Draft
+          </a>
       </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :idea_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :idea_description %>
-  </div>
-
-  <div div class="field">
-    <%= form.label :url %>
-    <%= form.text_field :url, id: :idea_url %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <!--<%= form.submit %>-->
+  </aside>
+  
 <% end %>
