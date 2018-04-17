@@ -10,3 +10,4 @@ $(document).ready =>
     if event.keyCode == 13 and $('#idea_description').is(':focus') == false 
       return false
     return
+

@@ -97,7 +97,7 @@
         text-align: center;
         &:focus {
           border: 1px solid $primary-color;
-          box-shadow: 0 0px 8px $primary-color;
+          box-shadow: 0 0px 8px $primary-color !important;
           background: $white;
         }
       }

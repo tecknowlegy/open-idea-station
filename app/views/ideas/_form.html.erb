@@ -25,23 +25,11 @@
       <div class="enter-category-tags">
         <span class="selector"></span>
         <small><i class="fa fa-asterisk"></i>&nbsp;Add or update tags so the world knows what your idea is about:</small>
-        <%= form.text_field :category, class: :category_tags, id: :category_name, placeholder: "Press enter to add multiple tags..." %>
-      </div>
-      <aside class="category-tags-section">
         <div class="category_tags"></div>
-      </aside>
+        <%= form.text_field :all_categories, id: :category_name, placeholder: "Press enter to add one or more tags..." %>
+      </div>
     </section>
   </div>
-  <section class="category-section">
-    <div class="enter-category-tags">
-      <span class="selector"></span>
-      <small><i class="fa fa-asterisk"></i>&nbsp;Add or update tags so the world knows what your idea is about:</small>
-      <%= form.text_field :category, id: :category_name, placeholder: "Press enter to add multiple tags..." %>
-    </div>
-    <aside class="category-tags-section">
-      <div class="category-tags"></div>
-    </aside>
-  </section>
 
   <aside class="actions-section">
     <div class="publish-or-save">

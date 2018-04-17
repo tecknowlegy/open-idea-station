@@ -4,3 +4,4 @@ class NewIdea.App
 
   start: =>
     @newIdeaUI.initializeNewIdeaForm()
+    @newIdeaUI.setTagsParameter()

@@ -49,12 +49,12 @@ class NewIdea.UI
   showIdeaCategories: =>
     self = @
     categoryNumber = 1
-    $categoryInput = $('input[name="idea[category]"]')
-    $('input[name="idea[category]"]').on 'keydown', (event) ->
+    $categoryInput = $('input[name="idea[all_categories]"]')
+    $('input[name="idea[all_categories]"]').on 'keydown', (event) ->
       if event.keyCode == 13
-        newCategory = $('input[name="idea[category]"]').val().trim()
+        newCategory = $('input[name="idea[all_categories]"]').val().trim()
         allCategories = self.getIdeaCategories()
-        $('input[name="idea[category]"]').val('')
+        $('input[name="idea[all_categories]"]').val('')
         if newCategory.length >= 1 && !allCategories.includes("#{newCategory}")
           $('.category_tags').append """
             <span class="mdl-chip mdl-chip--deletable acorn_modified_chip" id="category-#{categoryNumber}">
@@ -81,4 +81,9 @@ class NewIdea.UI
       else
         $newIdeaAction.addClass('hidden')
       return
+  
+  setTagsParameter: () =>
+    self = @
+    $('#draft_btn, #publish_btn').on 'click', ->
+      $('input[name="idea[all_categories]"]').val(self.getIdeaCategories())
   
