@@ -61,16 +61,18 @@
 
           <div class="action-wrapper idea-actions">
             <p><i class="fa fa-gear"></i>&nbsp;<em>Action Controls:</em></p>
+            <% if idea.publication_status == 'Draft' %>
+              <span><a class="publish-idea"><i class="fa fa-paper-plane-o"></i>&nbsp;Publish</a></span>
+            <% end %>
             <span><a class="edit-idea" href="<%= idea.id %>/edit"><i class="fa fa-edit"></i>&nbsp;Edit</a></span>
-            <span><a class="publish-idea"><i class="fa fa-paper-plane-o"></i>&nbsp;Publish</a></span>
             <span><a class="archive-idea"><i class="fa fa-archive"></i>&nbsp;Archive</a></span>
           </div>
 
           <div class="action-wrapper tags">
             <p><i class="fa fa-tag"></i>&nbsp;<em>Tags:</em></p>
-            <span class="acorn-chip">Messaging</span>
-            <span class="acorn-chip">Technology</span>
-            <span class="acorn-chip">Software Developmentggvggv</span>
+            <span class="acorn_chip">Messaging</span>
+            <span class="acorn_chip">Technology</span>
+            <span class="acorn_chip">Software Developmentggvggv</span>
           </div>
 
           <div class="action-wrapper idea-filter">
