@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   before_action :authorize
   helper_method :current_user, :logged_in?
   after_action :clear_xhr_flash

@@ -123,8 +123,9 @@
   border-radius: .5rem;
   font-size: 1.2rem;
   font-weight: bold;
-  background: $primary-blue2;
-  color: $white;
+  background: transparent;
+  border: 1px solid $profile-box-shadow;
+  color: $primary-black4;
   padding-left: 1rem;
   padding-right: 1rem;
   text-overflow: ellipsis;
@@ -134,7 +135,7 @@
 }
 .green_chip {
   background: $primary-color !important;
-
+  color: $white;
 }
 .image-chip {
   display: inline-block;

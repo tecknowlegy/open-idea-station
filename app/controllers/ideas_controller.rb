@@ -9,8 +9,8 @@ class IdeasController < ApplicationController
 
   def viewed
     # define local variable as its not needed in the view
-    ideas = Idea.find(params[:idea_id])
-    @views = ideas.viewers
+    idea = Idea.find(params[:idea_id])
+    @views = idea.viewers
   end
 
   def show
@@ -32,7 +32,7 @@ class IdeasController < ApplicationController
     respond_to do |format|
       if @idea.save
         if params[:commit] == 'Publish'
-          @idea.update_attribute('published_at', Time.now)
+          @idea.update_attributes!('published_at', Time.now)
         end
         format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
         format.json { render :show, status: :created, location: @idea }
@@ -52,7 +52,7 @@ class IdeasController < ApplicationController
     respond_to do |format|
       if @idea.update(idea_params)
         if params[:commit] == 'Publish'
-          @idea.update_attribute('published_at', Time.now)
+          @idea.update_attributes!('published_at', Time.now)
         end
         format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
         format.json { render :show, status: :ok, location: @idea }
@@ -82,6 +82,6 @@ class IdeasController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list
   def idea_params
-    params.require(:idea).permit(:name, :description, :url, :is_archived, :published_at)
+    params.require(:idea).permit(:name, :description, :url, :is_archived, :all_categories)
   end
 end
