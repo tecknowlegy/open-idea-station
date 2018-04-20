@@ -84,6 +84,5 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['ACORN_DB_PROD'] %>
-  username: <%= ENV['ACORN_DB_PROD_USERNAME'] %>
-  password: <%= ENV['ACORN_DB_PROD_PASSWORD'] %>
+  database: <%= ENV['ACORN_DB'] %>
+  url: <%= ENV['DATABASE_URL'] %>
