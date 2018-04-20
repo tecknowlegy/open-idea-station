@@ -75,11 +75,7 @@ class NewIdea.UI
       return
 
     $(".new-idea-action").click ->
-      $newIdeaAction = $(".idea-action-dropdown")
-      if $newIdeaAction.hasClass('hidden')
-        $newIdeaAction.removeClass('hidden')
-      else
-        $newIdeaAction.addClass('hidden')
+      $(".idea-action-dropdown").toggleClass('hidden')
       return
   
   setTagsParameter: () =>

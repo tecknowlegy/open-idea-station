@@ -9,11 +9,7 @@ $(document).ready =>
     return
 
   $(".current-user").click ->
-    $userProfile = $(".user-profile-dropdown")
-    if $userProfile.hasClass('hidden')
-      $userProfile.removeClass('hidden')
-    else
-      $userProfile.addClass('hidden')
+    $(".user-profile-dropdown").toggleClass('hidden')
     return
   
 

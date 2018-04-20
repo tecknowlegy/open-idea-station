@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  skip_before_action :authorize, only: :index
+  skip_before_action :authorize, only: %i[index show]
   before_action :set_idea, only: %i[show edit update archive]
 
   def index
@@ -14,7 +14,7 @@ class IdeasController < ApplicationController
   end
 
   def show
-    if @current_user.ideas.find_by(id: @idea.id).nil?
+    if !logged_in? || @current_user.ideas.find_by(id: @idea.id).nil?
       Viewer.create!(
         idea_id: @idea.id,
         time_viewed: Time.now,

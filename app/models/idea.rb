@@ -28,7 +28,7 @@ class Idea < ApplicationRecord
   end
 
   def all_categories
-    self.categories.map(&:name).join(', ')
+    self.categories.uniq.map(&:name).join(', ')
   end
 
 end
