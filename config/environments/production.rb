@@ -28,7 +28,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -91,4 +91,10 @@ Rails.application.configure do
 
   # Setup action cable default URL
   config.action_cable.url = 'ws://open-idea-station.io:3001/cable'
+
+  # Setup action cable default URL
+  config.action_cable.url = ENV['ACTION_CABLE_URL']
+  # Set allowed request origins
+  origins = ['https://open-idea-station.herokuapp.com/', 'http://open-idea-station.herokuapp.com/']
+  config.action_cable.allowed_request_origins = origins
 end
