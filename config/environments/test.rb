@@ -41,5 +41,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Setup action cable default URL
-  config.action_cable.url = 'ws://open-idea-station.io:3001/cable'
+  config.action_cable.url = ENV['ACTION_CABLE_URL']
 end
