@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require_tree ./global
-//= require turbolinks
 //= require rails-ujs
+//= require turbolinks
 //= require jquery
 //= require jquery.validate
 //= require jquery-ui
