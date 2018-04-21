@@ -1,4 +1,4 @@
-$(document).ready =>
+$(document).on 'turbolinks:load', =>
   getMenuBar: (element) ->
     $(element).find('span')
 
