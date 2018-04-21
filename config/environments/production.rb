@@ -90,10 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Setup action cable default URL
-  config.action_cable.url = 'ws://open-idea-station.io:3001/cable'
-
-  # Setup action cable default URL
-  config.action_cable.url = ENV['ACTION_CABLE_URL']
+  config.action_cable.url = ENV['REDISTOGO_URL']
   # Set allowed request origins
   origins = ['https://open-idea-station.herokuapp.com/', 'http://open-idea-station.herokuapp.com/']
   config.action_cable.allowed_request_origins = origins
