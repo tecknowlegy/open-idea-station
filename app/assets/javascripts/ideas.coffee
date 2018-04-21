@@ -1,8 +1,10 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$(document).ready =>
-  if (pageUrl[2] == 'new' || pageUrl[3] == 'edit')
+$(document).on 'turbolinks:load', =>
+  pageUrl = new PageUrl.App
+  currentLocation = pageUrl.start()
+  if (currentLocation[2] == 'new' || currentLocation[3] == 'edit')
     newIdea = new NewIdea.App()
     newIdea.start()
 

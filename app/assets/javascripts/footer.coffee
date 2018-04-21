@@ -1,9 +1,3 @@
-$(document).ready ->
-  if (
-    pageUrl[1] == '' ||
-    pageUrl[1] == 'signup' ||
-    pageUrl[2] == 'new' ||
-    pageUrl[3] == 'edit'
-  )
-    footer = new Footer.App
-    footer.start()
+$(document).on 'turbolinks:load', =>
+  footer = new Footer.App
+  footer.start()

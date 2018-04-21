@@ -10,6 +10,8 @@ class Idea < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }, uniqueness: { case_sensitive: false }
   validates :description, presence: true, length: { minimum: 10 }
 
+  attr_accessor :all_categories
+  after_save :save_categories
   after_destroy :broadcast_delete
   after_initialize :set_is_archived
 
@@ -21,14 +23,18 @@ class Idea < ApplicationRecord
     send_broadcast(status: 'delete', id: id, name: name)
   end
 
-  def all_categories=(names)
-    names.split(',').each do |name|
-      self.categories << Category.where(name: name.strip).first_or_create!
-    end
-  end
-
   def all_categories
     self.categories.uniq.map(&:name).join(', ')
+  end
+
+  private
+
+  def save_categories
+    if @all_categories
+      @all_categories.split(',').each do |name|
+        self.categories << Category.where(name: name.strip).first_or_create!
+      end
+    end
   end
 
 end

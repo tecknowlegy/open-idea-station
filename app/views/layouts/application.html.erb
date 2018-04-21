@@ -7,10 +7,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'data-turbolinks-suppress-warning': true %>
   </head>
 
   <body>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'data-turbolinks-suppress-warning': true %>
     <%= render ("layouts/login_modal") %>
     <% if logged_in? %>
       <%= render("layouts/auth_header")%>

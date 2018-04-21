@@ -1,6 +1,8 @@
 class Footer.App
   constructor: ()->
     @footerUI = new Footer.UI
+    @pageUrl = new PageUrl.App
 
   start: ->
-    @footerUI.initialize()
+    currentLocation = @pageUrl.start()
+    @footerUI.initialize(currentLocation)

@@ -61,7 +61,7 @@
             </p>
           </div>
 
-          <% if logged_in? && current_user[:username] == idea.author_name %>
+          <% if logged_in? && current_user[:username].titleize == idea.author_name %>
             <div class="action-wrapper idea-actions">
               <p><i class="fa fa-gear"></i>&nbsp;<em>Action Controls:</em></p>
               <% if idea.publication_status == 'Draft' %>
