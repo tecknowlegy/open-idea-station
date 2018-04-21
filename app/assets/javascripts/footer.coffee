@@ -1,4 +1,4 @@
-$(document).ready ->
+$(document).on 'turbolinks:load', =>
   if (
     pageUrl[1] == '' ||
     pageUrl[1] == 'signup' ||

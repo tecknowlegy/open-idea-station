@@ -193,10 +193,9 @@ p {
   }
 
   #landing {
-    background: url('components-background.png') repeat $primary-color;
+    background: image-url('components-background.png') repeat $primary-color;
     min-height: 70vh;
     color: $white;
-    border-bottom: 1px solid #eee;
   }
   .headline {
     margin: 12vh auto !important;
