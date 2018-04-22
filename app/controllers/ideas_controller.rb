@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   skip_before_action :authorize, only: %i[index show]
-  before_action :set_idea, only: %i[show edit update archive]
+  before_action :set_idea, only: %i[show edit update destroy]
 
   def index
     @ideas = Idea.includes(:categories)
@@ -65,8 +65,8 @@ class IdeasController < ApplicationController
 
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
-  def archive
-    @idea.update(is_archived: true)
+  def destroy
+    @idea.update_attributes!(is_archived: true)
     respond_to do |format|
       format.html { redirect_to ideas_url, notice: 'Idea was archived.' }
       format.json { head :no_content }

@@ -1,6 +1,6 @@
-class NewIdea.App
+class Idea.App
   constructor: ->
-    @newIdeaUI = new NewIdea.UI
+    @newIdeaUI = new Idea.UI
 
   start: =>
     @newIdeaUI.initializeNewIdeaForm()
