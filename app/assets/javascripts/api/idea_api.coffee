@@ -1,0 +1,1 @@
+class Idea.API

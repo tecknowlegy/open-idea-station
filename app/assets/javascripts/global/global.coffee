@@ -1,5 +1,6 @@
 window.Modal = {}
 window.Login = {}
 window.Footer = {}
-window.pageUrl = location.pathname.split("/")
-window.NewIdea = {}
+window.PageUrl = {}
+window.Idea = {}
+window.ConfirmationModal = {}
