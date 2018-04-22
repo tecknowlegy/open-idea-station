@@ -1,0 +1,24 @@
+language: ruby
+rvm:
+- 2.2.5
+env:
+  - DB=pgsql
+services:
+  - postgresql
+before_script:
+- psql -c 'create database acorn_test_db;' -U postgres
+- cp config/database.yml.travis config/database.yml
+script:
+- RAILS_ENV=test bundle exec rake ci:tests
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: eIK45VmiS+ZwEip9N2+QYZnwiPTZZvfwelJzvtOnTaRggBdr7mrHJXNYzkB0gY82sY2u4RZU6TalRPfu+VH7AH8hP8jiEpqHyvZE5W0tL+sB7KwroLFZOJ4dKraJldez6F0SJtnCC4nIQnil/ugTl00OyCI7ych5L1bPtlxiCP8fH4sk9py413NbiQzqy4W8fTYjVMnzSmYYe4eIQNHQENNEe/oyJkIVYf/TYTPLSDWiBxHK23EH9zC81BvuuaX3ylAvweEpTu26CbSTHR2Zk/FDgH2bFs7yJJEvY+nbJeGARkDj5ZaA6O8QxFnnU/TbFLUuXhjzRQ4XtlGDgg8M0wluU91Cq+YE3tUWAGVZPofVgsgoEwBNP0dw8iy1PsjufsM3aKr4zLkC3q6DxTr4qcBkL8Yi0QIMYqOl9eKnaIajdoHOJ6eFeJHyrp+FRcfycYW0iQbZoVpGDyn/xF9rnFC5uuzqUT8jGKu6LSrVgvENT5jbD+8nb7ZMUr+gSGkg9TEanclf9zNozf9Gsp7os30Pa+Pd3KPf2qqtZOhFra8lSBd7veSgEUd3E4WhkkVcF0vsXt68nOeO12magXbwXSOPzG5sAck77kChxPM9qFLtO+uNeJTsSZYW0XQ+tXtEQrHNa2zPqHAof/EotUqcz3FPHA3JJyd7EQ/mMJ/1NpQ=
+  app:
+    staging: open-idea-station
+  on:
+    repo: https://github.com/Open-Idea-Station/Acorn
+  run:
+    - "rails db:migrate"

@@ -38,8 +38,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -60,7 +59,10 @@ group :test do
   gem 'selenium-webdriver', '~> 3.4.3'
   gem 'should_not'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'capybara', '~> 2.13'
   gem 'simplecov'
+  gem 'coveralls', require: false
+  gem 'factory_girl_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
