@@ -1,6 +1,8 @@
 # Acorn
 
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/Open-Idea-Station/Acorn.svg?branch=develop)](https://travis-ci.org/Open-Idea-Station/Acorn)
+[![Coverage Status](https://coveralls.io/repos/github/Open-Idea-Station/Acorn/badge.svg)](https://coveralls.io/github/Open-Idea-Station/Acorn)
 
 ## About
 #### Acorn is the foundation on which Open Idea Station - an open source web application - is built. For more information visit [Open Idea Station](https://open-idea-station.io).
