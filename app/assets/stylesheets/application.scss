@@ -16,6 +16,7 @@
 */
 
 input:focus,
+a:focus,
 select:focus,
 textarea:focus,
 button:focus {
@@ -51,7 +52,7 @@ em {
 }
 
 .ui-widget-overlay {
-  background: #000 !important;
+  background: #02BF8F !important;
   opacity: 0.5;
   position: fixed;
   top: 0;
@@ -80,11 +81,10 @@ em {
 }
 
 .close-button {
-  background-image: image-url('close.svg');
+  background: image-url('close.svg') no-repeat;
   height: 32px;
   width: 32px;
   display: inline-block;
-  background-repeat: no-repeat;
   text-align: right;
   position: absolute;
   right: 12px;
@@ -95,7 +95,7 @@ div.ui-dialog.ui-widget.ui-widget-content.ui-corner-all {
   max-height: 600px;
   z-index: 300;
   outline: none;
-  box-shadow: 0 0 20px #424242;
+  box-shadow: 0 0 20px #02BF8F;
   border-radius: 3px !important;
 }
 

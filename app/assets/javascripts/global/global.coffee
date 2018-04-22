@@ -2,4 +2,5 @@ window.Modal = {}
 window.Login = {}
 window.Footer = {}
 window.PageUrl = {}
-window.NewIdea = {}
+window.Idea = {}
+window.ConfirmationModal = {}

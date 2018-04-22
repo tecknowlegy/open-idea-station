@@ -1,4 +1,4 @@
-class NewIdea.UI
+class Idea.UI
   constructor: () ->
     @categories = []
     @availableTags = []

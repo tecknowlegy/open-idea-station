@@ -4,7 +4,7 @@ class Idea < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :viewers, dependent: :destroy
-  has_many :idea_categories, foreign_key: :idea_id
+  has_many :idea_categories, dependent: :destroy
   has_many :categories, through: :idea_categories
 
   validates :name, presence: true, length: { minimum: 3 }, uniqueness: { case_sensitive: false }
