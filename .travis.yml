@@ -19,6 +19,6 @@ deploy:
   app:
     staging: open-idea-station
   on:
-    repo: https://github.com/Open-Idea-Station/Acorn
+    repo: Open-Idea-Station/Acorn
   run:
     - "rails db:migrate"
