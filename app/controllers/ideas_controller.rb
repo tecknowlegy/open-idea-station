@@ -14,13 +14,13 @@ class IdeasController < ApplicationController
   end
 
   def show
-    if !logged_in? || @current_user.ideas.find_by(id: @idea.id).nil?
-      Viewer.create!(
-        idea_id: @idea.id,
-        time_viewed: Time.now,
-        viewer_ip: request.remote_ip
-      )
-    end
+    return if logged_in? and !@current_user.ideas.find_by(id: @idea.id).nil?
+    
+    Viewer.create!(
+      idea_id: @idea.id,
+      time_viewed: Time.now,
+      viewer_ip: request.remote_ip
+    )
   end
 
   def new

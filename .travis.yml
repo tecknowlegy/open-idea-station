@@ -2,9 +2,9 @@ language: ruby
 rvm:
 - 2.2.5
 env:
-  - DB=pgsql
+- DB=pgsql
 services:
-  - postgresql
+- postgresql
 before_script:
 - psql -c 'create database acorn_test_db;' -U postgres
 - cp config/database.yml.travis config/database.yml
@@ -15,10 +15,11 @@ notifications:
 deploy:
   provider: heroku
   api_key:
-    secure: eIK45VmiS+ZwEip9N2+QYZnwiPTZZvfwelJzvtOnTaRggBdr7mrHJXNYzkB0gY82sY2u4RZU6TalRPfu+VH7AH8hP8jiEpqHyvZE5W0tL+sB7KwroLFZOJ4dKraJldez6F0SJtnCC4nIQnil/ugTl00OyCI7ych5L1bPtlxiCP8fH4sk9py413NbiQzqy4W8fTYjVMnzSmYYe4eIQNHQENNEe/oyJkIVYf/TYTPLSDWiBxHK23EH9zC81BvuuaX3ylAvweEpTu26CbSTHR2Zk/FDgH2bFs7yJJEvY+nbJeGARkDj5ZaA6O8QxFnnU/TbFLUuXhjzRQ4XtlGDgg8M0wluU91Cq+YE3tUWAGVZPofVgsgoEwBNP0dw8iy1PsjufsM3aKr4zLkC3q6DxTr4qcBkL8Yi0QIMYqOl9eKnaIajdoHOJ6eFeJHyrp+FRcfycYW0iQbZoVpGDyn/xF9rnFC5uuzqUT8jGKu6LSrVgvENT5jbD+8nb7ZMUr+gSGkg9TEanclf9zNozf9Gsp7os30Pa+Pd3KPf2qqtZOhFra8lSBd7veSgEUd3E4WhkkVcF0vsXt68nOeO12magXbwXSOPzG5sAck77kChxPM9qFLtO+uNeJTsSZYW0XQ+tXtEQrHNa2zPqHAof/EotUqcz3FPHA3JJyd7EQ/mMJ/1NpQ=
+    secure: ozUV4lsMxS76Ut2JKTXay+hFbTnyiRLVqbSx+FTJxy10hemJolBssh0m851NWtWE5Ym8C8l/mGYSWsDt2YDJEiwsY2+ZHYG14pSjTCW+PrxDuh5Js3f35nP6BSXoojImcZsbIn/NS5KkshgiOTlgD77SGFBwwuzTqhI7o/K58jGNMhzSxjXd9m8vEE06BjUdfJTj3TrRNJLPlVQONAa+oa/KlSzrcOhGYmdyUjIcZQmLwZT8i53/0PZemA2v0zknxbU4Rh7L0LQhqFuxfgaoAXFtcbL6NifQlaxMegncjfDNt7Gl9PP7aK/wA6BXZV6K9nnAI1xhdiTfiOW9z5iJUSpe/8KSLt0BgKL31+jMFc62b5BkqhLSV0nmBjUK1/4KgI4DlLosS0ggPx3lIiHFqVWjRtHXwGyYfFvJifgEanERaA62X5JrjeWndAJzmmAkNj0cKGSVgYuf3aHnG3YWFyPZINlUhvsjaknFn2BaoS+Al85licp90ttIj/ZMdB31+H1nXVwVNx33actMtgE+iXVLhppecaXEvE5JsZXni0BVrOwxilzoa9NZoa/5e6aSzXq6EIi1ulXMbURlhXHYlKIOQ6xvaL80YuS4vK8oZsu6VLDfJ6Met74kPXhcD1DLPDJ/2LIpSumGoPu85g4Hees1tzq2yeBQ/prQetU54Ng=
   app:
-    staging: open-idea-station
+    master: open-idea-station
+    staging: open-idea-station-staging
   on:
-    repo: https://github.com/Open-Idea-Station/Acorn
+    repo: Open-Idea-Station/Acorn
   run:
-    - "rails db:migrate"
+  - rails db:migrate
