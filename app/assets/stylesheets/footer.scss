@@ -8,13 +8,17 @@ footer {
   padding: 5px 60px !important;
   border-top: 1px solid #eee !important;
 }
-.ois-footer-icon {
-  height: 30px;
-}
-.copy-right {
+.copyright {
+  display: flex;
   vertical-align: middle;
+  justify-content: space-between;
+  .ois-footer-icon {
+    height: 30px;
+  }
   p {
-    color: $primary-black;
+    color: $primary-black4;
+    font-weight: bold;
+    font-size: 14px;
   }
 }
 footer li {

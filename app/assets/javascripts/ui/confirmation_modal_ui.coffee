@@ -17,7 +17,14 @@ class ConfirmationModal.UI
       self.confirmationModal.open()
       $('#confirmation-modal').css('display', 'block')
       $("body").css("overflow", "hidden")
-      $('.modal-content').html("<h6 class='title'>#{self.elements.actionTitle}</h6><a data-method=#{self.elements.actionMethod} class='acorn_btn #{self.elements.action}_btn' href='#{self.elements.actionPath}'>#{self.elements.action}</a>")
+      $('.modal-content').html(
+                                "<h6 class='title'>#{self.elements.actionTitle}</h6>
+                                <a 
+                                  data-method=#{self.elements.actionMethod}
+                                  data-remote='true' class='acorn_btn #{self.elements.action}_btn'
+                                  href='#{self.elements.actionPath}'>#{self.elements.action}
+                                </a>"
+                              )
       self.performAction(self.elements.actionApi)
   
   closeConfirmationModal: () =>
@@ -34,7 +41,10 @@ class ConfirmationModal.UI
   
   performAction: () =>
     self = @
-    $(".#{self.elements.action}_btn").click =>
+    $(".acorn_btn").on("ajax:success", (event) ->
+      alert 'Idea was successfully archived'
       self.closeModal()
+    ).on "ajax:error", (event) ->
+      alert 'Idea could not be archived'
 
 
