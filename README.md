@@ -2,8 +2,8 @@
 
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?)](http://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/Open-Idea-Station/Acorn.svg?branch=develop)](https://travis-ci.org/Open-Idea-Station/Acorn)
-[![Coverage Status](https://coveralls.io/repos/github/Open-Idea-Station/Acorn/badge.svg?branch=develop)](https://coveralls.io/github/Open-Idea-Station/Acorn?branch=develop)
 [![Codeship Status for Open-Idea-Station/Acorn](https://codeship.com/projects/84ea22e0-286f-0136-d8bf-1e20b495677c/status?branch=develop)](https://www.codeship.io/projects/287138)
+[![Coverage Status](https://coveralls.io/repos/github/Open-Idea-Station/Acorn/badge.svg?branch=develop)](https://coveralls.io/github/Open-Idea-Station/Acorn?branch=develop)
 
 
 

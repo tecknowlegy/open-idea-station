@@ -1,0 +1,94 @@
+@import 'base';
+@import 'index';
+
+#side-nav {
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  background: $primary-blue2;
+  width: 100%;
+  left: -100%;
+  color: $white;
+  z-index: 1000;
+  #side-nav-head {
+    background: transparent !important;
+    color: $white;
+  }
+  .main-nav {
+    background: transparent !important;
+  }
+  .nav-item {
+    color: $white !important;
+    background: none;
+  }
+  div.close-menu-pane {
+    display: inline-block;
+    width: 2rem;
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    text-align: center;
+    cursor: pointer;
+    span {
+      transition: all 0.5s ease-in-out;
+      margin: 0 auto;
+      display: block;
+      height: 3px;
+      width: 50%;
+      background: $white;
+      margin-bottom: 5px;
+      &:nth-child(2) {
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+      }
+    }
+    &:hover {
+      span {
+        background: $primary-color;
+        &:nth-child(2) {
+          width: 50%;
+          transition: all 0.5s ease-in-out;
+        }
+      }
+    }
+  }
+  
+}
+.side-nav-body {
+  text-align: left;
+  padding: 10rem 0;
+  li{
+    width: 100%;
+    padding: 1.5rem;
+    color: $white;
+    font-weight: bold;
+    a {
+      display: block;
+      color: inherit;
+      i {
+        display: inline-block;
+        margin-right: 5px;
+        height: 18px;
+        width: 18px;
+      }
+      span {
+        display: inline-block;
+      }
+    }
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+.side-nav-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+  width: 100%;
+  padding: 5px 1rem;
+}

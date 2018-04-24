@@ -196,6 +196,12 @@ p {
     background: image-url('components-background.png') repeat $primary-color;
     min-height: 70vh;
     color: $white;
+    vertical-align: middle 
+  }
+  @media screen and (max-width: 920) {
+    #landing {
+      height: 50vh;
+    }
   }
   .headline {
     margin: 12vh auto !important;
@@ -214,7 +220,7 @@ p {
   }
   @media screen and (max-width:767px) {
     .headline {
-      margin: 4rem auto !important;
+      margin: 20rem auto !important;
       width: 80%;
     }
   }
@@ -223,8 +229,17 @@ p {
     width: 60%;
     margin: 0 auto;
     margin-bottom: 3rem;
-    h1 {
+    h1, h2 {
       margin-bottom: 1.5rem;
+    }
+    h6 {
+      width: 80%;
+      margin: 0 auto;
+    }
+    @media screen and (max-width: 767px) {
+      h6 {
+        width: 100%;
+      }
     }
   }
 
@@ -243,7 +258,7 @@ p {
   }
 
   .field_with_errors {
-    border-bottom: 2px solid red;
+    border-bottom: none;
     background: none;
   }
 
@@ -253,29 +268,80 @@ p {
     background: none;
     padding: 2px;
   }
-  .discover-illustration {
-  }
-  .about-ois {
-  }
   #features {
     background: $white;
   }
   .features-box {
     width: 80%;
-    .mdl-grid {
-      margin-top: 3rem;
-    }
     .divider {
       width: 30rem;
       margin: 3rem auto;
-      background: $primary-black;
-      height: 2px;
+      background: #eee;
+      height: 1px;
     }
-  }
-  .features-box img {
-    height: 400px;
   }
 
   .hidden {
     display: none;
+  }
+  .tune-in {
+    margin-top: 30px;
+    margin-bottom: 30px; 
+  }
+  .acorn-flex {
+    display: flex;
+    flex: 1;
+    flex-grow: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 40rem;
+  }
+  .acorn-flex-col {
+    flex: 1;
+  }
+  .col-left {
+    order: -1;
+  }
+  .acorn-align-text {
+    height: 20em;
+  }
+  .acorn-align-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .acorn-aligner {
+    width: 60%;
+  }
+  .col-image {
+    background-size: cover;
+    background-position: 50%;
+
+  }
+  .success {
+    background-image: image-url('success.png');
+  }
+  .discover {
+    background-image: image-url('discover.png');
+  }
+
+  @media (max-width: 767px) {
+    .acorn-flex {
+      height: 48em;
+      display: flex;
+      flex-direction: column;
+     }
+    .acorn-flex-col {
+      order: vertical;
+    }
+    .col-left {
+      order: 0;
+    }
+    .acorn-align-text div {
+      padding: 1em;
+    }
+    .acorn-aligner {
+      width: 90%;
+    }
   }
