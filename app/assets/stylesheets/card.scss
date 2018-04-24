@@ -6,6 +6,9 @@
     width: auto !important;
     height: 24rem;
     z-index: 0 !important;
+    &:hover {
+      background: #fafbfc;
+    }
   }
   .mdl-card__title {
     align-items: center;
@@ -14,7 +17,7 @@
     height: 15%;
     font-size: 1.2rem;
     font-weight: bold;
-    color: $primary-black2;
+    color: $primary-blue2;
     h6 {
       font-size: 1.6rem;
       font-weight: bold;
@@ -29,9 +32,6 @@
     padding: 10px 10px;
     overflow: wrap;
     color: $primary-black4;
-    &:hover {
-      background: #fafbfc;
-    }
   }
   .mdl-card__actions {
     display: flex;
@@ -48,7 +48,7 @@
       margin-left: 10px;
       color: $primary-black4;
       &:hover {
-        color: $primary-black3;
+        color: $primary-blue2;
       }
     }
   }
