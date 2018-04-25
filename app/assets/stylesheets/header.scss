@@ -1,7 +1,7 @@
 @import 'base';
 
 #page-tray {
-  color: $primary-black;
+  color: $primary-blue2;
   position: fixed;
   top: 0;
   z-index: 5;
@@ -23,7 +23,7 @@
 }
 
 .nav-item {
-  color: $primary-black !important;
+  color: $primary-blue2 !important;
   background: none;
 }
 .auth-nav-item {
@@ -87,7 +87,7 @@ nav.main-nav li a {
   display: none !important;
 }
 
-a.menu-pane {
+div.menu-pane {
   display: inline-block;
   width: 2rem;
   position: absolute;
@@ -101,7 +101,7 @@ a.menu-pane {
     display: block;
     height: 3px;
     width: 50%;
-    background: $primary-black;
+    background: $primary-blue2;
     margin-bottom: 5px;
   }
   &:hover {
@@ -116,7 +116,7 @@ a.menu-pane {
 }
 
 a.current-user {
-  background: $primary-color !important;
+  background: $primary-blue2 !important;
   margin-top: 5px;
   height: 30px;
   width: 30px;
@@ -127,5 +127,8 @@ a.current-user {
   font-size: 12px !important;
   text-transform: uppercase !important;
   letter-spacing: 0.1em;
-  padding: 0 !important
+  padding: 0 !important;
+  &:hover {
+    background: $primary-color !important;
+  }
 }
