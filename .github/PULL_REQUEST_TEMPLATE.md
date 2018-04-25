@@ -2,13 +2,13 @@
 
 #### Description of Task proposed in this pull request?
 - replace me
-- replace me]
+- replace me
 
 #### How should this be manually tested?
 
 
 #### What are the relevant pivotal tracker stories?
-- [replace with story id](paste Pivotal Tracker link here)
+- [Story ID:  replace text with story id](paste Pivotal Tracker link here)
 
 #### Any background context you want to add?
 

@@ -6,6 +6,7 @@ class Header.UI
       self.toggleSideNav('-100%')
     
     $(".menu-pane").click ->
+      console.log 'I was clicked'
       self.toggleSideNav('0')
 
   toggleSideNav: (sideWidth) =>
