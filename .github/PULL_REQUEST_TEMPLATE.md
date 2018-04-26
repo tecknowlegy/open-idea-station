@@ -8,7 +8,7 @@
 
 
 #### What are the relevant pivotal tracker stories?
-- (replace with story id)[paste Pivotal Tracker link here]
+- [replace with story id](paste Pivotal Tracker link here)
 
 #### Any background context you want to add?
 

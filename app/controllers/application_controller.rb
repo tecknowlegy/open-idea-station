@@ -5,7 +5,12 @@ class ApplicationController < ActionController::Base
   after_action :clear_xhr_flash
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if session[:jwt_token]
+      headers['Authorization'] = session[:jwt_token]
+      @current_user = AuthorizeRequest.new(headers).call.result
+    else
+      @current_user = nil
+    end
   end
 
   def logged_in?
@@ -13,7 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    redirect_to '/signup' unless current_user
+    unless current_user
+      render json: { error: 'Not Authorized' }, status: 401
+    end
   end
 
   def clear_xhr_flash
