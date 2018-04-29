@@ -4,7 +4,7 @@ footer {
   display: flex;
   flex-direction: row;
   background: $white;
-  min-height: 40px;
+  height: 40px;
   padding: 5px 10px !important;
   border-top: 1px solid #eee !important;
 }
@@ -19,6 +19,8 @@ footer {
     color: $primary-black4;
     font-weight: bold;
     font-size: 14px;
+    line-height: 30px;
+    height: 30px;
   }
 }
 footer li {

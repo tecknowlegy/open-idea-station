@@ -1,4 +1,4 @@
-<!--<div id="side-nav">
+<div id="side-nav">
   <header id="page-tray side-nav-head">
     <div class="navbar">
       <nav class="main-nav">
@@ -14,26 +14,37 @@
   </header>
   <% unless logged_in? %>
     <section class="side-nav-body">
-      <ul>
+      <ul class="main_navigation">
         <li class="side-nav-item"><a href="/"><i class="fa fa-home"></i><span>Home</span></a></li>
         <li class="side-nav-item"><a href="/ideas"><i class="fa fa-folder-o"></i><span>Ideas</span></a></li>
-        <li class="side-nav-item"><a href="/ideas/new"><i class="fa fa-file-o"></i><span>Login</span></a></li>
-        <li class="side-nav-item"><a href="/notifications"><i class="fa fa-bell-o"></i><span>Signup</span></a></li>
+        <li class="side-nav-item"><a class="nav-item login-user"><i class="fa fa-plug"></i><span>Login</span></a></li>
+        <li class="side-nav-item"><a href="/signup"><i class="fa fa-power-off"></i><span>Signup</span></a></li>
       </ul>
+      <div class="visitors-section">
+        Hello
+      </div>
     </section>
   <% else %>
     <section class="side-nav-body">
-      <ul class="navigation-section">
+      <ul class="main_navigation">
         <li class="side-nav-item"><a href="/"><i class="fa fa-home"></i><span>Home</span></a></li>
         <li class="side-nav-item"><a href="/ideas"><i class="fa fa-folder-o"></i><span>Ideas</span></a></li>
         <li class="side-nav-item"><a href="/ideas/new"><i class="fa fa-file-o"></i><span>New Idea</span></a></li>
-        <li class="side-nav-item"><a href="/notifications"><i class="fa fa-bell-o"></i><span>Notifications</span></a></li>
+        <li class="side-nav-item"><a href="/logout"><i class="fa fa-eject"></i><span>Logout</span></a></li>
       </ul>
+      <div class="visitors-section">
+        Hello
+      </div>
     </section>
   <% end %>
   <section class="side-nav-footer">
     <div class="copyright">
-      <%= image_tag("OIS-ico.png", :class => 'ois-footer-icon') %>
+      <div class="acorn-logo-main logo-synth ois-footer-icon">
+        <span class="open"></span>
+        <span class="idea"></span>
+        <span class="station"></span>
+      </div>
+      <p class="copyright-text synth">&copy;2018 Open Idea Station</p>
     </div>
   </section>
-</div>-->
+</div>
