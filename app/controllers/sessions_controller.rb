@@ -1,30 +1,30 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: %i[new_login create_login]
+  skip_before_action :authorize
 
-  def create_login
-    user = User.find_by_username(session_params[:username])
-    if user && user.authenticate(session_params[:password])
-      # Save the user id inside the browser cookie. This keeps the user
-      # logged in when they navigate around our website.
-      session[:user_id] = user.id
-      cookies.signed[:user_id] = user.id
-      redirect_to '/ideas'
-    else
-      # If user's login doesn't work, send them back to the login form.
-      # flash[:error] = "You must be logged in to access ideas"
-      redirect_to '/'
+  def login
+    auth_token = AuthenticateUser.call(auth_params)
+
+    respond_to do |format|
+      if auth_token.success?
+        session['jwt_token'] = auth_token.result
+        format.html { redirect_to '/ideas' }
+        format.json { render auth_token: auth_token.result, status: :success }
+      else
+        format.html { redirect_to '/' }
+        format.json { render json: { error: auth_token.errors, status: :unauthorized } }
+      end
     end
   end
 
   def logout
-    session[:user_id] = nil
     cookies.signed[:user_id] = nil
-    redirect_to '/'
+    session['jwt_token'] = nil
+    redirect_to '/signup'
   end
 
   private
 
-  def session_params
-    params.require(:session).permit(:username, :password)
+  def auth_params
+    params.require(:authentication).permit(:username, :password)
   end
 end

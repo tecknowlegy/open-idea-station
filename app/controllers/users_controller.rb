@@ -8,14 +8,19 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
+    user_credentials = { username: user_params[:username], password: user_params[:password] }
     respond_to do |format|
       if user.save
-        session[:user_id] = user.id
-        cookies.signed[:user_id] = user.id
-        format.html do
-          redirect_to '/ideas',
-                      notice: 'User account was successfully created.'
+        auth_token = AuthenticateUser.call(user_credentials)
+        
+        if auth_token.success?
+          session['jwt_token'] = auth_token.result
+          format.html do
+            redirect_to '/ideas',
+                        notice: 'User account was successfully created.'
+          end
         end
+
       else
         format.html { render :new }
         format.json { render json: user.errors, status: :unprocessable_entity }
