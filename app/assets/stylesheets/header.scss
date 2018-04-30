@@ -132,6 +132,10 @@ a.current-user {
   &:hover {
     background: $primary-color !important;
   }
+  img {
+    height: 100%;
+    border-radius: 50%;
+  }
 }
 @media screen and (max-width: 520px) {
   .hide-on-small {
