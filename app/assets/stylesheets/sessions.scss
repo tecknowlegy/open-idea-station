@@ -19,7 +19,8 @@
       }
       .modal-content {
         font-size: 13px;
-        padding: 23px;
+        padding-left: 23px;
+        padding-right: 23px;
         margin-top: 0;
         max-height: 400px;
         overflow-y: scroll;
@@ -57,11 +58,46 @@
         }
       }
     }
+    .modal-bottom {
+      display: block;
+      height: 40px;
+      padding: 0 23px;
+      .login-services {
+        border: 1px solid $profile-box-shadow;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        .login {
+          flex: 1;
+          height: 100%;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          color: $primary-black4;
+          font-weight: bold;
+          i {
+            font-size: 16px;
+          }
+        }
+        .facebook:hover {
+          background: #3b5998;
+          color: $white;
+        }
+        .google:hover {
+          background: #4285f4;
+          color: $white;
+        }
+        .github:hover {
+          background: #000;
+          color: $white;
+        }
+      }
+    }
   }
 }
 
 #signup-background {
   background: $white;
+  min-width: 340px;
   color: $primary-black;
   height: 96vh;
   padding: 10rem;
@@ -77,7 +113,7 @@
       border: 1px solid $profile-box-shadow;
       border-radius: 5px;
       background: $primary-background2;
-      width: 400px;
+      width: 40rem;
       padding: 20px 40px;
       min-height: 300px;
       label {
@@ -118,6 +154,59 @@
           transition: 0.2s ease-in-out;
         }
       }
+    }
+  }
+  .external-services {
+    width: 40rem;
+    margin: 0 auto;
+    margin-top: 40px;
+    p {
+      margin-bottom: 20px;
+      width: 100%;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      background: $primary-blue2;
+      color: $white;
+      font-weight: bold;
+    }
+    .services {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $profile-box-shadow;
+      border-radius: 3px;
+      margin-bottom: 20px;
+      display: flex;
+      .signup {
+        flex: 1;
+        color: $primary-black4;
+        font-weight: bold;
+        i {
+          font-size: 24px;
+        }
+      }
+      .facebook:hover {
+        color: #3b5998;
+      }
+      .google:hover {
+        color: #4285f4
+      }
+      .github:hover {
+        color: #000;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  #signup-background {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    .signup-headline {
+      display: inline-block;
+      margin: 0 auto;
+      margin-bottom: 40px;
+      padding: 30px;
+      background-color: $white;
     }
   }
 }

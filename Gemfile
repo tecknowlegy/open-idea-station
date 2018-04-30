@@ -62,7 +62,8 @@ group :test do
   gem 'capybara', '~> 2.13'
   gem 'simplecov'
   gem 'coveralls', require: false
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
+  gem "faker"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -101,5 +102,11 @@ gem 'kaminari'
 # add Redcarpet markdown parser
 gem 'redcarpet'
 
+# use simple command to facilitate connection between controllers and models
+gem 'simple_command'
+
 # For flash messages
 gem 'puffly'
+
+# Google authentication
+gem "omniauth-google-oauth2", "~> 0.2.1"

@@ -1,0 +1,48 @@
+@import 'base';
+
+.acorn-logo-main {
+  display: inline-block;
+  border: 2px solid #42526E;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  span {
+    transition: all 0.5s ease-in-out;
+    margin: 0 auto;
+    display: block;
+    height: 3px;
+    width: 30%;
+    background: #02BF8F;
+    border-radius: 40%;
+    margin-top: 4px;
+    &:nth-child(2) {
+      width: 70%;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+}
+
+.logo-grey {
+  border-color: $primary-black4;
+  span {
+    background: $primary-black3;
+  }
+}
+.logo-synth {
+  border-color: $white;
+  opacity: .2;
+  transition: 0.2s ease-in-out;
+  span {
+    background: $white;
+  }
+  &:hover {
+    transition: 0.2s ease-in-out;
+    opacity: .5;
+  }
+}
+.synth {
+  
+}

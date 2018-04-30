@@ -8,13 +8,13 @@
             <span class="open-bar"></span>
           </div>
           
-          <ul class="right app-menu">
+          <ul class="right app-menu hide-on-small">
             <li class="auth-nav-item"><a href="/"><i class="material-icons">home</i></a></li>
             <li class="auth-nav-item"><a href="/ideas"><i class="material-icons">cloud_queue</i></a></li>
             <li class="auth-nav-item"><a href="/ideas/new"><i class="material-icons">note_add</i></a></li>
             <li class="auth-nav-item"><a href="/notifications"><i class="material-icons">notifications_none</i></a></li>
             <li>
-              <a class="current-user"><%= current_user[:username][0,2] %></a>
+              <a class="current-user"><img src="<%= current_user[:picture] %>"/></a>
               <ul class="user-profile-dropdown hidden">
                 <span class="popover-rect top-right"></span>
                 <li class="user">

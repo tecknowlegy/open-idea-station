@@ -19,15 +19,3 @@ ideas_list = [
   ['EOFy'],
   ['Interrupt', 'Maintains a stable connection when internet is down']
 ]
-
-User.create(
-  username: 'Dinobi',
-  email: 'dinobi.kenkwo@andela.com',
-  password: 'DinoAcorn45'
-)
-
-User.create(
-  username: 'Melvzone',
-  email: 'melvzone07@gmail.com',
-  password: 'ThugLife'
-)
