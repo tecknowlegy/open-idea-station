@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index]
 
+  get '/auth/:provider/callback' => 'sessions#login_with_google'
+  get '/auth/failure', to: redirect('/signup')
+
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
   post '/login' => 'sessions#login'

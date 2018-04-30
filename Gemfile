@@ -107,3 +107,6 @@ gem 'simple_command'
 
 # For flash messages
 gem 'puffly'
+
+# Google authentication
+gem "omniauth-google-oauth2", "~> 0.2.1"

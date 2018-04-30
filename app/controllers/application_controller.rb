@@ -19,7 +19,10 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_user
-      render json: { error: 'Not Authorized' }, status: 401
+      respond_to do |format|
+        format.html { redirect_to '/signup' }
+        format.json { render error: 'Not Authorized', status: 401 }
+      end
     end
   end
 
