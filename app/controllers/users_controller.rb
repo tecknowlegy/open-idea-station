@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if user.save
         auth_token = AuthenticateUser.call(user_credentials)
-        
+
         if auth_token.success?
           session['jwt_token'] = auth_token.result
           format.html do
