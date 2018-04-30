@@ -5,7 +5,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   {
     client_options: {ssl: {ca_file: Rails.root.join("cacert.pem").to_s}}
   }
-  provider :facebook, ENV['ACORN_FACEBOOK_APP_ID'], ENV['ACORN_FACEBOOK_SECRET'],
+  provider :github, ENV['ACORN_GITHUB_KEY'], ENV['ACORN_GITHUB_SECRET'],
   {
     client_options: {:ssl => {:ca_file => Rails.root.join("cacert.pem").to_s}}
   }
