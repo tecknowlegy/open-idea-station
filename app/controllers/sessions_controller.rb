@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     create_session(auth_token)
   end
 
-  def login_with_google
+  def login_with_omniauth
     user = User.find_or_create_from_omniauth(omniauth_hash)
     user_credentials = { username: user.username, password: user.password }
     auth_token = AuthenticateUser.call(user_credentials)

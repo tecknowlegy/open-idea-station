@@ -110,3 +110,9 @@ gem 'puffly'
 
 # Google authentication
 gem "omniauth-google-oauth2", "~> 0.2.1"
+
+# Facebook authentication
+gem 'omniauth-facebook'
+
+# Github authentication
+gem "omniauth-github"

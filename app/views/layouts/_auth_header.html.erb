@@ -14,7 +14,11 @@
             <li class="auth-nav-item"><a href="/ideas/new"><i class="material-icons">note_add</i></a></li>
             <li class="auth-nav-item"><a href="/notifications"><i class="material-icons">notifications_none</i></a></li>
             <li>
-              <a class="current-user"><img src="<%= current_user[:picture] %>"/></a>
+              <% if current_user[:picture] %>
+                <a class="current-user"><img src="<%= current_user[:picture] %>"/></a>
+              <% else %>
+                <a class="current-user"><%= current_user[:username][0,2] %></a>
+              <% end %>
               <ul class="user-profile-dropdown hidden">
                 <span class="popover-rect top-right"></span>
                 <li class="user">
