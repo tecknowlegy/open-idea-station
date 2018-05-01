@@ -113,6 +113,17 @@
     }
   }
 }
+
+@media screen and (max-width: 520px){  
+  #idea-page {
+    padding-left: 0;
+    padding-right: 0;
+    .author-details, .idea-details {
+      padding: 4rem 3rem;
+    }
+  }
+}
+
 .acorn_chip {
   display: inline-block;
   min-width: 4rem;

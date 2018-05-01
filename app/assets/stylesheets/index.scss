@@ -148,7 +148,6 @@ p {
     }
   }
   
-
   @media screen and (min-width: 768px) {
     .box {
       width: 720px;
@@ -240,6 +239,11 @@ p {
       h6 {
         width: 100%;
       }
+    }
+  }
+  @media screen and (max-width: 520px) {
+    .lead {
+      width: 100% !important;
     }
   }
 

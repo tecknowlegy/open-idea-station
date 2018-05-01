@@ -118,6 +118,7 @@ div.menu-pane {
 
 a.current-user {
   background: $primary-blue2 !important;
+  display: block;
   margin-top: 5px;
   height: 30px;
   width: 30px;
@@ -136,6 +137,12 @@ a.current-user {
     height: 100%;
     border-radius: 50%;
   }
+}
+.current-user-mobile {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  float: right;
 }
 @media screen and (max-width: 520px) {
   .hide-on-small {

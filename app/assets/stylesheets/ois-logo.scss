@@ -43,6 +43,14 @@
     opacity: .5;
   }
 }
-.synth {
-  
+.ois-header-icon {
+  height: 30px;
+  float: right;
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 519px) {
+  .hide-on-large {
+    display: none;
+  }
 }
