@@ -7,6 +7,38 @@
             <span class="open-bar"></span>
             <span class="open-bar"></span>
           </div>
+
+          <div class="current-user-mobile hide-on-large">
+            <% if current_user[:picture] %>
+              <a class="current-user"><img src="<%= current_user[:picture] %>"/></a>
+            <% else %>
+              <a class="current-user"><%= current_user[:username][0,2] %></a>
+            <% end %>
+            <ul class="user-profile-dropdown hidden">
+              <span class="popover-rect top-right"></span>
+              <li class="user">
+                <a class="greeting">
+                  Hi <%= current_user[:username] %>
+                </a>
+              </li>
+              <li class="profile-link">
+                <a class="my-profile-link" href="/profile">
+                  Your Profile
+                </a>
+              </li>
+              <li class="profile-link">
+                <a class="my-ideas-link" href="/my-ideas">
+                  Your Ideas
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li class="profile-link">
+                <a class="logout-link" href="/logout">
+                  Log Out
+                </a>
+              </li>
+            </ul>
+          </div>
           
           <ul class="right app-menu hide-on-small">
             <li class="auth-nav-item"><a href="/"><i class="material-icons">home</i></a></li>
