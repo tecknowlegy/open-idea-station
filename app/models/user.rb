@@ -1,9 +1,14 @@
 class User < ApplicationRecord
   has_secure_password
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }  
+  validates :username, presence: true, uniqueness: { case_sensitive: false }, \
+  :format => /\A[a-zA-Z0-9]+\Z/
   validates_presence_of :email, :password_digest
-  validates_uniqueness_of :email
+  validates :email, uniqueness: { case_sensitive: false }, \
+  :format => /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i
+
+  validates :password, presence: true
+  validates :password, confirmation: { case_sensitive: true }
 
   has_many :ideas, dependent: :destroy
   has_many :comments, dependent: :destroy

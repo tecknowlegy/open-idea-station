@@ -11,19 +11,19 @@ class UsersController < ApplicationController
     user_credentials = { username: user_params[:username], password: user_params[:password] }
     respond_to do |format|
       if user.save
+        flash[:notice] = 'Your account was successfully created'
         auth_token = AuthenticateUser.call(user_credentials)
 
         if auth_token.success?
           session['jwt_token'] = auth_token.result
           format.html do
-            redirect_to '/ideas',
-                        notice: 'User account was successfully created.'
+            redirect_to '/ideas'
           end
         end
 
       else
+        flash[:error] = user.errors.full_messages[0]
         format.html { render :new }
-        format.json { render json: user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -31,6 +31,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :confirm_password)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end
