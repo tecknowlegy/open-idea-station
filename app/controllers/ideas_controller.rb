@@ -14,8 +14,8 @@ class IdeasController < ApplicationController
   end
 
   def show
-    return if logged_in? and !@current_user.ideas.find_by(id: @idea.id).nil?
-    
+    return if logged_in? && !@current_user.ideas.find_by(id: @idea.id).nil?
+
     Viewer.create!(
       idea_id: @idea.id,
       time_viewed: Time.now,
@@ -68,7 +68,7 @@ class IdeasController < ApplicationController
   def destroy
     @idea.update_attributes!(is_archived: true)
     respond_to do |format|
-      format.html { redirect_to ideas_url, notice: 'Idea was archived.' }
+      format.html { redirect_to ideas_url, notice: "#{@idea.name} was archived" }
       format.json { head :no_content }
     end
   end

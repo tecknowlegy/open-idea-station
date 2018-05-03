@@ -1,0 +1,31 @@
+@import 'base';
+
+.flash-container {
+  height: 32px;
+  width: 100%;
+  text-align: center;
+  z-index: 30000;
+  position: absolute;
+  top: 50px;
+}
+.alert {
+  box-shadow: $dropdown-shadow;
+  font-size: 14px;
+  display: inline-block;
+  padding: 7px 14px;
+  border: 1px solid $profile-box-shadow;
+  border-radius: 2px;
+  color: $primary-blue2;
+}
+.alert-error {
+  background: $acorn-red;
+}
+.alert-success {
+  background: $acorn-green;
+}
+.alert-notice {
+  background: $acorn-blue;
+}
+.alert-active {
+  background: $acorn-amber;
+}

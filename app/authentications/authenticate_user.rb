@@ -4,7 +4,7 @@ class AuthenticateUser
   def initialize(user_params)
     @username = user_params[:username]
     @password = user_params[:password]
-    @email_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/
+    @email_regex = /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i
   end
 
   def call

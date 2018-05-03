@@ -21,16 +21,15 @@ class ConfirmationModal.UI
                                 "<h6 class='title'>#{self.elements.actionTitle}</h6>
                                 <a 
                                   data-method=#{self.elements.actionMethod}
-                                  data-remote='true' class='acorn_btn #{self.elements.action}_btn'
+                                  data-remote='false' class='acorn_btn #{self.elements.action}_btn'
                                   href='#{self.elements.actionPath}'>#{self.elements.action}
                                 </a>"
                               )
-      self.performAction(self.elements.actionApi)
+      self.performArchive()
   
   closeConfirmationModal: () =>
     self = @
     $('.close-button, .ui-widget-overlay .ui-front').on 'click', ->
-      console.log 'I was clicked'
       self.closeModal()
   
   closeModal: () =>
@@ -39,12 +38,10 @@ class ConfirmationModal.UI
     $('#confirmation-modal').css('display', 'none')
     $("body").css("overflow", "scroll")
   
-  performAction: () =>
+  performArchive: () =>
     self = @
-    $(".acorn_btn").on("ajax:success", (event) ->
-      alert 'Idea was successfully archived'
+    $(".acorn_btn").on 'click', ->
       self.closeModal()
-    ).on "ajax:error", (event) ->
-      alert 'Idea could not be archived'
+      
 
 

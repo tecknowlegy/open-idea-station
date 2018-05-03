@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_user
+      flash[:notice] = 'Please login to perform this action'
       respond_to do |format|
         format.html { redirect_to '/signup' }
         format.json { render error: 'Not Authorized', status: 401 }
