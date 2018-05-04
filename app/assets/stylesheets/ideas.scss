@@ -144,6 +144,9 @@
   white-space: nowrap;
   overflow: hidden;
 }
+.tags {
+  max-width: 18rem;
+}
 .green_chip {
   background: $primary-color !important;
   color: $white;

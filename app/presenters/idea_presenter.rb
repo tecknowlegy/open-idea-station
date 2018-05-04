@@ -25,6 +25,12 @@ class IdeaPresenter < BasePresenter
     end
   end
 
+  def tags
+    return @model.all_categories unless @model.all_categories.blank?
+      
+    'No tags have been added'
+  end
+
 end
 
 

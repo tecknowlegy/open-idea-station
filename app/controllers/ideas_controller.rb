@@ -44,7 +44,12 @@ class IdeasController < ApplicationController
   end
 
   # GET /ideas/1/edit
-  def edit; end
+  def edit
+    if @idea.user[:id] != @current_user[:id]
+      flash[:warning] = 'You are not authorized to edit this idea'
+      redirect_to @idea
+    end
+  end
 
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
@@ -66,6 +71,8 @@ class IdeasController < ApplicationController
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
   def destroy
+    return if @idea.user[:id] != @current_user[:id]
+    
     @idea.update_attributes!(is_archived: true)
     respond_to do |format|
       format.html { redirect_to ideas_url, notice: "#{@idea.name} was archived" }
