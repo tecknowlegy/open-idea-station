@@ -74,8 +74,8 @@
 
           <div class="action-wrapper tags">
             <p><i class="fa fa-tag"></i>&nbsp;<em>Tags:</em></p>
-            <% idea.all_categories.split(',').each do |category| %>
-              <span class="acorn_chip"><%= category %></span>
+            <% idea.tags.split(',').each do |tag| %>
+              <span class="acorn_chip tags"><%= tag %></span>
             <% end %>
           </div>
 

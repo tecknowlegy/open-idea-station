@@ -11,6 +11,9 @@ module Acorns
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    # change the default behavior for rescuing forbidden server response
+    config.action_dispatch.rescue_responses['IdeasController::Forbidden'] = :forbidden
+
     # provide global access to /lib directory
     config.autoload_paths += %W[#{config.root}/lib]
 
