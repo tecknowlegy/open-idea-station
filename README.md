@@ -1,5 +1,6 @@
 # Acorn
 
+[![Build Stage](https://img.shields.io/badge/build%20stage-WIP-yellow.svg)](https://open-idea-station-staging.herokuapp.com)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?)](http://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/Open-Idea-Station/Acorn.svg?branch=develop)](https://travis-ci.org/Open-Idea-Station/Acorn)
 [![Codeship Status for Open-Idea-Station/Acorn](https://codeship.com/projects/84ea22e0-286f-0136-d8bf-1e20b495677c/status?branch=develop)](https://www.codeship.io/projects/287138)
@@ -9,7 +10,7 @@
 
 
 ## About
-#### Acorn is the foundation on which Open Idea Station - an open source web application - is built. For more information visit [Open Idea Station](https://open-idea-station.herokuapp.com).
+#### Acorn is the foundation on which Open Idea Station(an open source web application) is built. For more information visit [Open Idea Station](https://open-idea-station.herokuapp.com).
 
 ## Technology Stack
 Acorn is written in:

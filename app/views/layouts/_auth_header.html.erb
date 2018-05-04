@@ -44,7 +44,7 @@
             <li class="auth-nav-item"><a href="/"><i class="material-icons">home</i></a></li>
             <li class="auth-nav-item"><a href="/ideas"><i class="material-icons">cloud_queue</i></a></li>
             <li class="auth-nav-item"><a href="/ideas/new"><i class="material-icons">note_add</i></a></li>
-            <li class="auth-nav-item"><a href="/notifications"><i class="material-icons">notifications_none</i></a></li>
+            <li class="auth-nav-item"><a href=""><i class="material-icons">notifications_none</i></a></li>
             <li>
               <% if current_user[:picture] %>
                 <a class="current-user"><img src="<%= current_user[:picture] %>"/></a>
@@ -59,12 +59,12 @@
                   </a>
                 </li>
                 <li class="profile-link">
-                  <a class="my-profile-link" href="/profile">
+                  <a class="my-profile-link" href="">
                     Your Profile
                   </a>
                 </li>
                 <li class="profile-link">
-                  <a class="my-ideas-link" href="/my-ideas">
+                  <a class="my-ideas-link" href="">
                     Your Ideas
                   </a>
                 </li>
