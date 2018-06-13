@@ -52,7 +52,8 @@ class IdeasController < ApplicationController
     respond_to do |format|
       if @idea.update(idea_params)
         if params[:commit] == 'Publish'
-          @idea.update_attributes!('published_at', Time.now)
+          puts idea_params
+          @idea.update_attributes!(published_at: Time.now)
         end
         format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
         format.json { render :show, status: :ok, location: @idea }
