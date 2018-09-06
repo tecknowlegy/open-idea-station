@@ -5,7 +5,7 @@ class IdeasController < ApplicationController
   def index
     @ideas = Idea.includes(:categories)
                  .where(is_archived: false)
-                 .where.not(published_at: [nil, ''])
+                 .where('published_at != ?', nil)
                  .order(published_at: :desc)
   end
 
