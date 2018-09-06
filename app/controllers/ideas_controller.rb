@@ -4,7 +4,9 @@ class IdeasController < ApplicationController
 
   def index
     @ideas = Idea.includes(:categories)
-                 .where(is_archived: false).order(published_at: :desc)
+                 .where(is_archived: false)
+                 .where.not(published_at: [nil, ''])
+                 .order(published_at: :desc)
   end
 
   def viewed
