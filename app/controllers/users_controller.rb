@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # POST /users/signup
   def create
     user = User.new(user_params)
     user_credentials = { username: user_params[:username], password: user_params[:password] }
