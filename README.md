@@ -60,11 +60,11 @@ Acorn is written in:
     
     LOGIN_URL: ''
     LOGOUT_URL: ''
-    ACORN_DB_USERNAME: 'postgres'
-    ACORN_DB_PASSWORD: 'Andela'
+    ACORN_DB_USERNAME: 'your db username'
+    ACORN_DB_PASSWORD: 'your db password'
     ACORN_HOST: 'localhost'
-    ACORN_DB: 'acorn_db'
-    ACORN_TEST_DB: 'acorn_test_db'
+    ACORN_DB: 'your dev db name'
+    ACORN_TEST_DB: 'your test db name'
     TEST_URL: ''
     ```
 
