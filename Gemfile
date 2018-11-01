@@ -31,14 +31,35 @@ gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# sftp
+gem "gpgme", "~> 2.0", ">= 2.0.13"
+gem "net-sftp"
+
+# Zip file
+gem "rubyzip", ">= 1.2.1"
+
+# Support for CORS
+gem "rack-cors", { require: "rack/cors" }
+
+# Rate limit
+gem "rack-attack"
+
+# Sanitize UTF-8
+gem "rack-utf8_sanitizer"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-doc'
   gem 'pry-byebug'
+  gem 'rubocop', require: false
+  gem 'guard'
+  gem 'guard-rspec', require: false
 end
 
 group :development do
@@ -48,6 +69,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Static analysis checker for security vulnerabilities.
+  gem 'brakeman'
 end
 
 group :test do
@@ -69,7 +92,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem 'nokogiri'
+gem "nokogiri", ">= 1.8.2"
 gem 'rack', '~> 2.0.1'
 
 # Use fontawesome for icons
@@ -110,9 +133,6 @@ gem 'puffly'
 
 # Google authentication
 gem "omniauth-google-oauth2", "~> 0.2.1"
-
-# Facebook authentication
-gem 'omniauth-facebook'
 
 # Github authentication
 gem "omniauth-github"
