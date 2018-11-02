@@ -20,6 +20,6 @@ deploy:
     master: open-idea-station
     staging: open-idea-station-staging
   on:
-    repo: Open-Idea-Station/Acorn
+    repo: open-idea-station/Acorn
   run:
   - rails db:migrate
