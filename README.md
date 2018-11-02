@@ -85,7 +85,7 @@ Acorn is written in:
 
     ```
     Run `sudo nano /etc/hosts`. 
-    Edit the terminal and include `127.0.0.1   open-idea-station.io` to the list of hosts.
+    Edit the terminal and include `127.0.0.1 open-idea-station.io` to the list of hosts.
     Save changes and exit the terminal
     ```
 
@@ -98,7 +98,7 @@ Acorn is written in:
 8. Visit the application url
 
     ```
-    go to: http://open-idea-station.io:3000
+    go to: http://open-idea-station.io:3001
     ```
 ## Testing
 - Run test with `rspec spec`
