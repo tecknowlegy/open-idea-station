@@ -1,5 +1,4 @@
 class IdeaPresenter < BasePresenter
-
   def author_name
     author_name = User.find(@model.user_id).username
     author_name.titleize
@@ -21,16 +20,13 @@ class IdeaPresenter < BasePresenter
     if @model.published_at?
       "Published #{current_view.time_ago_in_words(@model.published_at)} ago"
     else
-      'Draft'
+      "Draft"
     end
   end
 
   def tags
     return @model.all_categories unless @model.all_categories.blank?
-      
-    'No tags have been added'
+
+    "No tags have been added"
   end
-
 end
-
-

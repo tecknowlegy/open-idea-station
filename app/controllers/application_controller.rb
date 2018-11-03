@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:jwt_token]
-      headers['Authorization'] = session[:jwt_token]
+      headers["Authorization"] = session[:jwt_token]
       @current_user = AuthorizeRequest.new(headers).call.result
     else
       @current_user = nil
@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_user
-      flash[:notice] = 'Please login to perform this action'
+      flash[:notice] = "Please login to perform this action"
       respond_to do |format|
-        format.html { redirect_to '/signup' }
-        format.json { render error: 'Not Authorized', status: 401 }
+        format.html { redirect_to "/signup" }
+        format.json { render error: "Not Authorized", status: 401 }
       end
     end
   end

@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
 
   def logout
     cookies.signed[:user_id] = nil
-    session['jwt_token'] = nil
+    session["jwt_token"] = nil
     respond_to do |format|
-      format.html { redirect_to '/signup', notice: 'You are now logged out' }
+      format.html { redirect_to "/signup", notice: "You are now logged out" }
     end
   end
 
@@ -28,20 +28,19 @@ class SessionsController < ApplicationController
   end
 
   def omniauth_hash
-    request.env['omniauth.auth']
+    request.env["omniauth.auth"]
   end
 
-  def create_session auth_token
+  def create_session(auth_token)
     respond_to do |format|
       if auth_token.success?
-        flash[:success] = 'You are now signed in'
-        session['jwt_token'] = auth_token.result
-        format.html { redirect_to '/ideas' }
+        flash[:success] = "You are now signed in"
+        session["jwt_token"] = auth_token.result
+        format.html { redirect_to "/ideas" }
       else
         flash[:error] = auth_token.errors[:user_authentication].first
-        format.html { redirect_to '/signup' }
+        format.html { redirect_to "/signup" }
       end
     end
   end
-
 end
