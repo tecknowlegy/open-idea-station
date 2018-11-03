@@ -1,18 +1,17 @@
 class ApplicationController < ActionController::Base
-  # protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session
   before_action :authorize
   helper_method :current_user, :logged_in?
   after_action :clear_xhr_flash
 
   def current_user
-    token = session[:jwt_token] || request.headers["Authorization"]
+    headers["Authorization"] ||= session[:jwt_token] || request.headers["Authorization"]
 
-    if token.present?
-      headers["Authorization"] = token
-      @current_user = AcornService::AuthorizeUserService.new(headers).call.result
-    else
-      @current_user = nil
-    end
+    @current_user = if headers["Authorization"].present?
+                      AcornService::AuthorizeUserService.new(headers).call.result
+                    else
+                      @current_user = nil
+                    end
   end
 
   def logged_in?

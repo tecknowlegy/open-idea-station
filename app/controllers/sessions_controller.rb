@@ -14,8 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def logout
-    cookies.signed[:user_id] = nil
-    session["jwt_token"] = nil
+    cookies[:user_id] = session["jwt_token"] = nil
     respond_to do |format|
       format.html { redirect_to "/signup", notice: "You are now logged out" }
     end
@@ -35,7 +34,7 @@ class SessionsController < ApplicationController
     respond_to do |format|
       if auth_token.success?
         flash[:success] = "You are now signed in"
-        session["jwt_token"] = auth_token.result
+        cookies[:user_id] = session["jwt_token"] = auth_token.result
         format.html { redirect_to "/ideas" }
       else
         flash[:error] = auth_token.errors[:user_authentication].first
