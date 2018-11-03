@@ -10,7 +10,8 @@ class Idea < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }, uniqueness: { case_sensitive: false }
   validates :description, presence: true, length: { minimum: 10 }
 
-  attr_accessor :all_categories
+  attr_writer :all_categories
+
   after_save :save_categories
   after_destroy :broadcast_delete
   after_initialize :set_is_archived
