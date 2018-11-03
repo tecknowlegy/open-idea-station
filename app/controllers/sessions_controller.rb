@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authorize
 
   def login
-    auth_token = AcornService::AuthenticateUser.call(auth_params)
+    auth_token = AcornService::AuthenticateUserService.call(auth_params)
     create_session(auth_token)
   end
 

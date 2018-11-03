@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
   before_action :authorize
   helper_method :current_user, :logged_in?
   after_action :clear_xhr_flash
@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
     if token.present?
       headers["Authorization"] = token
-      @current_user = AcornService::AuthorizeUserRequest.new(headers).call.result
+      @current_user = AcornService::AuthorizeUserService.new(headers).call.result
     else
       @current_user = nil
     end
