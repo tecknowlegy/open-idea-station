@@ -20,21 +20,18 @@ class Idea < ApplicationRecord
   end
 
   def broadcast_delete
-    send_broadcast(status: 'delete', id: id, name: name)
+    send_broadcast(status: "delete", id: id, name: name)
   end
 
   def all_categories
-    self.categories.uniq.map(&:name).join(', ')
+    categories.uniq.map(&:name).join(", ")
   end
 
   private
 
   def save_categories
-    if @all_categories
-      @all_categories.split(',').each do |name|
-        self.categories << Category.where(name: name.strip).first_or_create!
-      end
+    @all_categories&.split(",")&.each do |name|
+      categories << Category.where(name: name.strip).first_or_create!
     end
   end
-
 end

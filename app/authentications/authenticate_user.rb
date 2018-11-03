@@ -23,9 +23,9 @@ class AuthenticateUser
 
   def user
     user = find_email_or_name
-    return user if user && user.authenticate(password)
+    return user if user&.authenticate(password)
 
-    errors.add(:user_authentication, 'Invalid credentials')
+    errors.add(:user_authentication, "Invalid credentials")
     nil
   end
 end

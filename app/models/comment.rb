@@ -17,12 +17,12 @@ class Comment < ApplicationRecord
   def create_notification
     prepare_recipients.each do |recipient|
       Notification.create(recipient: recipient, actor: user,
-                          action: 'commented', notifiable: self, is_read: false)
+                          action: "commented", notifiable: self, is_read: false)
 
       stream_content = {
         id: id,
         recipient: recipient[:username],
-        action: "#{user[:username]} commented on #{idea[:name]}"
+        action: "#{user[:username]} commented on #{idea[:name]}",
       }
       # send_broadcast(stream_content)
     end

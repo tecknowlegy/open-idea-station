@@ -1,7 +1,7 @@
 module CableBroadcast
   def send_broadcast(content)
     ActionCable.server.broadcast(
-      'notifications' + content[:recipient],
+      "notifications" + content[:recipient],
       html: render_notification(
         id: content[:id],
         action: content[:action],
@@ -15,7 +15,7 @@ module CableBroadcast
 
   def render_notification(notification)
     ApplicationController.render(
-      partial: 'layouts/notification',
+      partial: "layouts/notification",
       locals: { notification: notification }
     )
   end

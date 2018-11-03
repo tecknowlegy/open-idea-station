@@ -15,7 +15,7 @@ class AuthorizeRequest
 
   def user
     @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
-    @user || errors.add(:token, 'Invalid token') && nil
+    @user || errors.add(:token, "Invalid token") && nil
   end
 
   def decoded_auth_token
@@ -23,11 +23,12 @@ class AuthorizeRequest
   end
 
   def http_auth_header
-    if headers['Authorization'].present?
-      return headers['Authorization'].split(' ').last
+    if headers["Authorization"].present?
+      return headers["Authorization"].split(" ").last
     else
-      errors.add(:token, 'No Token was provided')
+      errors.add(:token, "No Token was provided")
     end
+
     nil
   end
 end

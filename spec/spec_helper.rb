@@ -1,13 +1,12 @@
-require 'coveralls'
+require "coveralls"
 Coveralls.wear!
-require 'simplecov'
+require "simplecov"
 # require 'rack_session_access/capybara'
-require 'should_not/rspec'
+require "should_not/rspec"
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-SimpleCov.start 'rails'
+SimpleCov.start "rails"
 
 RSpec.configure do |config|
-  
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end

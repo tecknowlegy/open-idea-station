@@ -12,13 +12,13 @@ class UsersController < ApplicationController
     user_credentials = { username: user_params[:username], password: user_params[:password] }
     respond_to do |format|
       if user.save
-        flash[:notice] = 'Your account was successfully created'
+        flash[:notice] = "Your account was successfully created"
         auth_token = AuthenticateUser.call(user_credentials)
 
         if auth_token.success?
-          session['jwt_token'] = auth_token.result
+          session["jwt_token"] = auth_token.result
           format.html do
-            redirect_to '/ideas'
+            redirect_to "/ideas"
           end
         end
 

@@ -2,10 +2,10 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, \
-  :format => /\A[a-zA-Z0-9]+\Z/
+                       format: /\A[a-zA-Z0-9]+\Z/
   validates_presence_of :email, :password_digest
   validates :email, uniqueness: { case_sensitive: false }, \
-  :format => /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i
+                    format: /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i
 
   validates :password, presence: true
   validates :password, confirmation: { case_sensitive: true }
@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   def self.find_or_create_from_omniauth(auth)
     case auth.provider
-    when 'google_oauth2'
+    when "google_oauth2"
       find_params = { provider: auth.provider, uid: auth.uid }
       where(find_params).first_or_initialize.tap do |user|
         user.provider = auth.provider
@@ -27,18 +27,17 @@ class User < ApplicationRecord
         user.picture = auth.info.image
         user.save!
       end
-    else 'github'
-      find_params = { provider: auth.provider, uid: auth.uid }
-      where(find_params).first_or_initialize.tap do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.username = auth.info.name unless auth.info.name.nil?
-        user.email = auth.info.email unless auth.info.email.nil?
-        user.password = auth.credentials.token[-15, 15]
-        user.picture = auth.extra['raw_info'].avatar_url unless auth.extra['raw_info'].avatar_url.nil?
-        user.save!
-      end
+    else "github"
+         find_params = { provider: auth.provider, uid: auth.uid }
+         where(find_params).first_or_initialize.tap do |user|
+           user.provider = auth.provider
+           user.uid = auth.uid
+           user.username = auth.info.name unless auth.info.name.nil?
+           user.email = auth.info.email unless auth.info.email.nil?
+           user.password = auth.credentials.token[-15, 15]
+           user.picture = auth.extra["raw_info"].avatar_url unless auth.extra["raw_info"].avatar_url.nil?
+           user.save!
+         end
     end
   end
-
 end

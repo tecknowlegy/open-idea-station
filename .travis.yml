@@ -1,17 +1,24 @@
 language: ruby
+
 rvm:
 - 2.2.6
+
 env:
 - DB=pgsql
+
 services:
 - postgresql
+
 before_script:
 - psql -c 'create database acorn_test_db;' -U postgres
 - cp config/database.yml.travis config/database.yml
+
 script:
-- RAILS_ENV=test bundle exec rake ci:tests
+- bundle exec rake ci:tests
+
 notifications:
   email: false
+
 deploy:
   provider: heroku
   api_key:
