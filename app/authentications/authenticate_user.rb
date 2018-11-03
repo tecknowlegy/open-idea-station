@@ -23,7 +23,6 @@ class AuthenticateUser
 
   def user
     user = find_email_or_name
-    # TODO: check why `user&.authenticate(password)` fails on ci servers
     return user if user&.authenticate(password)
 
     errors.add(:user_authentication, "Invalid credentials")

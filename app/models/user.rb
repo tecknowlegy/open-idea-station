@@ -27,17 +27,17 @@ class User < ApplicationRecord
         user.picture = auth.info.image
         user.save!
       end
-    else "github"
-         find_params = { provider: auth.provider, uid: auth.uid }
-         where(find_params).first_or_initialize.tap do |user|
-           user.provider = auth.provider
-           user.uid = auth.uid
-           user.username = auth.info.name unless auth.info.name.nil?
-           user.email = auth.info.email unless auth.info.email.nil?
-           user.password = auth.credentials.token[-15, 15]
-           user.picture = auth.extra["raw_info"].avatar_url unless auth.extra["raw_info"].avatar_url.nil?
-           user.save!
-         end
+    when "github"
+      find_params = { provider: auth.provider, uid: auth.uid }
+      where(find_params).first_or_initialize.tap do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.username = auth.info.name unless auth.info.name.nil?
+        user.email = auth.info.email unless auth.info.email.nil?
+        user.password = auth.credentials.token[-15, 15]
+        user.picture = auth.extra["raw_info"].avatar_url unless auth.extra["raw_info"].avatar_url.nil?
+        user.save!
+      end
     end
   end
 end
