@@ -1,4 +1,4 @@
-class JsonWebToken
+class Acorn::JsonWebToken
   class << self
     HMAC_SECRET = Rails.application.secrets.secret_key_base
 

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe AuthenticateUser do
+describe AcornService::AuthenticateUserService do
   let!(:user1) { create :user }
   let(:user_credentials) { { username: user1.username, password: user1.password } }
   subject(:authenticate_status) { described_class.call(user_credentials) }

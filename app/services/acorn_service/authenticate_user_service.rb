@@ -1,4 +1,4 @@
-class AuthenticateUser
+class AcornService::AuthenticateUserService
   prepend SimpleCommand
 
   def initialize(user_params)
@@ -8,7 +8,7 @@ class AuthenticateUser
   end
 
   def call
-    JsonWebToken.encode(user_id: user.id) if user
+    Acorn::JsonWebToken.encode(user_id: user.id) if user
   end
 
   private

@@ -1,9 +1,9 @@
 require "rails_helper"
 
-describe AuthorizeRequest do
+describe AcornService::AuthorizeUserService do
   let!(:user1) { create :user }
   let(:user_credentials) { { username: user1.username, password: user1.password } }
-  subject(:authenticate_status) { AuthenticateUser.call(user_credentials) }
+  subject(:authenticate_status) { AcornService::AuthenticateUserService.call(user_credentials) }
   let(:headers) { { "Authorization" => authenticate_status.result } }
   # Instantiate invalid request subject
   subject(:user_objA) { described_class.new({}).call.result }

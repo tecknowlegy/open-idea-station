@@ -1,6 +1,4 @@
 class Idea < ApplicationRecord
-  include CableBroadcast
-
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :viewers, dependent: :destroy
@@ -18,10 +16,6 @@ class Idea < ApplicationRecord
 
   def set_is_archived
     self.is_archived ||= false
-  end
-
-  def broadcast_delete
-    send_broadcast(status: "delete", id: id, name: name)
   end
 
   def all_categories
