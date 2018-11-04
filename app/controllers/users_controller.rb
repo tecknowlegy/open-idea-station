@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     user_credentials = { username: user_params[:username], password: user_params[:password] }
     respond_to do |format|
       if user.save
+        # TODO: Translations << Add to translations
         flash[:notice] = "Your account was successfully created"
         auth_token = AcornService::AuthenticateUserService.call(user_credentials)
 
