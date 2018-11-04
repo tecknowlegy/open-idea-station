@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   mount ActionCable.server => "/cable"
   root to: "index#index", as: "index"
 
+  # FUTURE: API endpoints
+  namespace :api, path: nil, defaults: { format: :json }, constraints: { subdomain: /^api(-\w+)?$/ } do
+    resources :ideas do
+      get "viewed"
+      resources :comments
+    end
+  end
+
   resources :ideas do
     get "viewed"
     resources :comments
@@ -17,5 +25,4 @@ Rails.application.routes.draw do
   post "/signup" => "users#create"
   post "/login" => "sessions#login"
   get "/logout" => "sessions#logout"
-  get "/profile" => "users#user_profile"
 end

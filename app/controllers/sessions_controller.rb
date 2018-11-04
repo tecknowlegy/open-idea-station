@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def login_with_omniauth
     user = User.find_or_create_from_omniauth(omniauth_hash)
     user_credentials = { username: user.username, password: user.password }
-    auth_token = AcornService::AuthenticateUser.call(user_credentials)
+    auth_token = AcornService::AuthenticateUserService.call(user_credentials)
     create_session(auth_token)
   end
 
@@ -33,10 +33,12 @@ class SessionsController < ApplicationController
   def create_session(auth_token)
     respond_to do |format|
       if auth_token.success?
+        # TODO: Translations << Add to translations
         flash[:success] = "You are now signed in"
         cookies[:user_id] = session["jwt_token"] = auth_token.result
         format.html { redirect_to "/ideas" }
       else
+        # << and this
         flash[:error] = auth_token.errors[:user_authentication].first
         format.html { redirect_to "/signup" }
       end

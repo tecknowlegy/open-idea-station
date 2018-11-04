@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if user.save
         flash[:notice] = "Your account was successfully created"
-        auth_token = AcornService::AuthenticateUser.call(user_credentials)
+        auth_token = AcornService::AuthenticateUserService.call(user_credentials)
 
         if auth_token.success?
           session["jwt_token"] = auth_token.result
