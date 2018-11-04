@@ -1,6 +1,4 @@
 class Idea < ApplicationRecord
-  include CableBroadcast
-
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :viewers, dependent: :destroy
@@ -10,19 +8,14 @@ class Idea < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }, uniqueness: { case_sensitive: false }
   validates :description, presence: true, length: { minimum: 10 }
 
+  # default values are part of domain logic and should be kept together with
+  # the rest of the domain logic of the application, in the model layer.
+  attribute :is_archived, :boolean, default: false
+
   attr_writer :all_categories
 
   after_save :save_categories
   after_destroy :broadcast_delete
-  after_initialize :set_is_archived
-
-  def set_is_archived
-    self.is_archived ||= false
-  end
-
-  def broadcast_delete
-    send_broadcast(status: "delete", id: id, name: name)
-  end
 
   def all_categories
     categories.uniq.map(&:name).join(", ")

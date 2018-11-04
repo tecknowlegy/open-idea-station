@@ -2,20 +2,19 @@ class SessionsController < ApplicationController
   skip_before_action :authorize
 
   def login
-    auth_token = AuthenticateUser.call(auth_params)
+    auth_token = AcornService::AuthenticateUserService.call(auth_params)
     create_session(auth_token)
   end
 
   def login_with_omniauth
     user = User.find_or_create_from_omniauth(omniauth_hash)
     user_credentials = { username: user.username, password: user.password }
-    auth_token = AuthenticateUser.call(user_credentials)
+    auth_token = AcornService::AuthenticateUserService.call(user_credentials)
     create_session(auth_token)
   end
 
   def logout
-    cookies.signed[:user_id] = nil
-    session["jwt_token"] = nil
+    cookies[:user_id] = session["jwt_token"] = nil
     respond_to do |format|
       format.html { redirect_to "/signup", notice: "You are now logged out" }
     end
@@ -34,10 +33,12 @@ class SessionsController < ApplicationController
   def create_session(auth_token)
     respond_to do |format|
       if auth_token.success?
+        # TODO: Translations << Add to translations
         flash[:success] = "You are now signed in"
-        session["jwt_token"] = auth_token.result
+        cookies[:user_id] = session["jwt_token"] = auth_token.result
         format.html { redirect_to "/ideas" }
       else
+        # << and this
         flash[:error] = auth_token.errors[:user_authentication].first
         format.html { redirect_to "/signup" }
       end

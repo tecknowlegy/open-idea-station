@@ -5,12 +5,13 @@ class ApplicationController < ActionController::Base
   after_action :clear_xhr_flash
 
   def current_user
-    if session[:jwt_token]
-      headers["Authorization"] = session[:jwt_token]
-      @current_user = AuthorizeRequest.new(headers).call.result
-    else
-      @current_user = nil
-    end
+    headers["Authorization"] ||= session[:jwt_token] || request.headers["Authorization"]
+
+    @current_user = if headers["Authorization"].present?
+                      AcornService::AuthorizeUserService.new(headers).call.result
+                    else
+                      @current_user = nil
+                    end
   end
 
   def logged_in?

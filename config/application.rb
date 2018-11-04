@@ -10,12 +10,22 @@ module Acorns
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
+    # Paths to load in production which are normally supported by rails
+    all_autoload_paths = [
+      Rails.root.join("lib"),
+      Rails.root.join("lib", "acorn"),
+    ]
 
     # change the default behavior for rescuing forbidden server response
     config.action_dispatch.rescue_responses["IdeasController::Forbidden"] = :forbidden
 
     # provide global access to /lib directory
-    config.autoload_paths += %W[#{config.root}/lib]
+    config.autoload_paths += all_autoload_paths
+    # In production, it relies on eager_load_paths to load the modules
+    config.eager_load_paths += all_autoload_paths
+
+    config.time_zone = "West Central Africa"
+    config.i18n.default_locale = :en
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
