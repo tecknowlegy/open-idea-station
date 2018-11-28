@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     headers["Authorization"] ||= session[:jwt_token] || request.headers["Authorization"]
 
     @current_user = if headers["Authorization"].present?
-                      AcornService::AuthorizeUserService.new(headers).call.result
+                      Acorn::AuthorizeUserService.new(headers).call.result
                     else
                       @current_user = nil
                     end

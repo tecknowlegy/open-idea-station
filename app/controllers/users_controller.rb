@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       if user.save
         # TODO: Translations << Add to translations
         flash[:notice] = "Your account was successfully created"
-        auth_token = AcornService::AuthenticateUserService.call(user_credentials)
+        auth_token = Acorn::AuthenticateUserService.call(user_credentials)
 
         if auth_token.success?
           session["jwt_token"] = auth_token.result

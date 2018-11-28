@@ -57,6 +57,7 @@ class IdeasController < ApplicationController
     respond_to do |format|
       if @idea.update(idea_params)
         if params[:commit] == "Publish"
+          # TODO: remove puts and allow notice for publish
           puts idea_params
           @idea.update_attributes!(published_at: Time.now)
         end
@@ -72,6 +73,7 @@ class IdeasController < ApplicationController
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
   def destroy
+    # TODO: put this check in it's own method (#owner?)
     return if @idea.user[:id] != @current_user[:id]
 
     @idea.update_attributes!(is_archived: true)

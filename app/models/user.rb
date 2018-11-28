@@ -1,11 +1,13 @@
 class User < ApplicationRecord
+  USERNAME_REGEX = /\A[a-zA-Z0-9]+\Z/.freeze
+  EMAIL_REGEX = /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i.freeze
+
   has_secure_password
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, \
-                       format: /\A[a-zA-Z0-9]+\Z/
+                       format: USERNAME_REGEX
   validates_presence_of :email, :password_digest
-  validates :email, uniqueness: { case_sensitive: false }, \
-                    format: /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i
+  validates :email, uniqueness: { case_sensitive: false }, format: EMAIL_REGEX
 
   validates :password, presence: true
   validates :password, confirmation: { case_sensitive: true }
@@ -39,5 +41,15 @@ class User < ApplicationRecord
         user.save!
       end
     end
+  end
+
+  # Public: allow application to be able to retrieve #full_name
+  # when first_name and last_name exist in model
+  def full_name
+    %(#{first_name} #{last_name}).titleize if has_attribute?(:first_name) && has_attribute?(:last_name)
+  end
+
+  def bio
+    read_attribute(:bio) || "Bio is yet to be updated"
   end
 end

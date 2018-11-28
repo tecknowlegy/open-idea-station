@@ -2,14 +2,14 @@ class SessionsController < ApplicationController
   skip_before_action :authorize
 
   def login
-    auth_token = AcornService::AuthenticateUserService.call(auth_params)
+    auth_token = Acorn::AuthenticateUserService.call(auth_params)
     create_session(auth_token)
   end
 
   def login_with_omniauth
     user = User.find_or_create_from_omniauth(omniauth_hash)
     user_credentials = { username: user.username, password: user.password }
-    auth_token = AcornService::AuthenticateUserService.call(user_credentials)
+    auth_token = Acorn::AuthenticateUserService.call(user_credentials)
     create_session(auth_token)
   end
 
