@@ -93,7 +93,7 @@ end
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "nokogiri", ">= 1.8.2"
-gem "rack", "~> 2.0.1"
+gem "rack", "~> 2.0.6"
 
 # Use fontawesome for icons
 gem "font-awesome-rails"

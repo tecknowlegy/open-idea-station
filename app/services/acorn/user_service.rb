@@ -1,0 +1,2 @@
+class Acorn::UserService
+end

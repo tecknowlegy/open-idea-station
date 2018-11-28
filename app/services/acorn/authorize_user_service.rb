@@ -1,4 +1,4 @@
-class AcornService::AuthorizeUserService
+class Acorn::AuthorizeUserService
   prepend SimpleCommand
 
   def initialize(headers = {})

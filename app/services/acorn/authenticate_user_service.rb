@@ -1,10 +1,9 @@
-class AcornService::AuthenticateUserService
+class Acorn::AuthenticateUserService
   prepend SimpleCommand
 
   def initialize(user_params)
     @username = user_params[:username]
     @password = user_params[:password]
-    @email_regex = /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i
   end
 
   def call
@@ -16,7 +15,7 @@ class AcornService::AuthenticateUserService
   attr_accessor :username, :password, :email_regex
 
   def find_email_or_name
-    return User.find_by_email(username) if username.match(email_regex)
+    return User.find_by_email(username) if username.match(User::EMAIL_REGEX)
 
     User.find_by_username(username)
   end
