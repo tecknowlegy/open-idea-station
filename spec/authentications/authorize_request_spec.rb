@@ -4,19 +4,19 @@ describe Acorn::AuthorizeUserService do
   let!(:user1) { create :user }
   let(:user_credentials) { { username: user1.username, password: user1.password } }
   subject(:authenticate_status) { Acorn::AuthenticateUserService.call(user_credentials) }
-  let(:headers) { { "Authorization" => authenticate_status.result } }
+  let(:token) { authenticate_status.result }
   # Instantiate invalid request subject
   subject(:user_objA) { described_class.new({}).call.result }
   # Instantiate valid request subject
-  subject(:user_objB) { described_class.new(headers).call.result }
+  subject(:user_objB) { described_class.new(token).call.result }
 
-  context "when the user has a valid request headers" do
+  context "when the user has a valid request token" do
     it "returns the valid user object" do
       expect(user_objB).to eq(user1)
     end
   end
 
-  context "when the user has no valid request headers" do
+  context "when the user has no valid request token" do
     it "returns the invalid user object" do
       token_error = described_class.new({}).call.errors[:token].first
       expect(user_objA).to eq(nil)

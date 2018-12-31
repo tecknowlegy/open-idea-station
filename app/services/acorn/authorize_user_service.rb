@@ -1,8 +1,8 @@
 class Acorn::AuthorizeUserService
   prepend SimpleCommand
 
-  def initialize(headers = {})
-    @headers = headers
+  def initialize(token)
+    @token = token
   end
 
   def call
@@ -11,7 +11,7 @@ class Acorn::AuthorizeUserService
 
   private
 
-  attr_accessor :headers
+  attr_accessor :token
 
   def user
     @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
@@ -19,12 +19,12 @@ class Acorn::AuthorizeUserService
   end
 
   def decoded_auth_token
-    @decoded_auth_token ||= Acorn::JsonWebToken.decode(http_auth_header)
+    @decoded_auth_token ||= Acorn::JsonWebToken.decode(auth_token)
   end
 
-  def http_auth_header
-    if headers["Authorization"].present?
-      return headers["Authorization"].split(" ").last
+  def auth_token
+    if token.present?
+      return token.split(" ").last
     else
       errors.add(:token, "No Token was provided")
     end
