@@ -33,7 +33,7 @@
               </li>
               <li class="divider"></li>
               <li class="profile-link">
-                <a class="logout-link" href="/logout">
+                <a class="logout-link" href="<%= session_path(current_user_session.id) %>">
                   Log Out
                 </a>
               </li>
@@ -70,9 +70,7 @@
                 </li>
                 <li class="divider"></li>
                 <li class="profile-link">
-                  <a class="logout-link" href="/logout">
-                    Log Out
-                  </a>
+                  <%= link_to "Log Out", session_path(current_user_session.id), class: "logout-link", method: :delete %>
                 </li>
               </ul>
             </li>

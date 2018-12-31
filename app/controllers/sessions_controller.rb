@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
     current_user.find_session_by_token(session[:token]).revoke!
     cookies[:user_id] = session["token"] = nil
     respond_to do |format|
-      format.html { redirect_to "/signup", notice: "You are now logged out" }
+      format.html { redirect_to new_user_path, notice: "You are now logged out" }
     end
   end
 
@@ -66,7 +66,7 @@ class SessionsController < ApplicationController
       else
         # << and this
         flash[:error] = auth_token.errors[:user_authentication].first
-        format.html { redirect_to "/signup" }
+        format.html { redirect_to new_user_path }
       end
     end
   end
