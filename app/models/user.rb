@@ -43,6 +43,11 @@ class User < ApplicationRecord
     end
   end
 
+  def self.find_user_by_session(token)
+    session = Session.find_by(token: token, active: true)
+    session&.user
+  end
+
   # Public: allow application to be able to retrieve #full_name
   # when first_name and last_name exist in model
   def full_name
@@ -51,5 +56,33 @@ class User < ApplicationRecord
 
   def bio
     read_attribute(:bio) || "Bio is yet to be updated"
+  end
+
+  concerning :Sessions do
+    included do
+      has_many :sessions, dependent: :destroy
+    end
+
+    def all_sessions
+      sessions.order(created_at: :desc)
+    end
+
+    def find_session!(id)
+      all_sessions.find_by!(uid: id)
+    end
+
+    def find_session_by_token(token)
+      all_sessions.find_by(token: token)
+    end
+
+    def create_session(attributes)
+      sessions.create(attributes)
+    end
+
+    def revoke_all_sessions!(options = {})
+      relation = sessions.active
+      relation = relation.where.not(token: options[:except]) if options[:except]
+      relation.map(&:revoke!)
+    end
   end
 end

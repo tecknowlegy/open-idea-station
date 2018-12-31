@@ -2,7 +2,7 @@ class Acorn::JsonWebToken
   class << self
     HMAC_SECRET = Rails.application.secrets.secret_key_base
 
-    def encode(payload, exp = 12.hours.from_now)
+    def encode(payload, exp)
       payload[:exp] = exp.to_i
       JWT.encode(payload, HMAC_SECRET)
     end
@@ -12,7 +12,12 @@ class Acorn::JsonWebToken
       HashWithIndifferentAccess.new body
 
     # rescue JWT::DecodeError => e
-    #   raise ExceptionHandler::InvalidToken, e.message
+    #   raise AcornError::InvalidToken, e.message
+    #   nil
+    # end
+
+    # rescue JWT::ExpiredSignature
+    #   # Handle expired token, e.g. logout user or deny access
     # end
     rescue StandardError
       nil

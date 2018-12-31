@@ -1,18 +1,27 @@
 class Acorn::AuthenticateUserService
   prepend SimpleCommand
 
-  def initialize(user_params)
-    @username = user_params[:username]
-    @password = user_params[:password]
+  def initialize(params)
+    @username = params[:username]
+    @password = params[:password]
+    @session_params = params.except(:username, :password)
   end
 
   def call
-    Acorn::JsonWebToken.encode(user_id: user.id) if user
+    session = user&.create_session(
+      session_params.merge(
+        token: Acorn::JsonWebToken.encode({ user_id: user.id }, expires_at),
+        expires_at: expires_at,
+        active: true
+      )
+    )
+
+    session&.token
   end
 
   private
 
-  attr_accessor :username, :password, :email_regex
+  attr_accessor :username, :password, :email_regex, :session_params
 
   def find_email_or_name
     return User.find_by_email(username) if username.match(User::EMAIL_REGEX)
@@ -26,5 +35,11 @@ class Acorn::AuthenticateUserService
 
     errors.add(:user_authentication, "Invalid credentials")
     nil
+  end
+
+  def expires_at
+    if Session::DEVICE_PLATFORMS.key?(@session_params[:device_platform].to_s.to_sym)
+      Session::DEVICE_PLATFORMS[@session_params[:device_platform].to_s.to_sym].from_now
+    end
   end
 end

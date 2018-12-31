@@ -19,10 +19,16 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index]
 
   get "/auth/:provider/callback" => "sessions#login_with_omniauth"
-  get "/auth/failure", to: redirect("/signup")
+  get "/auth/failure", to: redirect("/users/new")
 
-  get "/signup" => "users#new"
-  post "/signup" => "users#create"
-  post "/login" => "sessions#login"
-  get "/logout" => "sessions#logout"
+  resources :users, only: %i[new create]
+
+  resources :sessions, only: %i[index new create destroy] do
+    member do
+      delete :revoke
+    end
+    collection do
+      delete :revoke_all
+    end
+  end
 end

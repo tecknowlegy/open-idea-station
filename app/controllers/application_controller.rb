@@ -1,17 +1,22 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :authorize
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :current_user_session, :logged_in?
   after_action :clear_xhr_flash
 
-  def current_user
-    headers["Authorization"] ||= session[:jwt_token] || request.headers["Authorization"]
+  private
 
-    @current_user = if headers["Authorization"].present?
-                      Acorn::AuthorizeUserService.new(headers).call.result
-                    else
-                      @current_user = nil
-                    end
+  def current_user_session
+    @current_user_session ||= Session.find_by(token: session[:token]) if session[:token]
+  end
+
+  # current_active_user in this context is a user
+  # with an active session and valid token
+  def current_user
+    token ||= session[:token] || request.headers["Authorization"]
+    user ||= User.find_user_by_session(token) if token
+
+    @current_user ||= Acorn::AuthorizeUserService.new(token).call.result if user
   end
 
   def logged_in?
@@ -21,11 +26,28 @@ class ApplicationController < ActionController::Base
   def authorize
     unless current_user
       flash[:notice] = "Please login to perform this action"
+      current_user_session&.revoke!
+
       respond_to do |format|
-        format.html { redirect_to "/signup" }
+        format.html { redirect_to :new_user_path }
         format.json { render error: "Not Authorized", status: 401 }
       end
     end
+  end
+
+  def session_params
+    {
+      user_agent: request.user_agent,
+      ip_address: request.remote_ip,
+      location: nil,
+      device_platform: :browser,
+    }
+  end
+
+  # Takes a string of IP address and lookup a geo location from it.
+  def humanize_location(ip_address)
+    location = Acorn::Location.by_ip(ip_address)
+    location ? location.name : t("general.na")
   end
 
   def clear_xhr_flash
