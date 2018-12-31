@@ -22,8 +22,4 @@ class Session < ApplicationRecord
   def revoke!
     update active: false
   end
-
-  def renew!
-    update active: true
-  end
 end
