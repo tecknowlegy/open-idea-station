@@ -3,6 +3,7 @@ class IdeasController < ApplicationController
   before_action :set_idea, only: %i[show edit update destroy]
 
   def index
+    # TODO: move where methods to scope
     @ideas = Idea.includes(:categories)
       .where(is_archived: false)
       .where.not(published_at: nil)
@@ -10,12 +11,12 @@ class IdeasController < ApplicationController
   end
 
   def viewed
-    # define local variable as its not needed in the view
     idea = Idea.find(params[:idea_id])
     @views = idea.viewers
   end
 
   def show
+
     return if logged_in? && !@current_user.ideas.find_by(id: @idea.id).nil?
 
     Viewer.create!(
