@@ -1,25 +1,32 @@
 class UsersController < ApplicationController
   skip_before_action :authorize, only: %i[new create]
 
-  # GET /users/signup
+  # GET /users/new
   def new
     @user = User.new
   end
 
-  # POST /users/signup
+  # POST /users
   def create
     user = User.new(user_params)
-    user_credentials = { username: user_params[:username], password: user_params[:password] }
+    user_session = session_params.merge(
+      { username: user_params[:username], password: user_params[:password] }
+    )
     respond_to do |format|
       if user.save
         # TODO: Translations << Add to translations
         flash[:notice] = "Your account was successfully created"
-        auth_token = Acorn::AuthenticateUserService.call(user_credentials)
+        auth_hash = Acorn::AuthenticateUserService.call(user_session)
 
-        if auth_token.success?
-          session["jwt_token"] = auth_token.result
+        if auth_hash.success?
+          cookies[:user_id] = session["token"] = auth_hash.result
           format.html do
             redirect_to "/ideas"
+          end
+        else
+          flash[:notice] = "We could not create your session at this time. Please login to continue"
+          format.html do
+            redirect_to "/"
           end
         end
 
