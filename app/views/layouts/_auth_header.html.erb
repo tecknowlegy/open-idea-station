@@ -9,11 +9,54 @@
           </div>
 
           <div class="current-user-mobile hide-on-large">
+            <a class="mobile-notification">
+              <i class="material-icons notification-mobile">notifications</i>
+              <small class="notification-badge">4</small>
+            </a>
             <% if current_user[:picture] %>
               <a class="current-user"><img src="<%= current_user[:picture] %>"/></a>
             <% else %>
               <a class="current-user"><%= current_user[:username][0,2] %></a>
             <% end %>
+            <span class="mobile-notification-dropdown hidden">
+              <span class="popover-rect top-right-mobile"></span>
+              <div class="notification-header">
+                <p>Notifications</p>
+              </div>
+              <div class="notification-body">
+                <div class="notification-item">
+                  <div class="item-image"><img src="<%= asset_path('dummy-profile-male.jpg') %>" alt="profile-picture"></div>
+                  <div class="item-content">
+                    <p class="notification-content"><em>Samson Jared</em> liked your idea</p>
+                    <p class="notification-time">10 minutes ago</p>
+                  </div>
+                </div>
+                <div class="notification-item">
+                  <div class="item-initials"><span>SJ</span></div>
+                  <div class="item-content">
+                    <p class="notification-content"><em>Samson Jared</em> liked your idea</p>
+                    <p class="notification-time">10 minutes ago</p>
+                  </div>
+                </div>
+                <div class="notification-item">
+                  <div class="item-image"><img src="<%= asset_path('dummy-profile-male.jpg') %>" alt="profile-picture"></div>
+                  <div class="item-content">
+                    <p class="notification-content"><em>Samson Jared</em> liked your idea</p>
+                    <p class="notification-time">10 minutes ago</p>
+                  </div>
+                </div>
+                <div class="notification-item">
+                  <div class="item-image"><img src="<%= asset_path('dummy-profile-male.jpg') %>" alt="profile-picture"></div>
+                  <div class="item-content">
+                    <p class="notification-content"><em>Samson Jared</em> liked your idea</p>
+                    <p class="notification-time">10 minutes ago</p>
+                  </div>
+                </div>
+                <div class="more-notifications">
+                  <i class="material-icons">arrow_downward</i>
+                </div>
+              </div>
+            </span>
             <ul class="user-profile-dropdown hidden">
               <span class="popover-rect top-right"></span>
               <li class="user">
@@ -44,7 +87,50 @@
             <li class="auth-nav-item"><a href="/"><i class="material-icons">home</i></a></li>
             <li class="auth-nav-item"><a href="/ideas"><i class="material-icons">cloud_queue</i></a></li>
             <li class="auth-nav-item"><a href="/ideas/new"><i class="material-icons">note_add</i></a></li>
-            <li class="auth-nav-item"><a href=""><i class="material-icons">notifications_none</i></a></li>
+            <li class="auth-nav-item">
+              <a>
+                <i class="material-icons notification">notifications</i>
+                <small class="notification-badge">4</small>
+              </a>
+              <div class="notification-dropdown hidden">
+                <span class="popover-rect top-right"></span>
+                <div class="notification-header">
+                  <p>Notifications</p>
+                </div>
+                <div class="notification-body">
+                  <div class="notification-item">
+                    <div class="item-image"><img src="<%= asset_path('dummy-profile-male.jpg') %>" alt="profile-picture"></div>
+                    <div class="item-content">
+                      <p class="notification-content"><em>Samson Jared</em> liked your idea</p>
+                      <p class="notification-time">10 minutes ago</p>
+                    </div>
+                  </div>
+                  <div class="notification-item">
+                    <div class="item-initials"><span>SJ</span></div>
+                    <div class="item-content">
+                      <p class="notification-content"><em>Samson Jared</em> liked your idea</p>
+                      <p class="notification-time">10 minutes ago</p>
+                    </div>
+                  </div>
+                  <div class="notification-item">
+                    <div class="item-image"><img src="<%= asset_path('dummy-profile-male.jpg') %>" alt="profile-picture"></div>
+                    <div class="item-content">
+                      <p class="notification-content"><em>Samson Jared</em> liked your idea</p>
+                      <p class="notification-time">10 minutes ago</p>
+                    </div>
+                  </div>
+                  <div class="notification-item">
+                    <div class="item-image"><img src="<%= asset_path('dummy-profile-male.jpg') %>" alt="profile-picture"></div>
+                    <div class="item-content">
+                      <p class="notification-content"><em>Samson Jared</em> liked your idea</p>
+                      <p class="notification-time">10 minutes ago</p>
+                    </div>
+                  </div>
+                  <div class="more-notifications">
+                    <i class="material-icons">arrow_downward</i>
+                  </div>
+              </div>
+            </li>
             <li>
               <% if current_user[:picture] %>
                 <a class="current-user"><img src="<%= current_user[:picture] %>"/></a>
