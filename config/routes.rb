@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index]
 
-  get "/auth/:provider/callback" => "sessions#login_with_omniauth"
+  get "/auth/:provider/callback" => "sessions#create_with_omniauth"
   get "/auth/failure", to: redirect("/users/new")
 
   resources :users, only: %i[new create]

@@ -18,4 +18,3 @@ module UniqueIdentifier
     self.uid = Acorn::Bubble.generate(model_prefix, 96, time = Time.now)
   end
 end
- 

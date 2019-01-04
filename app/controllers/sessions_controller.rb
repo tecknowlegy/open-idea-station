@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize
+  skip_before_action :authorize, only: %i[create create_with_omniauth]
 
   def index
     @active_sessions = current_user.all_sessions.active.to_a - [current_user_session]
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def revoke
-    user_session = current_user.find_session_by_token(params[:token])
+    user_session = current_user.find_session_by_token(params[:token]) || current_user.find_session!(params[:id])
     user_session.revoke!
     flash[:notice] = "Session successfully revoked"
   end

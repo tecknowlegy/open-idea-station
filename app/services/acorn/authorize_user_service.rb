@@ -6,16 +6,15 @@ class Acorn::AuthorizeUserService
   end
 
   def call
-    user
+    authorized?
   end
 
   private
 
   attr_accessor :token
 
-  def user
-    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
-    @user || errors.add(:token, "Invalid token") && nil
+  def authorized?
+    decoded_auth_token.present? || errors.add(:token, "Invalid token") && false
   end
 
   def decoded_auth_token

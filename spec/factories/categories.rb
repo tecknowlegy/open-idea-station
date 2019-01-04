@@ -1,8 +1,7 @@
 FactoryBot.define do
-  factory :idea do
+  factory :category do
     name { Faker::Name.name }
     description { Faker::Lorem.sentence }
-    url { Faker::Internet.url }
-    user
+    idea
   end
 end

@@ -21,12 +21,14 @@ class UsersController < ApplicationController
         if auth_hash.success?
           cookies[:user_id] = session["token"] = auth_hash.result
           format.html do
-            redirect_to "/ideas"
+            redirect_to ideas_path
           end
         else
+          # TODO: create job that deletes from the database, resources
+          # that have incomplete instanciated columns present
           flash[:notice] = "We could not create your session at this time. Please login to continue"
           format.html do
-            redirect_to "/"
+            redirect_to index_path
           end
         end
 

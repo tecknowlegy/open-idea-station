@@ -6,20 +6,20 @@ describe Acorn::AuthorizeUserService do
   subject(:authenticate_status) { Acorn::AuthenticateUserService.call(user_credentials) }
   let(:token) { authenticate_status.result }
   # Instantiate invalid request subject
-  subject(:user_objA) { described_class.new({}).call.result }
+  subject(:authorized_userA) { described_class.new({}).call.result }
   # Instantiate valid request subject
-  subject(:user_objB) { described_class.new(token).call.result }
+  subject(:authorized_userB) { described_class.new(token).call.result }
 
   context "when the user has a valid request token" do
-    it "returns the valid user object" do
-      expect(user_objB).to eq(user1)
+    it "returns successfully authorizes the user" do
+      expect(authorized_userB).to be true
     end
   end
 
   context "when the user has no valid request token" do
     it "returns the invalid user object" do
       token_error = described_class.new({}).call.errors[:token].first
-      expect(user_objA).to eq(nil)
+      expect(authorized_userA).to eq(nil)
       expect(token_error).to eql "No Token was provided"
     end
   end

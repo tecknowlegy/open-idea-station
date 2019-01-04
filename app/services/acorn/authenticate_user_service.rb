@@ -38,8 +38,6 @@ class Acorn::AuthenticateUserService
   end
 
   def expires_at
-    if Session::DEVICE_PLATFORMS.key?(@session_params[:device_platform].to_s.to_sym)
-      Session::DEVICE_PLATFORMS[@session_params[:device_platform].to_s.to_sym].from_now
-    end
+    Session::DEVICE_PLATFORMS[@session_params[:device_platform].to_s.to_sym].from_now if Session::DEVICE_PLATFORMS.key?(@session_params[:device_platform].to_s.to_sym)
   end
 end

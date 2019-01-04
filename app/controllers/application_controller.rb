@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
   # with an active session and valid token
   def current_user
     token ||= session[:token] || request.headers["Authorization"]
-    user ||= User.find_user_by_session(token) if token
+    @current_user ||= User.find_user_by_session(token) if token
 
-    @current_user ||= Acorn::AuthorizeUserService.new(token).call.result if user
+    @current_user if Acorn::AuthorizeUserService.new(token).call.result
   end
 
   def logged_in?
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       current_user_session&.revoke!
 
       respond_to do |format|
-        format.html { redirect_to :new_user_path }
+        format.html { redirect_to new_user_path }
         format.json { render error: "Not Authorized", status: 401 }
       end
     end

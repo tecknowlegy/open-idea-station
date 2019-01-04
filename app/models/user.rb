@@ -37,7 +37,7 @@ class User < ApplicationRecord
         user.username = auth.info.name unless auth.info.name.nil?
         user.email = auth.info.email unless auth.info.email.nil?
         user.password = auth.credentials.token[-15, 15]
-        user.picture = auth.extra["raw_info"].avatar_url unless auth.extra["raw_info"].avatar_url.nil?
+        user.picture = auth.extra["raw_info"].avatar_url unless auth.extra["raw_info"]&.avatar_url.nil?
         user.save!
       end
     end
@@ -46,12 +46,6 @@ class User < ApplicationRecord
   def self.find_user_by_session(token)
     session = Session.find_by(token: token, active: true)
     session&.user
-  end
-
-  # Public: allow application to be able to retrieve #full_name
-  # when first_name and last_name exist in model
-  def full_name
-    %(#{first_name} #{last_name}).titleize if has_attribute?(:first_name) && has_attribute?(:last_name)
   end
 
   def bio
@@ -68,7 +62,8 @@ class User < ApplicationRecord
     end
 
     def find_session!(id)
-      all_sessions.find_by!(uid: id)
+      # TODO: ids should point to uids in objects
+      all_sessions.find_by!(id: id)
     end
 
     def find_session_by_token(token)

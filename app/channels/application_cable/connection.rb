@@ -10,11 +10,10 @@ module ApplicationCable
     protected
 
     def find_verified_user
-      user = Acorn::AuthorizeUserService.new(cookies[:user_id]).call.result
-      return user if user
+      @verified_user ||= User.find_user_by_session(cookies[:user_id]) if Acorn::AuthorizeUserService.new(cookies[:user_id]).call.result
 
       # Raises ActionCable::Connection::Authorization::UnauthorizedError
-      reject_unauthorized_connection
+      @verified_user || reject_unauthorized_connection
     end
   end
 end
