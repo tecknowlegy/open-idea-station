@@ -13,6 +13,8 @@ gem "pg", "~> 0.18"
 gem "puma", "~> 3.7"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
+# Use haml
+gem "haml-rails"
 # use material design lite for rails
 gem "material_design_lite-sass"
 # Use Uglifier as compressor for JavaScript assets
@@ -79,7 +81,7 @@ group :test do
   gem "database_cleaner"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 3.5"
-  gem "selenium-webdriver", "~> 3.4.3"
+  gem "selenium-webdriver", "~> 3.4.4"
   gem "should_not"
   gem "shoulda-matchers", "~> 3.1"
   gem "capybara", "~> 2.13"

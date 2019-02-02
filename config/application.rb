@@ -30,13 +30,15 @@ module Acorns
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.generators do |generate|
-      generate.helper false
-      generate.assets false
-      generate.view_specs false
-      generate.helper_specs false
-      generate.routing_specs false
-      generate.controller_specs false
+    config.generators do |g|
+      g.helper false
+      g.assets false
+      g.view_specs false
+      g.helper_specs false
+      g.routing_specs false
+      g.controller_specs false
+      g.test_framework :rspec, fixture: false
+      g.template_engine :haml
     end
   end
 end
