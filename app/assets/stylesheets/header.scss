@@ -1,21 +1,19 @@
 @import 'base';
 
 #page-tray {
-  color: $primary-blue2;
   position: fixed;
   top: 0;
   z-index: 5;
   width: 100%;
-  border-bottom: 1px solid #eee;
 }
 .main-nav {
   margin-top: 0;
   box-shadow: none;
-  height: 40px;
-  line-height: 40px;
-  text-transform: uppercase;
+  height: 10rem;
+  line-height: 10rem;
+  font-family: $logo-font;
   vertical-align: middle;
-  padding: 0 1rem;
+  padding: 3.2rem 4rem;
   z-index: 10;
   position: fixed;
   background: $white;
@@ -23,31 +21,35 @@
 }
 
 .nav-item {
-  color: $primary-blue2 !important;
+  color: $primary-black !important;
   background: none;
 }
 .auth-nav-item {
   @extend .nav-item;
 }
 
-.main-nav li.nav-item a, .register-btn {
+li.nav-item a, .signup-user {
   letter-spacing: 0.07em;
-  background: transparent;
   border: 1px solid transparent;
 	color: inherit;
-  font-size: 12px;
-  font-weight: bold !important;
+  font-size: 14px;
   height: 24px;
   line-height: 24px;
+  padding-top: 2px;
   margin-top: 8px;
   margin-right: 5px;
   border-radius: 3px;
   transition: 0.2s ease-in-out;
   &:hover, &:focus, .active {
     transition: 0.2s ease-in-out;
-    background: $primary-background;
-    border: 1px solid $primary-background;
+    background: $yellow;
+    border: 1px solid $box-shadow;
+    color: $primary-black !important;
   }
+}
+.signup-user {
+  background: $green;
+  color: $white !important;
 }
 .main-nav li.auth-nav-item a {
   background: none;
@@ -63,7 +65,7 @@
   &:hover, &:focus {
     background: none !important;
     border: 1px solid transparent;
-    color: $primary-color;
+    color: $green;
   }
 }
 img.open-idea-station-logo {
@@ -101,7 +103,7 @@ div.menu-pane {
     display: block;
     height: 3px;
     width: 50%;
-    background: $primary-blue2;
+    background: $primary-black;
     border-radius: 50%;
     margin-bottom: 5px;
   }
@@ -132,7 +134,7 @@ div.menu-pane {
 }
 
 a.current-user {
-  background: $primary-blue2 !important;
+  background: $primary-black !important;
   display: inline-block;
   margin-top: 5px;
   height: 30px;
@@ -146,7 +148,7 @@ a.current-user {
   letter-spacing: 0.1em;
   padding: 0 !important;
   &:hover {
-    background: $primary-color !important;
+    background: $green !important;
   }
   img {
     height: 100%;

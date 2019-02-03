@@ -33,7 +33,7 @@
       padding: 2rem 1rem;
       border: none;
       box-shadow: none;
-      border-top: 1px solid $profile-box-shadow;
+      border-top: 1px solid $box-shadow;
       resize: none;
       overflow: auto;
       &:focus {
@@ -173,7 +173,7 @@
   border-radius: .5rem !important;
   font-family: Muli, Roboto, Georgia !important;
   margin: 2.5px !important;
-  border: 1px solid $profile-box-shadow !important;
+  border: 1px solid $box-shadow !important;
   i {
     font-size: 14px;
     font-weight: bold;

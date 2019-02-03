@@ -1,26 +1,45 @@
 @import 'base';
 
 footer {
+  background: $very-light-green;
+}
+.footer {
   display: flex;
   flex-direction: row;
-  background: $white;
-  height: 40px;
-  padding: 5px 10px !important;
-  border-top: 1px solid #eee !important;
 }
-.copyright {
+.org-section {
   display: flex;
-  vertical-align: middle;
-  justify-content: space-between;
-  .ois-footer-icon {
+  flex-direction: column;
+  .copyright {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     height: 30px;
+    line-height: 30px;
+    .ois-footer-icon {
+      height: 30px;
+    }
+    p {
+      color: $primary-black;
+      font-family: $logo-font;
+      font-size: 14px;
+      margin: 0 1rem;
+      padding-top: 1rem;
+    }
   }
   p {
-    color: $primary-black4;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 30px;
-    height: 30px;
+    color: $primary-black;
+    margin: 0;
+    text-align: left;
+    line-height: 1.8rem;
+    margin-top: 2rem;
+  }
+  p.copyright {
+    font-size: 1.2rem;
+  }
+  p.our-focus {
+    font-size: 1.4rem;
+    width: 30rem;
   }
 }
 footer li {

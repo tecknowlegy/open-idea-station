@@ -1,64 +1,42 @@
 @import 'base';
 
-.register-btn {
-  background: linear-gradient($primary-color, $primary-color-hover) !important;
-  color: $white !important;
-  font-weight: bold;
-  font-size: 12px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em;
-  border: 1px solid $primary-color-hover;
-  transition: 0.2s ease-in-out;
-  &:hover, &:focus {
-    background: linear-gradient($primary-color-hover, $primary-color) !important;
-    border: 1px solid $primary-color-hover !important;
-    transition: 0.2s ease-in-out;
-  }
-}
-
-
-.acorn_btn {
-  height: 44px;
-  line-height: 44px;
-  font-size: 16px;
-  padding: 0 14px;
-  font-weight: 400;
-  font-style: normal;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  color: $white;
-  border: 1px solid transparent;
-  font-weight: bold;
-  display: inline-block;
-  min-width: 120px !important;
-  transition: 0.2s ease-in-out;
-  border-radius: 3px;
-  text-align: center;
-  &:focus {
-    box-shadow: none;
-  }
-  &:hover {
-    background: transparent;
-    transition: 0.2s ease-in-out;
-  }
-}
-
-.get-started, .learn-more {
-  margin: 40px 10px !important;
-  border-color: $white !important;
-  color: $white !important;
-  &:hover, &:focus {
-    border-color: $primary-blue2 !important;
-    background: $primary-blue2 !important;
-    color: $primary-color !important;
-  }
-}
 .back-btn {
-  color: $primary-blue2 !important;
-  border-color: $primary-blue2 !important;
+  color: $primary-black !important;
+  border-color: $primary-black !important;
   &:hover, &:focus {
     border-color: $primary-color !important;
     background: $primary-color !important;
     color: $white !important;
   }
+}
+
+.acorn_btn_responsive {
+  display: inline-block;
+  margin: 15px auto;
+  min-width: 15rem;
+  height: 4rem; 
+  line-height: 4rem;
+  padding-top: 3px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-radius: 2px;
+  border: 1px solid $box-shadow;
+  font-family: $primary-font;
+  font-size: 2rem;
+  box-shadow: 0 0 12px $box-shadow;
+}
+
+.acorn_btn {
+  display: inline-block;
+  margin: 15px auto;
+  min-width: 150px;
+  height: 40px; 
+  line-height: 40px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-radius: 2px;
+  border: 1px solid $box-shadow;
+  font-family: $primary-font;
+  font-size: 16px;
+  font-weight: bold;
 }

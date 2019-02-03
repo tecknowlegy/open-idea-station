@@ -63,7 +63,7 @@
       height: 40px;
       padding: 0 23px;
       .login-services {
-        border: 1px solid $profile-box-shadow;
+        border: 1px solid $box-shadow;
         height: 100%;
         display: flex;
         align-items: center;
@@ -110,7 +110,7 @@
   }
   .signup-form {
     form {
-      border: 1px solid $profile-box-shadow;
+      border: 1px solid $box-shadow;
       border-radius: 5px;
       background: $primary-background2;
       width: 40rem;
@@ -126,7 +126,7 @@
         margin: 0 auto;
         font-weight: bold;
         margin-bottom: 20px;
-        border: 1px solid $profile-box-shadow;
+        border: 1px solid $box-shadow;
         background: $primary-background2;
         border-radius: 2px;
         font-size: 14px;
@@ -166,14 +166,14 @@
       text-align: center;
       height: 30px;
       line-height: 30px;
-      background: $primary-blue2;
+      background: $primary-black;
       color: $white;
       font-weight: bold;
     }
     .services {
       width: 100%;
       padding: 10px;
-      border: 1px solid $profile-box-shadow;
+      border: 1px solid $box-shadow;
       border-radius: 3px;
       margin-bottom: 20px;
       display: flex;

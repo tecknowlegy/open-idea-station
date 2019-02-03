@@ -74,7 +74,7 @@
     display: block;
     padding: 3rem;
     .action-wrapper {
-      border-bottom: 1px solid $profile-box-shadow;
+      border-bottom: 1px solid $box-shadow;
     }
     .publication-status {
       span{
@@ -135,7 +135,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   background: transparent;
-  border: 1px solid $profile-box-shadow;
+  border: 1px solid $box-shadow;
   color: $primary-black4;
   padding-left: 1rem;
   padding-right: 1rem;

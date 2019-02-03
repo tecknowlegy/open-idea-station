@@ -7,7 +7,7 @@
   overflow: hidden;
   overflow-y: auto;
   height: 100vh;
-  background: $primary-blue2;
+  background: $primary-black;
   width: 100%;
   left: -100%;
   color: $white;
@@ -60,8 +60,8 @@
   display: flex;
   height: calc(100vh - 80px);
   text-align: left;
-  border-top: 1px solid $profile-box-shadow;
-  border-bottom: 1px solid $profile-box-shadow;
+  border-top: 1px solid $box-shadow;
+  border-bottom: 1px solid $box-shadow;
   li{
     width: 16rem;
     padding: 1.2rem;
@@ -107,8 +107,8 @@
 
 .main_navigation {
   flex: 1;
-  background: $profile-box-shadow2;
-  border-right: 1px solid $profile-box-shadow;
+  background: $box-shadow2;
+  border-right: 1px solid $box-shadow;
   height: calc(100vh - 80px);
 }
 .visitors-section {

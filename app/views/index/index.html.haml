@@ -1,0 +1,17 @@
+.super-box
+  .box
+    .landing
+      %figure.acorn-flex-col.community
+      .headline.acorn-flex-col
+        .acorn-align-text
+          .acorn-aligner
+            %h1 Home for your ideas
+            %p
+              %em.emphasize Open Idea Station
+              is a collaborative platform that sets your ideas in motion
+              by leveraging a community of people from all over the world, get them inspired, connect 
+              and get it done.
+            - if logged_in?
+              = link_to "Explore Ideas", ideas_path, class: "acorn_btn get-started"
+            - else
+              = link_to "Get Started", new_session_path, class: "acorn_btn get-started"

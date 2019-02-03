@@ -8,8 +8,8 @@
   z-index: 90;
   background-color: #fff;
   border-radius: 1px;
-  border-top: 1px solid $profile-box-shadow;
-  border-left: 1px solid $profile-box-shadow;
+  border-top: 1px solid $box-shadow;
+  border-left: 1px solid $box-shadow;
 }
 
 .top-right {
@@ -166,7 +166,7 @@
   z-index: 100;
   color: $primary-black;
   background-clip: padding-box;
-  border: 1px solid $profile-box-shadow;
+  border: 1px solid $box-shadow;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: $dropdown-shadow;
@@ -198,7 +198,7 @@
     }
   }
   li.divider {
-    background-color: $profile-box-shadow;
+    background-color: $box-shadow;
   }
 }
 
@@ -219,7 +219,7 @@
       display: inline-block;
       background: transparent !important;
       color: $primary-black4;
-      border: 1px solid $profile-box-shadow;
+      border: 1px solid $box-shadow;
       border-radius: 3px;
       transition: 0.2s ease-in-out;
       &:hover {
