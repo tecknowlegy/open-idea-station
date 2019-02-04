@@ -1,8 +1,6 @@
 @import 'base';
 
 #page-tray {
-  position: fixed;
-  top: 0;
   z-index: 5;
   width: 100%;
 }
@@ -11,7 +9,7 @@
   box-shadow: none;
   height: 10rem;
   line-height: 10rem;
-  font-family: $logo-font;
+  font-weight: bold;
   vertical-align: middle;
   padding: 3.2rem 4rem;
   z-index: 10;
@@ -35,7 +33,6 @@ li.nav-item a, .signup-user {
   font-size: 14px;
   height: 24px;
   line-height: 24px;
-  padding-top: 2px;
   margin-top: 8px;
   margin-right: 5px;
   border-radius: 3px;
@@ -50,6 +47,8 @@ li.nav-item a, .signup-user {
 .signup-user {
   background: $green;
   color: $white !important;
+  font-family: $logo-font;
+  padding-top: 2px;
 }
 .main-nav li.auth-nav-item a {
   background: none;

@@ -5,8 +5,7 @@
   flex: 1;
   flex-grow: 1;
   flex-direction: column;
-  flex-wrap: wrap;
-  margin-top: 4rem;
+  flex-wrap: wrap;  
   height: 84vh;
   overflow: scroll;
   justify-content: space-around;
@@ -41,7 +40,7 @@
 @media only screen and (min-width: $break-point-ntablet) {
   .landing {
     flex-direction: row;
-    height: 70vh;
+    height: 60vh;
     overflow: scroll;
     justify-content: space-around;
     align-items: center;
@@ -55,7 +54,8 @@
   background: $green;
   text-align: center;
   color: $white;
-  font-weight: bold;
+  padding-top: 2px;
+  font-family: $logo-font;
   &:hover {
     background: $yellow;
     color: $primary-black;

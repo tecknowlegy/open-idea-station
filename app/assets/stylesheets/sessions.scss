@@ -4,21 +4,12 @@
 .external-services {
   width: 30%;
   margin: 0 auto;
-  p {
-    margin-bottom: 20px;
-    text-align: center;
-    height: 30px;
-    line-height: 30px;
-    background: $primary-black;
-    color: $white;
-    font-weight: bold;
-  }
   .services {
     display: flex;
     margin-top: 2rem;
     .signup {
       flex: 1;
-      color: $primary-black4;
+      color: $primary-black3;
       i {
         font-size: 24px;
       }
@@ -47,5 +38,6 @@
   }
   .service-title {
     flex: 1;
+    color: $primary-black4;
   }
 }
