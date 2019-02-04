@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: %i[create create_with_omniauth]
+  skip_before_action :authorize, only: %i[new create create_with_omniauth]
 
   def index
     @active_sessions = current_user.all_sessions.active.to_a - [current_user_session]
