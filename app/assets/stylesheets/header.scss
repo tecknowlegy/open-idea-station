@@ -4,69 +4,7 @@
   z-index: 5;
   width: 100%;
 }
-.main-nav {
-  margin-top: 0;
-  box-shadow: none;
-  height: 10rem;
-  line-height: 10rem;
-  font-weight: bold;
-  vertical-align: middle;
-  padding: 3.2rem 4rem;
-  z-index: 10;
-  position: fixed;
-  background: $white;
-  position: relative;
-}
 
-.nav-item {
-  color: $primary-black !important;
-  background: none;
-}
-.auth-nav-item {
-  @extend .nav-item;
-}
-
-li.nav-item a, .signup-user {
-  letter-spacing: 0.07em;
-  border: 1px solid transparent;
-	color: inherit;
-  font-size: 14px;
-  height: 24px;
-  line-height: 24px;
-  margin-top: 8px;
-  margin-right: 5px;
-  border-radius: 3px;
-  transition: 0.2s ease-in-out;
-  &:hover, &:focus, .active {
-    transition: 0.2s ease-in-out;
-    background: $yellow;
-    border: 1px solid $box-shadow;
-    color: $primary-black !important;
-  }
-}
-.signup-user {
-  background: $green;
-  color: $white !important;
-  font-family: $logo-font;
-  padding-top: 2px;
-}
-.main-nav li.auth-nav-item a {
-  background: none;
-  border: 1px solid transparent;
-  letter-spacing: 0.07em;
-	color: inherit;
-  font-size: 20px;
-  font-weight: bold !important;
-  height: 40px;
-  line-height: 40px;
-  padding: 0 5px !important;
-  margin: 0 10px;
-  &:hover, &:focus {
-    background: none !important;
-    border: 1px solid transparent;
-    color: $green;
-  }
-}
 img.open-idea-station-logo {
   max-height: 8rem;
   max-width: 8rem;
@@ -77,15 +15,17 @@ img.open-idea-station-logo {
   background-image: image-url('OIS-ico.png');
 }
 
-nav.main-nav li a {
-  i {
-    height: 40px;
-    line-height: 40px;
-  }
-}
-
-.hide-btn {
-  display: none !important;
+.main-nav {
+  margin-top: 0;
+  box-shadow: none;
+  height: 10rem;
+  line-height: 10rem;
+  vertical-align: middle;
+  padding: 3.2rem 4rem;
+  z-index: 10;
+  position: fixed;
+  background: $white;
+  position: relative;
 }
 
 div.menu-pane {
@@ -117,35 +57,72 @@ div.menu-pane {
   }
 }
 
-.mobile-notification {
-  display: inline-block;
-  border-radius: 50%;
-  margin-top: 5px;
-  margin-right: 15px;
-  height: 30px;
-  width: 30px;
-  
+.nav-item, .auth-nav-item{
+  color: $primary-black !important;
+  background: none;
+}
+
+li.nav-item a, .signup-user {
+  border: 1px solid transparent;
+	color: inherit;
+  font-size: 14px;
+  font-family: $logo-font;
+  height: 24px;
+  line-height: 24px;
+  margin-top: 8px;
+  margin-right: 5px;
+  padding-top: 2px;
+  border-radius: 3px;
+  transition: 0.2s ease-in-out;
+  &:hover, &:focus, .active {
+    transition: 0.2s ease-in-out;
+    background: $very-light-green;
+    border: 1px solid $green;
+    color: $primary-black !important;
+  }
+}
+.signup-user {
+  background: $green;
+  color: $white !important;
+  font-family: $logo-font;
+}
+li.auth-nav-item {
+  height: 40px;
+  line-height: 40px;
+}
+li.auth-nav-item a {
+  background: none;
+	color: $primary-black3;
+  font-size: 20px;
+  font-weight: bold !important;
+  padding: 0 5px !important;
+  margin: 0 10px;
+  &:hover, &:focus {
+    background: none !important;
+    color: $primary-black;
+  }
   i {
-    height: 40px !important;
-    color: black;
-    line-height: 30px !important;
+    height: 40px;
+    line-height: 40px;
   }
 }
 
-a.current-user {
-  background: $primary-black !important;
-  display: inline-block;
-  margin-top: 5px;
-  height: 30px;
-  width: 30px;
-  line-height: 30px;
-  border-radius: 50%;
+.hide-btn {
+  display: none !important;
+}
+
+li.auth-nav-item a.current-user {
+  background: $primary-black3 !important;
+  height: 40px !important;
+  width: 40px;
+  line-height: 40px !important;
+  border-radius: 50% !important;
   color: $white !important;
   font-weight: bold;
   font-size: 12px !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.1em;
   padding: 0 !important;
+  margin: 0 7px !important;
   &:hover {
     background: $green !important;
   }
@@ -154,13 +131,7 @@ a.current-user {
     border-radius: 50%;
   }
 }
-.current-user-mobile {
-  height: 30px;
-  width: 80px;
-  display: inline-flex;
-  float: right;
 
-}
 @media screen and (max-width: 520px) {
   .more-notifications {
     top: 458px !important;
@@ -168,5 +139,11 @@ a.current-user {
 
   .hide-on-small {
     display: none;
+  }
+}
+.logout-user {
+  color: $light-red !important;
+  &:hover {
+    color: $red !important;
   }
 }

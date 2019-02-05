@@ -1,0 +1,35 @@
+%header#page-tray
+  .navbar
+    %nav.main-nav
+      .nav-wrapper
+        .menu-pane
+          %span.open-bar
+          %span.open-bar
+          %span.open-bar
+        %ul.right.app-menu.hide-on-small
+          %li.auth-nav-item
+            <a href=""><i class="material-icons">search</i></a>
+          %li.auth-nav-item
+            <a><i class="material-icons notification">notifications</i><small class="notification-badge">4</small></a>
+            =render("layouts/notifications")
+          %li.auth-nav-item
+            - if current_user[:picture]
+              =link_to image_tag(current_user[:picture]), "javascript:;", class: "current-user"
+            - else
+              =link_to current_user[:username][0,2], "javascript:;", class: "current-user"
+            %ul.user-profile-dropdown.hidden
+              %span.popover-rect.top-right
+              %li.user
+                =link_to "Hi #{current_user[:username]}", "javascript:;", class: "greeting"
+              %li.divider
+              %li.profile-link
+                =link_to "New Idea", new_idea_path
+              %li.profile-link
+                =link_to "Ideas", ideas_path
+              %li.profile-link
+                =link_to "My Ideas", "/my-ideas"
+              %li.divider
+              %li.profile-link
+                =link_to "Profile", "/profile", class: "my-profile-link"
+              %li.profile-link.margin-bottom
+                =link_to "Logout", session_path(current_user_session.id), class: "logout-user", method: :delete

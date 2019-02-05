@@ -9,10 +9,11 @@
   top: 0;
 }
 .alert {
+  display: block;
   box-shadow: $dropdown-shadow;
   font-size: 14px;
-  display: inline-block;
   padding: 7px 14px;
+  text-align: center;
   border: 1px solid $box-shadow;
   border-radius: 2px;
   color: $primary-black;
