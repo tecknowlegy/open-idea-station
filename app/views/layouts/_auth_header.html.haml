@@ -6,10 +6,18 @@
           %span.open-bar
           %span.open-bar
           %span.open-bar
-        %ul.right.app-menu.hide-on-small
+        %ul.right.app-menu
           %li.auth-nav-item
-            <a href=""><i class="material-icons">search</i></a>
+            =link_to "javascript:;" do
+              %i.material-icons.more-options more_horiz
+            =render("layouts/more_options")
           %li.auth-nav-item
+            =link_to "javascript:;" do
+              %i.material-icons.search search
+          %li.auth-nav-item
+            -# =link_to "" do
+            -#   %i.material-icons.notification notification
+            -#   %small.notification-badge 4
             <a><i class="material-icons notification">notifications</i><small class="notification-badge">4</small></a>
             =render("layouts/notifications")
           %li.auth-nav-item

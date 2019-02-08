@@ -40,7 +40,7 @@
   transform: rotate(225deg);
 }
 
-.user-profile-dropdown {
+.user-profile-dropdown, .more-options-dropdown {
   display: inline-block;
   position: absolute;
   top: 50px;
@@ -56,17 +56,13 @@
   box-shadow: $dropdown-shadow;
 }
 
-.user-profile-dropdown {
-  li.profile-link:last-child {
-    margin-top: 1rem;
-  }
-  li.profile-link, li.divider, li.user {
+.user-profile-dropdown, .more-options-dropdown {
+  li.profile-link, li.divider, li.user, li.option-link {
     width: 100%;
     min-height: 1px;
     a {
       text-align: left;
       color: $primary-black3;
-      text-transform: capitalize;
       font-size: 1.4rem;
       font-weight: 400 !important;
       padding: 0 1.5rem !important;
@@ -75,7 +71,7 @@
         background: $very-light-green !important;
       }
     }
-    .greeting {
+    .greeting, .options-header {
       color: #000 !important;
       &:hover {
         background-color: $white !important;
@@ -85,6 +81,10 @@
   li.divider {
     background-color: $box-shadow-lighter;
   }
+}
+
+.more-options-dropdown {
+  right: 162px;
 }
 
 .idea-action-dropdown {

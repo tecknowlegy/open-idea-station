@@ -1,0 +1,17 @@
+%ul.more-options-dropdown.hidden
+  %span.popover-rect.top-right
+  %li.option-link
+    =link_to "More options", "", class: "options-header"
+  %li.divider
+  %li.option-link
+    =link_to "Home", index_path
+  %li.option-link
+    =link_to "About", ""
+  -# render other links dynamically here (make sure a divider starts and ends the link list)
+  = yield :more_option_links
+  %li.option-link
+    =link_to "Help", ""
+  %li.option-link
+    =link_to "Apps and integrations", ""
+  %li.profile-link.margin-bottom
+    =link_to "Code of conduct", ""
