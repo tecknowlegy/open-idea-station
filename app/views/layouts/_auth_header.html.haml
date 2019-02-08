@@ -30,8 +30,11 @@
               %li.user
                 =link_to "Hi #{current_user[:username]}", "javascript:;", class: "greeting"
               %li.divider
-              %li.profile-link
-                =link_to "New Idea", new_idea_path
+              
+              -# render other specific user actions dynamically here based on current page
+              -# (make sure a divider ends the list)
+              =yield :user_actions
+              
               %li.profile-link
                 =link_to "Ideas", ideas_path
               %li.profile-link

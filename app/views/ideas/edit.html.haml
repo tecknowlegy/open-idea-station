@@ -1,0 +1,7 @@
+- content_for :user_actions do
+  %li.profile-link
+    =link_to "New Idea", new_idea_path
+
+%section.super-box#new-idea-page
+  .box
+    = render 'form', idea: @idea
