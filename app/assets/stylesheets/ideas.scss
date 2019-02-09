@@ -3,18 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'base';
 
-#ideas-gallery-headline, #category-headline {
-  color: $white;
-  min-height: 46rem !important;
-  background: $primary-black;
-  padding-top: 12rem;
-  padding-bottom: 10rem;
-  h6 {
-    color: $primary-black4;
+#ideas-gallery-headline {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  flex-direction: column;
+  flex-wrap: wrap;  
+  height: 90vh;
+  justify-content: space-between;
+  color: $primary-black;
+  border-bottom: 1px solid $box-shadow;
+}
+
+.discover {
+  background-image: image-url('discover.png');
+  background-size: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+@media only screen and (min-width: $break-point-ntablet) {
+  #ideas-gallery-headline {
+    flex-direction: row;
+    height: 54vh;
+    justify-content: space-around;
+    align-items: center;
   }
 }
+
 #ideas-gallery {
-  background: $primary-background;
+  background: $white;
 }
 
 .ideas-wrapper {
@@ -173,4 +192,8 @@
   display: block !important;
   text-align: center !important;
   margin-top: 6rem;
+}
+
+a.cover-link {
+  display: flex;
 }

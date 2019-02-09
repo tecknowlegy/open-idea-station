@@ -15,9 +15,15 @@ class SessionsController < ApplicationController
 
   def create_with_omniauth
     user = User.find_or_create_from_omniauth(omniauth_hash)
-    user_credentials = { username: user.username, password: user.password }
-    auth_token = Acorn::AuthenticateUserService.call(user_credentials)
-    create_session(auth_token)
+    if user.save
+      # TODO: Translations << Add to translations
+      user_credentials = { username: user.username, password: user.password }
+      auth_token = Acorn::AuthenticateUserService.call(user_credentials)
+      create_session(auth_token)
+    else
+      flash[:error] = user.errors.full_messages[0]
+      render :new
+    end
   end
 
   def revoke

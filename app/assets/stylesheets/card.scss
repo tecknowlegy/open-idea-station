@@ -4,49 +4,87 @@
 .ideas-wrapper {
   .mdl-card {
     width: auto !important;
-    height: 24rem;
+    height: 19.2rem;
     z-index: 0 !important;
+    border: 1px solid transparent;
     &:hover {
-      background: #fafbfc;
+      background: $very-light-green;
+      border: 1px solid $box-shadow;
     }
   }
   .mdl-card__title {
-    align-items: center;
     display: flex;
-    padding: 5px 10px;
-    height: 15%;
-    font-size: 1.2rem;
+    align-items: center;
+    padding: 15px;
+    font-size: 12px;
     font-weight: bold;
     color: $primary-black;
     h6 {
-      font-size: 1.6rem;
-      font-weight: bold;
+      flex: 4;
+      font-size: 16px;
+      line-height: 38px;
+    }
+    .card__author-avatar {
+      flex: 1;
+      text-align: left;
+      img, span {
+        height: 38px;
+        width: 38px;
+        border-radius: 50%;
+      }
+      span {
+        display: inline-block;
+        background: $primary-black3;
+        color: $white;
+        text-align: center;
+        line-height: 38px;
+      }
     }
   }
   .mdl-card__supporting-text {
-    height: 75%;
+    height: 90px;
     width: 100%;
     margin: 0 auto;
     font-size: 14px;
     text-align: left;
-    padding: 10px 10px;
+    padding: 0 15px;
     overflow: wrap;
     color: $primary-black4;
+    p.idea-description {
+      font-size: 14px;
+      line-height: 2rem;
+      margin: 0;
+    }
+    p.idea-author {
+      font-size: 12px;
+      height: 2rem;
+      line-height: 2rem;
+      margin-top: 5px;
+      color: $primary-black;
+      span.idea-date {
+        color: $primary-black3;
+      }
+    }
+    p.idea-categpry {
+      font-size: 10px;
+      line-height: 1.6rem;
+      margin-top: 5;
+    }
   }
   .mdl-card__actions {
     display: flex;
     flex-direction: row-reverse;
     text-align: right;
-    height: 10%;
+    height: 34px;
     line-height: normal;
     width: 100%;
-    padding: 2px 10px;
+    padding: 15px;
     box-sizing: border-box;
     font-size: 1.4rem;
     font-weight: bold;
     .idea-icons {
       margin-left: 10px;
-      color: $primary-black4;
+      color: $primary-black3;
       &:hover {
         color: $primary-black;
       }

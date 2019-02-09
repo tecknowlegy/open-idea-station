@@ -1,0 +1,45 @@
+- content_for :user_actions do
+  %li.profile-link
+    =link_to "New Idea", new_idea_path
+
+.super-box
+  .box
+    #ideas-gallery-headline
+      %figure.acorn-flex-col.discover
+      .headline.acorn-flex-col.col-left
+        .acorn-align-text
+          .acorn-aligner
+            %h1 Ideas Marketplace
+            %p
+              Discover, connect and contribute to open source projects and ideas
+              from organizations, developers, and teams all over the world.
+
+%section.super-box.group#ideas-gallery
+
+  .box.grid-box
+    .grid.ideas-wrapper
+
+      -# Ideas
+      - @ideas.each do |i|
+        - present(i) do |idea|
+          .mdl-card.with-shadow
+            .mdl-card__title
+              .card__author-avatar
+                %span=idea.author_avatar
+              %h6.mdl-card__title-text.truncate
+                =idea.name
+            =link_to idea, class: "mdl-card__supporting-text" do
+              %p.idea-description=idea.description
+              %p.idea-author
+                ="#{idea.author_name} - "
+                %span.idea-date=idea.publish_date
+            .mdl-card__actions
+              =link_to "", class: "idea-icons" do
+                %i.fa.fa-eye
+                =idea.view_count
+              =link_to "", class: "idea-icons" do
+                %i.fa.fa-heart
+                0
+              =link_to "", class: "idea-icons" do
+                %i.fa.fa-comment
+                =idea.comment_count
