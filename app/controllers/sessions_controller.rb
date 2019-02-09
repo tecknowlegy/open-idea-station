@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: %i[create create_with_omniauth]
+  skip_before_action :authorize, only: %i[new create create_with_omniauth]
 
   def index
     @active_sessions = current_user.all_sessions.active.to_a - [current_user_session]
@@ -15,9 +15,15 @@ class SessionsController < ApplicationController
 
   def create_with_omniauth
     user = User.find_or_create_from_omniauth(omniauth_hash)
-    user_credentials = { username: user.username, password: user.password }
-    auth_token = Acorn::AuthenticateUserService.call(user_credentials)
-    create_session(auth_token)
+    if user.save
+      # TODO: Translations << Add to translations
+      user_credentials = { username: user.username, password: user.password }
+      auth_token = Acorn::AuthenticateUserService.call(user_credentials)
+      create_session(auth_token)
+    else
+      flash[:error] = user.errors.full_messages[0]
+      render :new
+    end
   end
 
   def revoke

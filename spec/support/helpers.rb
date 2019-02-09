@@ -3,7 +3,7 @@ require "ostruct"
 
 module Helpers
   include ActionView::Helpers::DateHelper
-  
+
   def stub_current_user(user)
     allow_any_instance_of(ApplicationController)
       .to receive(:current_user).and_return(user)
@@ -70,22 +70,19 @@ module Helpers
     { email: "johndoe@gmail.com",
       name: "johndoe",
       first_name: "johndoe",
-      image: "",
-    }
+      image: "",  }
   )
   Github = OpenStruct.new(
     { provider: "github",
       uid: "123456",
       info: info,
       credentials: token,
-      extra: extra,
-    }
+      extra: extra, }
   )
   Google = OpenStruct.new(
     { provider: "google_oauth2",
       uid: "123456",
       info: info,
-      credentials: token,
-    }
+      credentials: token, }
   )
 end

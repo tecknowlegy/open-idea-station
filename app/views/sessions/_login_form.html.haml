@@ -1,0 +1,11 @@
+
+=form_with scope: :session, url: "/sessions", local: true, id: :global do |form|
+  .field.for-data.group
+    %label Username
+    =form.text_field :username, id: :username, placeholder: 'enter your username'
+  .field.for-data.group
+    %label Password
+    =form.password_field :password, id: :password, placeholder: 'enter your password'
+  .field.group
+    %span.actions
+      =form.submit :Login

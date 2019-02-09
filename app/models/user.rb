@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  USERNAME_REGEX = /\A[a-zA-Z0-9]+\Z/.freeze
+  USERNAME_REGEX = /\A[a-zA-Z0-9_]+\Z/.freeze
   EMAIL_REGEX = /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i.freeze
 
   has_secure_password
@@ -27,7 +27,7 @@ class User < ApplicationRecord
         user.email = auth.info.email
         user.password = auth.credentials.token[-15, 15]
         user.picture = auth.info.image
-        user.save!
+        user.save
       end
     when "github"
       find_params = { provider: auth.provider, uid: auth.uid }
@@ -38,7 +38,7 @@ class User < ApplicationRecord
         user.email = auth.info.email unless auth.info.email.nil?
         user.password = auth.credentials.token[-15, 15]
         user.picture = auth.extra["raw_info"].avatar_url unless auth.extra["raw_info"]&.avatar_url.nil?
-        user.save!
+        user.save
       end
     end
   end

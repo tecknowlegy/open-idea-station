@@ -1,222 +1,43 @@
 @import 'base';
 @import 'index';
 
-#login-modal {
-  display: none;
-}
-
-[aria-describedby="login-modal"] {
-  height: 400px !important;
-  width: 400px !important;
-  background: #fff;
-  overflow: hidden !important;
-  box-sizing: border-box;
-  #login-modal {
-    padding: 20px 20px;
-    .modal-top {
-      .modal-header {
-        height: 4rem !important;
-      }
-      .modal-content {
-        font-size: 13px;
-        padding-left: 23px;
-        padding-right: 23px;
-        margin-top: 0;
-        max-height: 400px;
-        overflow-y: scroll;
-        form {
-          padding: 0 !important;
-          label {
-            color: $primary-color;
-          }
-          input {
-            display: block;
-            width: 100%;
-            height: 40px;
-            margin: 0 auto;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border: 1px solid #eee;
-            border-radius: 2px;
-            font-size: 14px;
-            text-align: center;
-            &:focus {
-              border: 1px solid $primary-color;
-              box-shadow: 0 0px 8px $primary-color;
-            }
-          }
-          input[type=submit] {
-            color: $white;
-            background: $primary-color;
-            border: 1px solid $primary-color;
-            margin-top: 40px;
-            font-size: 18px;
-            &:focus {
-              box-shadow: none;
-            }
-          }
-        }
+.external-services {
+  width: 30%;
+  margin: 0 auto;
+  .services {
+    display: flex;
+    margin-top: 2rem;
+    .signup {
+      flex: 1;
+      color: $primary-black3;
+      i {
+        font-size: 24px;
       }
     }
-    .modal-bottom {
-      display: block;
-      height: 40px;
-      padding: 0 23px;
-      .login-services {
-        border: 1px solid $profile-box-shadow;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        .login {
-          flex: 1;
-          height: 100%;
-          padding-top: 10px;
-          padding-bottom: 10px;
-          color: $primary-black4;
-          font-weight: bold;
-          i {
-            font-size: 18px;
-          }
-        }
-        .facebook:hover {
-          background: #3b5998;
-          color: $white;
-        }
-        .google:hover {
-          background: #4285f4;
-          color: $white;
-        }
-        .github:hover {
-          background: #000;
-          color: $white;
-        }
-      }
+    .facebook:hover {
+      color: #3b5998;
+    }
+    .google:hover {
+      color: #4285f4
+    }
+    .github:hover {
+      color: #000;
     }
   }
 }
-
-#signup-background {
-  background: $white;
-  min-width: 340px;
-  color: $primary-black;
-  height: 96vh;
-  padding: 10rem;
-  .signup-headline {
-    display: inline-block;
-    margin: 0 auto;
-    margin-bottom: 40px;
-    padding: 30px;
-    background-color: $white;
+.services-divider {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 40px;
+  display:flex;
+  align-items: center;
+  .bar {
+    flex: 3;
+    height: 1px;
+    background: $box-shadow;
   }
-  .signup-form {
-    form {
-      border: 1px solid $profile-box-shadow;
-      border-radius: 5px;
-      background: $primary-background2;
-      width: 40rem;
-      padding: 20px 40px;
-      min-height: 300px;
-      label {
-        color: $primary-black;
-      }
-      input {
-        display: block;
-        width: 100%;
-        height: 40px;
-        margin: 0 auto;
-        font-weight: bold;
-        margin-bottom: 20px;
-        border: 1px solid $profile-box-shadow;
-        background: $primary-background2;
-        border-radius: 2px;
-        font-size: 14px;
-        text-align: center;
-        &:focus {
-          border: 1px solid $primary-color;
-          box-shadow: 0 0px 8px $primary-color !important;
-          background: $white;
-        }
-      }
-      input[type=submit] {
-        color: $white;
-        background: $primary-color;
-        border: 1px solid $primary-color;
-        margin-top: 40px;
-        font-size: 18px;
-        transition: 0.2s ease-in-out;
-        text-align: center;
-        &:focus {
-          box-shadow: none;
-        }
-        &:hover {
-          background: $primary-color-hover;
-          border: 1px solid $primary-color-hover;
-          transition: 0.2s ease-in-out;
-        }
-      }
-    }
+  .service-title {
+    flex: 1;
+    color: $primary-black4;
   }
-  .external-services {
-    width: 40rem;
-    margin: 0 auto;
-    margin-top: 40px;
-    p {
-      margin-bottom: 20px;
-      width: 100%;
-      text-align: center;
-      height: 30px;
-      line-height: 30px;
-      background: $primary-blue2;
-      color: $white;
-      font-weight: bold;
-    }
-    .services {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid $profile-box-shadow;
-      border-radius: 3px;
-      margin-bottom: 20px;
-      display: flex;
-      .signup {
-        flex: 1;
-        color: $primary-black4;
-        font-weight: bold;
-        i {
-          font-size: 24px;
-        }
-      }
-      .facebook:hover {
-        color: #3b5998;
-      }
-      .google:hover {
-        color: #4285f4
-      }
-      .github:hover {
-        color: #000;
-      }
-    }
-  }
-}
-@media screen and (max-width: 600px) {
-  #signup-background {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    .signup-headline {
-      display: inline-block;
-      margin: 0 auto;
-      margin-bottom: 40px;
-      padding: 30px;
-      background-color: $white;
-    }
-  }
-}
-
-.you {
-  border-color: $primary-black !important;
-  color: $primary-black !important;
-  padding: 14px;
-  border-radius: 50px;
-}
-.create-account {
-  margin-top: 30px;
 }

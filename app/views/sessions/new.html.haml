@@ -1,0 +1,13 @@
+#user
+  %section.user-form
+    .title
+      %h6 Signin To Your Account
+    .body
+      =render "login_form", session: :session
+    .services-divider
+      .bar
+      .service-title Use external service
+    .external-services
+      .services
+        <a href="/auth/google_oauth2" class="signup google"><i class="fa fa-google"></i></a>
+        <a href="/auth/github" class="signup github"><i class="fa fa-github"></i></a>

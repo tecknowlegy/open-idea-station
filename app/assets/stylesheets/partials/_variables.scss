@@ -5,25 +5,38 @@
 // Colors
 $primary-color: #02BF8F;
 $primary-color-hover: #00B28F;
-$white: #FFF;
 $acorn-red: #FF8A80;
 $acorn-blue: #82B1FF;
 $acorn-green: #B9F6CA;
 $acorn-amber: #FFE57F;
-$primary-blue: #091E42;
-$primary-blue2: #42526E;
+$primary-background: #f4f4f4;
+$primary-background2: #fafbfc;
+$margin: 15px;
+
+$white: #FFF;
+$blue: #1E88E5;
+$red: #E53935;
+$light-red: #FF8A80;
+$light-blue: #82B1FF;
+$green: #43A047;
+$light-green: #B9F6CA;
+$very-light-green: #E8F5E9;
+$yellow: #FDD835;
+$light-yellow: #FFE57F;
+$very-light-yellow: #FFFDE7;
 $primary-black: #212121;
 $primary-black2: #424242;
 $primary-black3: #757575;
 $primary-black4: #9E9E9E;
-$primary-background: #f4f4f4;
-$primary-background2: #fafbfc;
-$margin: 15px;
-$blue: rgb(66, 133, 244);
-
-
+$primary-background: #f3f5f7;
 // Margin
 $main-margin: 15px;
+.margin-top {
+  margin-top: 1rem;
+}
+.margin-bottom {
+  margin-bottom: 1rem;
+}
 
 // Break point
 $break-point-smobile: 320px;
@@ -39,21 +52,21 @@ $break-point-large: 1500px;
 }
 
 // Dropdown
-$dropdown-shadow: 0 3px 12px rgba(27,31,35,0.15);
-$dropdown-shadow-inverse: 0 0 12px rgba(27,31,35,0.15);
+$dropdown-shadow: 0 1px 1px rgba(27,31,35,0.05), 0 0 1px rgba(27,31,35,0.05);
+$dropdown-shadow-inverse: 0 1px 2px rgba(27,31,35,0.05), 0 0 1px rgba(27,31,35,0.05);
 
 // Profile
-$profile-box-shadow: rgba(27,31,35,0.15);
-$profile-box-shadow2: rgba(27,31,35,0.05);
+$box-shadow: rgba(27,31,35,0.15);
+$box-shadow-lighter: rgba(27,31,35,0.05);
 
 $shadow-opacity1: 0.2 !default;
 $shadow-opacity2: 0.14 !default;
 $shadow-opacity3: 0.12 !default;
 
 .with-shadow {
-  box-shadow: 0 0px 1px 0 rgba(150, 150, 150, $shadow-opacity1),
-              0 3px 1px -2px rgba(150, 150, 150, $shadow-opacity2),
-              0 1px 5px 0 rgba(150, 150, 150, $shadow-opacity3);
+  box-shadow: 0 0px 1px 0 $box-shadow-lighter,
+              0 3px 1px -2px $box-shadow-lighter,
+              0 1px 5px 0 $box-shadow;
 }
 
 // Break point

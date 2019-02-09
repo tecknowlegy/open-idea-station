@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
     describe "#bio" do
       context "when bio exist" do
         it "retrieves the users bio" do
-          user.update({bio: "This is a test bio"})
+          user.update({ bio: "This is a test bio" })
           bio = user.bio
 
           expect(bio).to eql "This is a test bio"

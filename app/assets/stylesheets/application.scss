@@ -12,7 +12,6 @@
 *
 *= require_tree .
 *= require_self
-*= require font-awesome
 */
 
 input:focus,
@@ -20,83 +19,10 @@ a:focus,
 select:focus,
 textarea:focus,
 button:focus {
-		outline: none;
+    outline: none;
 }
 em {
   font-weight: 900;
-}
-.ui-state-hover, 
-.ui-widget-content .ui-state-hover, 
-.ui-widget-header .ui-state-hover, 
-.ui-state-focus, 
-.ui-widget-content .ui-state-focus, 
-.ui-widget-header .ui-state-focus {
-  background: none !important;
-  font-size: 13px !important;
-  color: #808080 !important;
-  // font-family: $font-family-light !important;
-}
-
-.ui-state-focus {
-  background: #fff !important;
-  font-size: 13px !important;
-  color: #808080 !important;
-  // font-family: $font-family-light !important;
-  border: 0 !important;
-}
-
-.ui-widget-content {
-  border: 0 !important;
-  border-radius: 0 !important;
-  max-height: 625px;
-}
-
-.ui-widget-overlay {
-  background: #02BF8F !important;
-  opacity: 0.5;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-
-.ui-dialog {
-  max-height: 625px;
-
-  @media screen and (max-width: 320px) { 
-    left: 0% !important;
-    right: 0% !important;
-  }
-
-  @media screen and (max-width: 320px) and (max-width: 480px) {
-    margin-right: 10%;
-    right: 0% !important;
-  }
-
-  @media screen and (min-width: 481px) and (max-width: 768px) {
-    margin-left: 10%;
-  }
-}
-
-.close-button {
-  background: image-url('close.svg') no-repeat;
-  height: 32px;
-  width: 32px;
-  display: inline-block;
-  text-align: right;
-  position: absolute;
-  right: 12px;
-  cursor: pointer;
-}
-
-div.ui-dialog.ui-widget.ui-widget-content.ui-corner-all {
-  max-height: 600px;
-  z-index: 300;
-  outline: none;
-  box-shadow: 0 0 20px #02BF8F;
-  border-radius: 3px !important;
 }
 
 form#global {
@@ -106,41 +32,50 @@ form#global {
   box-shadow: 0 0 20px transparent;
   padding: 20px;
   border-radius: 3px;
-  label {
-    color: #212121;
-    float: left;
-    margin: 10px 0;
-  }
-  input[type=text], input[type=password] {
+  .field {
     display: block;
-    width: 100%;
-    height: 40px;
-    margin: 0 auto;
-    font-weight: bold;
-    margin-bottom: 20px;
-    border: 1px solid #eee;
-    border-radius: 2px;
-    font-size: 14px;
-    text-align: center;
-    &:focus {
-      box-shadow: none;
+    margin: 2rem auto;
+    min-height: 40px;
+    label, .empty {
+      width: 20%;
+      height: 40px;
+      line-height: 40px;
+      color: #bbb;
+      float: left;
+      text-align: right;
+      padding: 0 2rem;
     }
-  }
-  input[type=submit] {
-    display: block;
-    width: 100%;
-    height: 40px;
-    margin: 0 auto;
-    color: #fff;
-    background: #02BF8F;
-    border: 1px solid #02BF8F;
-    font-weight: bold;
-    margin-top: 40px;
-    border-radius: 2px;
-    font-size: 18px;
-    text-align: center;
-    &:focus {
-      box-shadow: none;
+    .actions {
+      height: 40px;
+      line-height: 40px;
+    }
+    textarea {
+      font-family: 'Lato';
+      width: 80%;
+      float: right;
+      height: 30rem;
+      text-align: left;
+      border: 1px solid rgba(27,31,35,0.15);
+      resize: vertical;
+      padding: 1rem 2rem;
+      border-radius: 2px;
+    }
+    input[type=text], input[type=password] {
+      width: 80%;
+      float: right;
+      height: 40px;
+      padding: 0 2rem;
+      line-height: 40px;
+      border: 1px solid rgba(27,31,35,0.15);
+      border-radius: 2px;
+      text-align: left;
+    }
+    input[type=file] {
+      display: inline-block;
+      width: 48%;
+      &:focus {
+        box-shadow: none;
+      }
     }
   }
 }

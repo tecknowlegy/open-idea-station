@@ -22,8 +22,8 @@ class Header.UI
       if !$(clickedElement).is('.notification') and !$(clickedElement).parents().is('.notification')
         $(".notification-dropdown").addClass('hidden')
       
-      if !$(clickedElement).is('.notification-mobile') and !$(clickedElement).parents().is('.notification')
-        $(".mobile-notification-dropdown").addClass('hidden')
+      if !$(clickedElement).is('.more-options') and !$(clickedElement).parents().is('.more-options')
+        $(".more-options-dropdown").addClass('hidden')
       
       if $(clickedElement).is('.greeting')
         $(".user-profile-dropdown").removeClass('hidden')
@@ -37,6 +37,6 @@ class Header.UI
       $(".notification-dropdown").toggleClass('hidden')
       return
 
-    $(".notification-mobile").click ->
-      $(".mobile-notification-dropdown").toggleClass('hidden')
+    $(".more-options").click ->
+      $(".more-options-dropdown").toggleClass('hidden')
       return
