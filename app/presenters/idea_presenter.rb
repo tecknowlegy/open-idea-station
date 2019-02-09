@@ -8,7 +8,7 @@ class IdeaPresenter < BasePresenter
   end
 
   def author_avatar
-    author.picture.present? ? image_tag(author.picture) : author_name[0,2]
+    author.picture.present? ? image_tag(author.picture) : author_name[0, 2]
   end
 
   def name

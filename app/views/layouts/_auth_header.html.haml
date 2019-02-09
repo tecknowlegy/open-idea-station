@@ -15,10 +15,9 @@
             =link_to "javascript:;" do
               %i.material-icons.search search
           %li.auth-nav-item
-            -# =link_to "" do
-            -#   %i.material-icons.notification notification
-            -#   %small.notification-badge 4
-            <a><i class="material-icons notification">notifications</i><small class="notification-badge">4</small></a>
+            =link_to "javascript:;" do
+              %i.material-icons.notification notifications
+              %small.notification-badge 4
             =render("layouts/notifications")
           %li.auth-nav-item
             - if current_user[:picture]
