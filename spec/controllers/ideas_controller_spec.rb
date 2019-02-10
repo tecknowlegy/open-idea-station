@@ -71,11 +71,10 @@ RSpec.describe IdeasController, type: :controller do
     end
   end
 
-  describe "GET #viewed" do
+  describe "Viewers" do
     context "when the viewer is the owner of the idea" do
       it "does not record the view on that idea" do
         get_xhr(:show, { id: idea.id })
-        get_xhr(:viewed, { idea_id: idea.id })
         viewers = idea.viewers
 
         expect(response).to be_success
@@ -86,7 +85,6 @@ RSpec.describe IdeasController, type: :controller do
     context "when the viewer is not the owner of the idea" do
       it "records the view on that idea" do
         get_xhr(:show, { id: idea2.id })
-        get_xhr(:viewed, { idea_id: idea2.id })
         viewers = idea2.viewers
 
         expect(response).to be_success

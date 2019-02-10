@@ -11,20 +11,11 @@ class IdeasController < ApplicationController
       .order(published_at: :desc)
   end
 
-  def viewed
-    idea = Idea.find(params[:idea_id])
-    @views = idea.viewers
-  end
-
   def show
     # TODO: put this check in it's own method like a before_action
     return if logged_in? && current_user.ideas.find_by(id: @idea.id).present?
 
-    Viewer.create!(
-      idea_id: @idea.id,
-      time_viewed: Time.now,
-      viewer_ip: request.remote_ip
-    )
+    Acorn::IdeaViewerService.new(idea: @idea, user: current_user, viewed_at: Time.now, viewer_ip: request.remote_ip).call
   end
 
   def new

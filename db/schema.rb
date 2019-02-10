@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181128151138) do
+ActiveRecord::Schema.define(version: 20190210103105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20181128151138) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.integer "impression"
     t.index ["user_id"], name: "index_ideas_on_user_id"
   end
 
@@ -93,12 +94,14 @@ ActiveRecord::Schema.define(version: 20181128151138) do
   end
 
   create_table "viewers", force: :cascade do |t|
-    t.datetime "time_viewed"
+    t.datetime "viewed_at"
     t.string "viewer_ip"
     t.bigint "idea_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["idea_id"], name: "index_viewers_on_idea_id"
+    t.index ["user_id"], name: "index_viewers_on_user_id"
   end
 
   add_foreign_key "comments", "ideas"
@@ -107,4 +110,5 @@ ActiveRecord::Schema.define(version: 20181128151138) do
   add_foreign_key "idea_categories", "ideas"
   add_foreign_key "ideas", "users"
   add_foreign_key "viewers", "ideas"
+  add_foreign_key "viewers", "users"
 end
