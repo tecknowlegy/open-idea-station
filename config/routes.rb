@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :ideas do
-    get "viewed"
+    resources :viewers, controller: "idea_viewers", only: %i[index show]
     resources :comments
   end
 

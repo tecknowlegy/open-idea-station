@@ -61,7 +61,7 @@ describe IdeaPresenter do
     it "returns the date the idea was published" do
       idea.update(published_at: Time.now)
       expect(idea_presenter.publish_date)
-          .to eql "#{ActionView::Helpers::DateHelper.time_ago_in_words(idea.published_at)} ago"
+        .to eql "#{ActionView::Helpers::DateHelper.time_ago_in_words(idea.published_at)} ago"
     end
   end
 

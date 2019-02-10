@@ -21,6 +21,16 @@ class Idea < ApplicationRecord
     categories.uniq.map(&:name).join(", ")
   end
 
+  def impression
+    read_attribute(:impression) || 0
+  end
+
+  def increment_impression
+    with_lock do
+      increment!(:impression)
+    end
+  end
+
   private
 
   def save_categories
