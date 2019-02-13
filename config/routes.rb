@@ -4,17 +4,16 @@ Rails.application.routes.draw do
   root to: "index#index", as: "index"
 
   # FUTURE: API endpoints
-  namespace :api, path: nil, defaults: { format: :json }, constraints: { subdomain: /^api(-\w+)?$/ } do
-    resources :ideas do
-      get "viewed"
-      resources :comments
-    end
-  end
+  # namespace :api, path: nil, defaults: { format: :json }, constraints: { subdomain: /^api(-\w+)?$/ } do
+  #   resources :ideas
+  # end
 
   resources :ideas do
     resources :viewers, controller: "idea_viewers", only: %i[index show]
     resources :comments
   end
+
+  resources :categories
 
   resources :notifications, only: [:index]
 
