@@ -4,3 +4,4 @@ window.PageUrl = {}
 window.Idea = {}
 window.ConfirmationModal = {}
 window.Header = {}
+window.Category = {}
