@@ -196,7 +196,7 @@ RSpec.describe SessionsController, type: :controller do
         current_session.reload
 
         expect(response).to be_success
-        expect(flash[:notice]).to eql "You are now logged out"
+        expect(flash[:notice]).to eql "You are now signed out"
         expect(current_session.active).to be false
         expect(cookies[:user_id]).to be nil
         expect(session[:token]).to be nil
