@@ -13,19 +13,6 @@ class SessionsController < ApplicationController
     create_session(auth_token)
   end
 
-  def create_with_omniauth
-    user = User.find_or_create_from_omniauth(omniauth_hash)
-    if user.save
-      # TODO: Translations << Add to translations
-      user_credentials = { username: user.username, password: user.password }
-      auth_token = Acorn::AuthenticateUserService.call(user_credentials)
-      create_session(auth_token)
-    else
-      flash[:error] = user.errors.full_messages[0]
-      render :new
-    end
-  end
-
   def revoke
     user_session = current_user.find_session_by_token(params[:token]) || current_user.find_session!(params[:id])
     user_session.revoke!
@@ -58,10 +45,6 @@ class SessionsController < ApplicationController
     )
   end
 
-  def omniauth_hash
-    request.env["omniauth.auth"]
-  end
-
   def create_session(auth_token)
     respond_to do |format|
       if auth_token.success?
@@ -72,7 +55,7 @@ class SessionsController < ApplicationController
       else
         # << and this
         flash[:error] = auth_token.errors[:user_authentication].first
-        format.html { redirect_to new_user_path }
+        format.html { redirect_to new_session_path }
       end
     end
   end
