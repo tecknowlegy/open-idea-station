@@ -17,10 +17,12 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index]
 
-  get "/auth/:provider/callback" => "sessions#create_with_omniauth"
+  # External services authentication
+  get "/auth/:provider/callback" => "users#omniauth_user"
   get "/auth/failure", to: redirect("/users/new")
 
   resources :users, only: %i[new create]
+  post "users/create_omniauth_session", to: "users#create_omniauth_session", as: "omniauth_session"
 
   resources :sessions, only: %i[index new create destroy] do
     member do

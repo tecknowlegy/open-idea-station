@@ -9,5 +9,7 @@
       .service-title Use external service
     .external-services
       .services
-        <a href="/auth/google_oauth2" class="signup google"><i class="fa fa-google"></i></a>
-        <a href="/auth/github" class="signup github"><i class="fa fa-github"></i></a>
+        = link_to "/auth/google_oauth2", class: "signup google" do
+          %i.fa.fa-google
+        = link_to "/auth/github", class: "signup github" do
+          %i.fa.fa-github

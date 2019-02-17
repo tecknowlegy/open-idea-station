@@ -1,0 +1,25 @@
+#user
+  %section.user-form
+    %div{class: "title omniauth-#{@omniauth_user.result[:user].provider}"}
+      %span.omniauth-logo
+        %i{class: "fa fa-#{@omniauth_user.result[:user].provider}"}
+      %span.omniauth-text
+        Signup as
+        =@omniauth_user.result[:user].username
+      %span.omniauth-picture
+        %img{src: "#{@omniauth_user.result[:user].picture}"}
+    .body
+      =form_with scope: :user, url: users_path, local: true , id: :global do |form|
+        = form.hidden_field :username, value: @omniauth_user.result[:user].username
+        = form.hidden_field :email, value: @omniauth_user.result[:user].email
+        = form.hidden_field :picture, value: @omniauth_user.result[:user].picture
+        = form.hidden_field :provider, value: @omniauth_user.result[:user].provider
+        .field.for-data.group
+          %label Password
+          =form.password_field :password, id: :password, placeholder: 'enter your password'
+        .field.for-data.group
+          %label Confirm Password
+          =form.password_field :password_confirmation, id: :password_confirmation, placeholder: 're enter password'
+        .field.group
+          %span.actions
+            =form.submit :Signup
