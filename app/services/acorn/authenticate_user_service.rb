@@ -33,7 +33,7 @@ class Acorn::AuthenticateUserService
     user = find_email_or_name
     return user if user&.authenticate(password)
 
-    errors.add(:user_authentication, "Invalid credentials")
+    errors.add(:user_authentication, "Invalid username or password")
     nil
   end
 
