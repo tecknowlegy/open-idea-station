@@ -7,7 +7,7 @@ RSpec.describe UsersController, type: :controller do
     {
       user: {
         username: "johndoe",
-        email: "jphn_doe@gmail.com",
+        email: "john_doe@gmail.com",
         password: "12345678",
         password_confirmation: "12345678",
       },
@@ -69,7 +69,35 @@ RSpec.describe UsersController, type: :controller do
         post_xhr(:create, user_params)
 
         expect(response).to redirect_to(new_session_path)
-        expect(flash[:notice]).to eql "Account was created but we could not create your session at this time. Please login to continue"
+        expect(flash[:notice]).to eql "We could not sign you at this time. Please try again"
+      end
+    end
+  end
+
+  describe "#create_omniauth_session" do
+    context "when valid parameters are passed" do
+      it "creates a user session" do
+        post_xhr(:create, user_params)
+
+        post_xhr(:create_omniauth_session, user_params)
+
+        expect(response).to be_success
+        expect(current_session).not_to be nil
+        expect(current_session.user.username).to eql "johndoe"
+        expect(cookies[:user_id]).not_to be nil
+        expect(session[:token]).not_to be nil
+        expect(response).to redirect_to(ideas_path)
+      end
+    end
+
+    context "when invalid parameters are passed" do
+      it "does not creates a user session" do
+        post_xhr(:create_omniauth_session, user_params)
+
+        expect(current_session).to be nil
+        expect(cookies[:user_id]).to be nil
+        expect(session[:token]).to be nil
+        expect(response).to redirect_to(new_session_path)
       end
     end
   end
