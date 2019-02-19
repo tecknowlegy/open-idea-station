@@ -17,7 +17,6 @@ img.open-idea-station-logo {
 
 .main-nav {
   margin-top: 0;
-  box-shadow: none;
   height: 10rem;
   line-height: 10rem;
   vertical-align: middle;
@@ -26,6 +25,7 @@ img.open-idea-station-logo {
   position: fixed;
   background: $white;
   position: relative;
+  
 }
 
 div.menu-pane {
@@ -66,18 +66,16 @@ li.nav-item a, .signup-user {
   border: 1px solid transparent;
 	color: inherit;
   font-size: 14px;
-  font-family: $logo-font;
-  height: 24px;
+  font-family: $primary-font;
   line-height: 24px;
   margin-top: 8px;
   margin-right: 5px;
-  padding-top: 2px;
   border-radius: 3px;
   transition: 0.2s ease-in-out;
   &:hover, &:focus, .active {
     transition: 0.2s ease-in-out;
     background: $very-light-green;
-    border: 1px solid $green;
+    border: 1px solid $very-light-green;
     color: $primary-black !important;
   }
 }
@@ -146,4 +144,17 @@ li.auth-nav-item a.current-user {
   &:hover {
     color: $red !important;
   }
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  .main-nav {
+    padding: 1.2rem 4rem;
+    height: 60px;
+  }
+}
+.no-shadow {
+  box-shadow: none;
 }
