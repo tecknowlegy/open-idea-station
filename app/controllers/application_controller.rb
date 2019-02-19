@@ -40,6 +40,8 @@ class ApplicationController < ActionController::Base
       user_agent: request.user_agent,
       ip_address: request.remote_ip,
       location: nil,
+      # for now we use browser. We have to find gem or
+      # create logic that will tell us device platforms
       device_platform: :browser,
     }
   end
