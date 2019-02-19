@@ -24,7 +24,7 @@ class Acorn::OmniauthService
           provider: omniauth_hash.provider || user.provider,
           picture: omniauth_hash.extra["raw_info"]&.avatar_url || omniauth_hash.info.image
         )
-        return { user: user, path: "session" }
+        return [user, "session"]
       end
 
       # else use normal create flow
@@ -44,7 +44,7 @@ class Acorn::OmniauthService
                   u.picture  = omniauth_hash.extra["raw_info"].avatar_url unless omniauth_hash.extra["raw_info"]&.avatar_url.nil?
                 end
               end
-      { user: user, path: "user" }
+      [user, "user"]
     else
       errors.add(:omniauth_error, "User credential was not provided by external service")
     end
