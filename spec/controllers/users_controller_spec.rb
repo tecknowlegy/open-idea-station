@@ -35,7 +35,6 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to be_success
         expect(current_session).not_to be nil
         expect(current_session.user.username).to eql "johndoe"
-        expect(flash[:notice]).to eql "Your account was successfully created"
         expect(cookies[:user_id]).not_to be nil
         expect(session[:token]).not_to be nil
         expect(response).to redirect_to(ideas_path)
@@ -69,8 +68,8 @@ RSpec.describe UsersController, type: :controller do
       it "redirects the user to home" do
         post_xhr(:create, user_params)
 
-        expect(response).to redirect_to(index_path)
-        expect(flash[:notice]).to eql "We could not create your session at this time. Please login to continue"
+        expect(response).to redirect_to(new_session_path)
+        expect(flash[:notice]).to eql "Account was created but we could not create your session at this time. Please login to continue"
       end
     end
   end

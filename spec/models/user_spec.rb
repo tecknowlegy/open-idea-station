@@ -32,60 +32,24 @@ RSpec.describe User, type: :model do
         expect(bio).to eql "Bio is yet to be updated"
       end
     end
-
-    describe "#bio" do
-      context "when bio exist" do
-        it "retrieves the users bio" do
-          user.update({ bio: "This is a test bio" })
-          bio = user.bio
-  
-          expect(bio).to eql "This is a test bio"
-        end
-      end
-  
-      context "when bio does not exist" do
-        it "sets a default message" do
-          bio = user.bio
-  
-          expect(bio).to eql "Bio is yet to be updated"
-        end
-      end
   end
 
-  describe "#bio" do
-    context "when bio exist" do
-      it "retrieves the users bio" do
-        user.update({ bio: "This is a test bio" })
-        bio = user.bio
+  describe "#provider" do
+    context "when provider exist" do
+      it "retrieves the user account provider" do
+        user.update({ provider: "github" })
+        provider = user.provider
 
-        expect(bio).to eql "This is a test bio"
+        expect(provider).to eql "github"
       end
     end
 
-    context "when bio does not exist" do
-      it "sets a default message" do
-        bio = user.bio
+    context "when provider does not exist" do
+      it "sets a default provider" do
+        provider = user.provider
 
-        expect(bio).to eql "Bio is yet to be updated"
+        expect(provider).to eql "open-idea-station"
       end
     end
-
-    describe "#provider" do
-      context "when provider exist" do
-        it "retrieves the user account provider" do
-          user.update({ provider: "github" })
-          provider = user.provider
-  
-          expect(provider).to eql "github"
-        end
-      end
-  
-      context "when provider does not exist" do
-        it "sets a default provider" do
-          provider = user.provider
-  
-          expect(provider).to eql "open-idea-station"
-        end
-      end
   end
 end

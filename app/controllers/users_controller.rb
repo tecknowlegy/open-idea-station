@@ -12,8 +12,6 @@ class UsersController < ApplicationController
     auth_params = { username: user_params[:username], password: user_params[:password] }
 
     if user.save
-      # TODO: Translations << Add to translations
-      flash[:notice] = "Your account was successfully created"
       create_session(auth_params)
     else
       flash[:error] = user.errors.full_messages[0]
@@ -37,7 +35,7 @@ class UsersController < ApplicationController
         when "session" then format.html { render :omniauth_session }
         end
       else
-        flash[:error] = @omniauth_user.errors[:omniauth_error].first
+        flash[:error] = @omniauth_user.errors[:omniauth_error]
         render :new
       end
     end
@@ -61,13 +59,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if auth_token.success?
-        # TODO: Translations << Add to translations
-        flash[:success] = "You are now signed in"
         cookies[:user_id] = session["token"] = auth_token.result
-        format.html { redirect_to "/ideas" }
+        format.html { redirect_to ideas_path }
       else
-        # << and this
-        flash[:error] = auth_token.errors[:user_authentication].first
+        binding.pry
+        # TODO: Translations << Add to translations
+        flash[:notice] = "Account was created but we could not create your session at this time. Please login to continue"
         format.html { redirect_to new_session_path }
       end
     end

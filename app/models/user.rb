@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def provider
-    read_attribute(:provider) || "open-idea-stattion"
+    read_attribute(:provider) || "open-idea-station"
   end
 
   concerning :Sessions do
