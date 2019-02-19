@@ -25,7 +25,7 @@ describe Acorn::AuthenticateUserService do
 
       it "it fails to authenticate the user" do
         expect(authenticate_status).to be_failure
-        expect(authenticate_status.errors[:user_authentication][0]).to eql "Invalid credentials"
+        expect(authenticate_status.errors[:user_authentication][0]).to eql "Invalid username or password"
       end
     end
 

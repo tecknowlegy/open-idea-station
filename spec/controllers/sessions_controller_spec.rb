@@ -46,25 +46,10 @@ RSpec.describe SessionsController, type: :controller do
       it "does not create a user session" do
         post_xhr(:create, invalid_credential)
 
-        expect(response).to redirect_to(new_user_path)
+        expect(response).to redirect_to(new_session_path)
         expect(Session.all.size).to be 0
         expect(flash[:error]).not_to be nil
       end
-    end
-  end
-
-  describe "GET #create_with_omniauth" do
-    before do
-      stub_create_with_omniauth(user2)
-    end
-
-    it "successfully creates a session for the user" do
-      get_xhr(:create_with_omniauth, { provider: "github" })
-      current_user_session = User.find_user_by_session(Session.first.token)
-
-      expect(Session.all.size).to be 1
-      expect(user2.username).to eql current_user_session.username
-      expect(flash[:success]).to eq "You are now signed in"
     end
   end
 
@@ -196,7 +181,7 @@ RSpec.describe SessionsController, type: :controller do
         current_session.reload
 
         expect(response).to be_success
-        expect(flash[:notice]).to eql "You are now logged out"
+        expect(flash[:notice]).to eql "You are now signed out"
         expect(current_session.active).to be false
         expect(cookies[:user_id]).to be nil
         expect(session[:token]).to be nil
