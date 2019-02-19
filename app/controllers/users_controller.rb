@@ -26,16 +26,17 @@ class UsersController < ApplicationController
   end
 
   def omniauth_user
-    @omniauth_user = Acorn::OmniauthService.new(omniauth_hash: omniauth_hash).call
+    omniauth_user = Acorn::OmniauthService.new(omniauth_hash: omniauth_hash).call
 
     respond_to do |format|
-      if @omniauth_user.success?
-        case @omniauth_user.result[:path]
+      if omniauth_user.success?
+        @user, path = omniauth_user.result
+        case path
         when "user" then format.html { render :omniauth_user }
         when "session" then format.html { render :omniauth_session }
         end
       else
-        flash[:error] = @omniauth_user.errors[:omniauth_error]
+        flash[:error] = omniauth_user.errors[:omniauth_error]
         render :new
       end
     end
@@ -62,7 +63,6 @@ class UsersController < ApplicationController
         cookies[:user_id] = session["token"] = auth_token.result
         format.html { redirect_to ideas_path }
       else
-        binding.pry
         # TODO: Translations << Add to translations
         flash[:notice] = "Account was created but we could not create your session at this time. Please login to continue"
         format.html { redirect_to new_session_path }

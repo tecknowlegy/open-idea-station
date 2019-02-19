@@ -1,19 +1,20 @@
 #user
-  %section.user-form
-    %div{class: "title omniauth-#{@omniauth_user.result[:user].provider}"}
-      %span.omniauth-logo
-        %i{class: "fa fa-#{@omniauth_user.result[:user].provider}"}
-      %span.omniauth-text
-        Signin as
-        =@omniauth_user.result[:user].username
-      %span.omniauth-picture
-        %img{src: "#{@omniauth_user.result[:user].picture}"}
-    .body
-      =form_with scope: :user, url: omniauth_session_path, local: true, id: :global do |form|
-        = form.hidden_field :username, value: @omniauth_user.result[:user].email
-        .field.for-data.group
-          %label Password
-          =form.password_field :password, id: :password, placeholder: 'enter your password'
-        .field.group
-          %span.actions
-            =form.submit :Login
+  - present(@user) do |u|
+    %section.user-form
+      %div{class: "title omniauth-#{u.provider}"}
+        %span.omniauth-logo
+          %i{class: "fa fa-#{u.provider}"}
+        %span.omniauth-text
+          Signin as
+          = u.username
+        %span.omniauth-picture
+          %img{src: "#{u.picture}"}
+      .body
+        =form_with scope: :user, url: omniauth_session_path, local: true, id: :global do |form|
+          = form.hidden_field :username, value: u.email
+          .field.for-data.group
+            %label Password
+            =form.password_field :password, id: :password, placeholder: 'enter your password'
+          .field.group
+            %span.actions
+              =form.submit :Login

@@ -23,17 +23,18 @@
       border-bottom: 1px solid $box-shadow;
       text-align: center;
       font-family: $logo-font;
+      color: #fff;
     }
 
     .omniauth-github {
       background: #000;
+
     }
     .omniauth-google {
       background: #4285f4;
     }
     .omniauth-open-idea-station {
       background: $green;
-      color: #fff;
     }
 
     .omniauth-github, .omniauth-google, .omniauth-open-idea-station {
