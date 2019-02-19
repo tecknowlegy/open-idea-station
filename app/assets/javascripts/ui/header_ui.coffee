@@ -10,7 +10,6 @@ class Header.UI
 
   toggleSideNav: (sideWidth) =>
     $("#side-nav").animate({ left: sideWidth })
-
   
   toggleHeaderDropdown: ->
     $(document).click (event) ->
@@ -39,4 +38,18 @@ class Header.UI
 
     $(".more-options").click ->
       $(".more-options-dropdown").toggleClass('hidden')
+      return
+  
+  fixOnScroll: ->
+    $('.main-nav').addClass 'no-shadow'
+    $(window).scroll ->
+      $pageTray = $('#page-tray')
+      $mainNav = $('.main-nav')
+      scroll = $(window).scrollTop()
+      if scroll >= 160
+        $pageTray.addClass 'fixed'
+        $mainNav.removeClass 'no-shadow'
+      else
+        $pageTray.removeClass 'fixed'
+        $mainNav.addClass 'no-shadow'
       return

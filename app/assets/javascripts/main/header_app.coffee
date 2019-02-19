@@ -5,3 +5,4 @@ class Header.App
   start: ->
     @headerUI.initializeSideNav()
     @headerUI.toggleHeaderDropdown()
+    @headerUI.fixOnScroll()
