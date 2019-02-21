@@ -65,5 +65,17 @@ class User < ApplicationRecord
     def all_notifications
       notifications.order(created_at: :desc)
     end
+
+    def unread_notifications
+      all_notifications.unread
+    end
+
+    def recent_notifications(size = nil)
+      all_notifications.recent(size)
+    end
+
+    def find_notification!(id)
+      all_notifications.find_by!(id: id)
+    end
   end
 end
