@@ -1,9 +1,6 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification
 
-  private
-
-  def set_notification
-    @notifications = Notification.where(recipient: current_user).unread
+  def index
+    @notifications = current_user.unread_notifications
   end
 end

@@ -14,7 +14,6 @@ class User < ApplicationRecord
 
   has_many :ideas, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
 
   def self.find_user_by_session(token)
     session = Session.find_by(token: token, active: true)
@@ -55,6 +54,16 @@ class User < ApplicationRecord
       relation = sessions.active
       relation = relation.where.not(token: options[:except]) if options[:except]
       relation.map(&:revoke!)
+    end
+  end
+
+  concerning :Notifications do
+    included do
+      has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
+    end
+
+    def all_notifications
+      notifications.order(created_at: :desc)
     end
   end
 end
