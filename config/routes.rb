@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :notifications, only: [:index]
+  resources :notifications, only: %i[index destroy]
 
   # External services authentication
   get "/auth/:provider/callback" => "users#omniauth_user"
