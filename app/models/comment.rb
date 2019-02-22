@@ -17,8 +17,13 @@ class Comment < ApplicationRecord
 
   def create_notification
     prepare_recipients.each do |recipient|
-      Notification.create(recipient: recipient, actor: user,
-                          action: "commented", notifiable: self, is_read: false)
+      Notification.create(
+        recipient: recipient,
+        actor: user,
+        action: "commented",
+        notifiable: self,
+        is_read: false
+      )
 
       # stream_content = {
       #   id: id,

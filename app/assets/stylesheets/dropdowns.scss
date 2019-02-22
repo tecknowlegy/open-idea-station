@@ -153,13 +153,13 @@
     }
   }
 
-  li.notification-item {
+  li.notification-list {
     width: 100%;
     min-height: 1px;
     font-weight: 400 !important;
-    border-bottom: 1px solid $box-shadow-lighter;
 
-    a {
+    a.notification-item {
+      // width: 100%;
       display: flex;
       flex-grow: 1;
       align-items: center;
@@ -168,6 +168,7 @@
       line-height: 12.825rem !important;
       justify-content: space-between;
       padding: 1.5rem !important;
+      border-bottom: 1px solid $box-shadow-lighter;
       &:hover {
         background: $very-light-green !important;
       }
