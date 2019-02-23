@@ -38,12 +38,6 @@
       width: 10px;
       border-radius: 50%;
     }
-    .status-read {
-      background: transparent;
-    }
-    .status-unread {
-      background: $yellow;
-    }
 
     .notification-content {
       flex: 9;
@@ -79,4 +73,11 @@
       }
     }
   }
+}
+
+.status-read {
+  background: transparent !important;
+}
+.status-unread {
+  background: $yellow !important;
 }

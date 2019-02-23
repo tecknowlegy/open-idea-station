@@ -21,4 +21,4 @@
 //= require material/rAF
 //= require material
 //= require_tree .
-//= require_tree ./channels
+//= require cable

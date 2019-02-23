@@ -15,7 +15,12 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :notifications, only: %i[index destroy]
+  resources :notifications, only: %i[index destroy] do
+    collection do
+      get "/recent", to: "notifications#show"
+      get "mark-all-as-read/:id", to: "notifications#mark_as_read_js"
+    end
+  end
 
   # External services authentication
   get "/auth/:provider/callback" => "users#omniauth_user"
