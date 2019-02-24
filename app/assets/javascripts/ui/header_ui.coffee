@@ -71,7 +71,7 @@ class Header.UI
           self.toggleUnreadNotification()
         
         if response.data.length is 0
-          $notificationList.append """<p><i class="fa fa-trash"></i> Empty!</p>"""
+          $notificationList.append """<p>Empty!</p>"""
           $(".notification-footer").addClass("hidden")
 
       (error) ->

@@ -7,9 +7,9 @@ class Notification.API
         return recentNotifications
     )
   
-  markAllAsRead: (id) ->
+  markAllAsRead: (user_id) ->
     return $.ajax(
-      url: "/notifications/mark-all-as-read/#{id}"
+      url: "/notifications/mark-all-as-read/#{user_id}"
       type: "GET"
       success: (response) ->
         return response

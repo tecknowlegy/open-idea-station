@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :notifications, only: %i[index destroy] do
     collection do
       get "/recent", to: "notifications#show"
-      get "mark-all-as-read/:id", to: "notifications#mark_as_read_js"
+      get "mark-all-as-read/:user_id", to: "notifications#update"
     end
   end
 

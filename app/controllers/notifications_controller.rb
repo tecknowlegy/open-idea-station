@@ -1,26 +1,22 @@
 class NotificationsController < ApplicationController
+  after_action :mark_as_read, only: %i[index update]
   before_action :set_notification, only: :destroy
-  after_action :mark_as_read, only: :show
-  after_action :mark_as_read, only: :index
+  before_action :set_user, only: :update
 
+  # Handles rendering of all notifactions "views/notifications/index"
   def index
     @notifications ||= current_user.all_notifications
   end
 
+  # Handles updating user notification badge - unread
   def show
     @notifications = current_user.recent_notifications
-
     render json: { data: @notifications, has_unread: unread?(@notifications) }
   end
 
-  def mark_as_read
-    @notifications.update_all(is_read: true, updated_at: DateTime.now)
-  end
-
-  def mark_as_read_js
-    @notifications = current_js_user.recent_notifications(params[:size])
-    @notifications.update_all(is_read: true, updated_at: DateTime.now)
-
+  # Handles updating user notification badge - read
+  def update
+    @notifications = @user.recent_notifications(params[:size])
     render json: { data: "status-read" }
   end
 
@@ -34,8 +30,12 @@ class NotificationsController < ApplicationController
 
   private
 
-  def current_js_user
-    User.find_by(id: params[:id].to_s)
+  def set_user
+    @user = User.find_by(id: params[:user_id].to_s)
+  end
+
+  def mark_as_read
+    @notifications.update_all(is_read: true, updated_at: DateTime.now)
   end
 
   def unread?(notifs)
@@ -49,6 +49,6 @@ class NotificationsController < ApplicationController
     @notification = current_user.find_notification!(params[:id].to_s)
 
   rescue ActiveRecord::RecordNotFound
-    flash[:notice] = "This notification has already been deleted"
+    flash[:notice] = "This notification does not exist or has already been deleted"
   end
 end
