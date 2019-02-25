@@ -15,7 +15,7 @@ class Idea.UI
         return self.availableTags
 
       (error) ->
-        console.log "nothing was fetched"
+        return error
     )
 
     self.persistedCategoryEntries()

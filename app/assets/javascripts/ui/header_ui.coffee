@@ -1,6 +1,6 @@
 class Header.UI
   constructor: () ->
-    @size = 5
+    @$notificationIcon = $(".material-icons.notification")
 
   initializeSideNav: ->
     self = @
@@ -65,22 +65,24 @@ class Header.UI
   recentNotification: (getRecentNotifications) ->
     self = @
     $notificationList = $(".notification-list")
-    getRecentNotifications(self.size).then(
-      (response) ->
-        if response.has_unread
-          self.toggleUnreadNotification()
-        
-        if response.data.length is 0
-          $notificationList.append """<p>Empty!</p>"""
-          $(".notification-footer").addClass("hidden")
+    if self.$notificationIcon.size() > 0
+      getRecentNotifications(self.size).then(
+        (response) ->
+          if response.has_unread
+            self.toggleUnreadNotification()
+          
+          if response.data.length is 0
+            $notificationList.append """<p>Empty!</p>"""
+            $(".notification-footer").addClass("hidden")
 
-      (error) ->
-        $notificationList.append """<p>An error occured while retrieving your notifications</p>"""
-    )
+        (error) ->
+          $notificationList.append """<p>An error occured while retrieving your notifications</p>"""
+      )
+    return
 
   markAllAsRead: (markAllAsRead) ->
     self = @
-    $(".material-icons.notification").click ->
+    self.$notificationIcon.click ->
       $currentUserId = $(".current-user").attr('id')
       markAllAsRead($currentUserId).then(
         (response) ->
