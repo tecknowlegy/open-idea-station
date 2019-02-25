@@ -15,7 +15,7 @@ class NotificationPresenter < BasePresenter
     case @model.action
     when "commented" then "commented on #{topic.name}"
     else
-      "@model.action #{topic.name}"
+      "#{@model.action} #{topic.name}"
     end
   end
 
