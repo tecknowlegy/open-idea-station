@@ -9,5 +9,5 @@ class Header.App
     @headerUI.fixOnScroll()
 
     # ensure this call is not made when we access notification page
-    @headerUI.recentNotification(@notificationAPI.getRecentNotifications)
+    @headerUI.recentNotification(@notificationAPI.checkRecentNotifications)
     @headerUI.markAllAsRead(@notificationAPI.markAllAsRead)

@@ -1,5 +1,5 @@
 class Notification.API
-  getRecentNotifications: ->
+  checkRecentNotifications: ->
     return $.ajax(
       url: "/notifications/recent"
       type: "GET"

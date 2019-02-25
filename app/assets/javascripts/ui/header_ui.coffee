@@ -62,11 +62,11 @@ class Header.UI
   toggleReadNotification: ->
     $(".notification-badge").removeClass("status-unread")
   
-  recentNotification: (getRecentNotifications) ->
+  recentNotification: (checkRecentNotifications) ->
     self = @
     $notificationList = $(".notification-list")
     if self.$notificationIcon.size() > 0
-      getRecentNotifications(self.size).then(
+      checkRecentNotifications(self.size).then(
         (response) ->
           if response.has_unread
             self.toggleUnreadNotification()
