@@ -117,14 +117,16 @@
 }
 
 .notification-badge {
+  display: inline-block;
   position: relative;
-  right: -12px;
+  height: 1.6rem;
+  width: 1.6rem;
+  right: -7px;
   top: -50px;
-  color: #000000;
-  background-color: $acorn-amber;
+  color: transparent;
+  background-color: transparent;
   margin: 0 -.8em;
   border-radius: 50%;
-  padding: 3px 6px;
   font-size: 12px;
 }
 
@@ -133,7 +135,7 @@
   right: 40px;
   min-width: 30rem;
   max-height: 80vh;
-  // overflow: scroll;
+  padding-bottom: 1rem;
 
   .notification-header, .notification-footer {
     width: 100%;
@@ -153,21 +155,32 @@
     }
   }
 
-  li.notification-item {
+  .notification-footer {
+    a {
+      text-align: center !important;
+      &:hover {
+        background: $very-light-green !important;
+      }
+    }
+  }
+
+  li.notification-list {
     width: 100%;
     min-height: 1px;
     font-weight: 400 !important;
-    border-bottom: 1px solid $box-shadow-lighter;
+    overflow: scroll;
+    max-height: 60vh;
+    
 
-    a {
+    a.notification-item {
       display: flex;
       flex-grow: 1;
       align-items: center;
       min-height: 1px;
-      max-height: 12.825rem !important;
-      line-height: 12.825rem !important;
+      max-height: 10.825rem !important;
+      line-height: 10.825rem !important;
       justify-content: space-between;
-      padding: 1.5rem !important;
+      padding: 0 1.5rem !important;
       &:hover {
         background: $very-light-green !important;
       }

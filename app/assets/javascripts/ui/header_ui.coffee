@@ -1,5 +1,7 @@
 class Header.UI
-# if !$(clickedElement).is(".menu-pane") and !$(clickedElement).parents().is(".menu-pane")
+  constructor: () ->
+    @$notificationIcon = $(".material-icons.notification")
+
   initializeSideNav: ->
     self = @
     $(".close-menu-pane, .close-bar").click ->
@@ -53,3 +55,38 @@ class Header.UI
         $pageTray.removeClass 'fixed'
         $mainNav.addClass 'no-shadow'
       return
+
+  toggleUnreadNotification: ->
+    $(".notification-badge").addClass("status-unread")
+  
+  toggleReadNotification: ->
+    $(".notification-badge").removeClass("status-unread")
+  
+  recentNotification: (checkRecentNotifications) ->
+    self = @
+    $notificationList = $(".notification-list")
+    if self.$notificationIcon.size() > 0
+      checkRecentNotifications(self.size).then(
+        (response) ->
+          if response.has_unread
+            self.toggleUnreadNotification()
+          
+          if response.data.length is 0
+            $notificationList.append """<p>Empty!</p>"""
+            $(".notification-footer").addClass("hidden")
+
+        (error) ->
+          $notificationList.append """<p>An error occured while retrieving your notifications</p>"""
+      )
+    return
+
+  markAllAsRead: (markAllAsRead) ->
+    self = @
+    self.$notificationIcon.click ->
+      $currentUserId = $(".current-user").attr('id')
+      markAllAsRead($currentUserId).then(
+        (response) ->
+          self.toggleReadNotification()
+        (error) ->
+          self.toggleUnreadNotification()
+      )

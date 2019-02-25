@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_user
-      flash[:notice] = "Please log in to perform this action"
+      flash[:notice] = "Please log in to continue"
       current_user_session&.revoke!
 
       respond_to do |format|

@@ -2,25 +2,23 @@
 %ul.notification-dropdown.hidden
   %span.popover-rect.top-right2
   %li.notification-header
-    =link_to "Notifications", ""
+    =link_to "Recent notifications", "javascript:;"
 
   %li.divider
 
-  %li.notification-item
-    =link_to "" do
-      %span.notification-avatar=image_tag('dummy-profile-male.jpg')
-      %span.notification-content
-        %span.notification-body
-          %em Samson Jared
-          liked your idea
-        %span.notification-time 10 minutes ago
-  %li.notification-item
-    =link_to "" do
-      %span.notification-avatar=image_tag('dummy-profile-male.jpg')
-      %span.notification-content
-        %span.notification-body
-          %em Benny Ogidan
-          updated one of your ideas. Check it out at https://www.github.com/...
-        %span.notification-time 4 days ago
+  %li.notification-list
+    - recent_notifications.each do |notification|
+      - present(notification) do |n|
+        =link_to n.topic, class: "notification-item" do
+          %span.notification-avatar=image_tag(n.picture)
+          %span.notification-content
+            %span.notification-body
+              %em= n.actor
+              = n.content
+            %span.notification-time= n.time
+          %span{class: "status status-#{n.status}"}
+
+  %li.divider
+
   %li.notification-footer
-    =link_to "View all", ""
+    =link_to "View All", notifications_path

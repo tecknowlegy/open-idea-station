@@ -1,0 +1,8 @@
+-# This template handles rendering of realtime notification
+=link_to notification[:topic], class: "notification-item" do
+  %span.notification-avatar=image_tag(notification[:picture])
+  %span.notification-content
+    %span.notification-body
+      %em= notification[:actor]      
+      = notification[:content]
+    %span.notification-time= notification[:time]

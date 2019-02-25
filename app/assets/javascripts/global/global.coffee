@@ -1,3 +1,4 @@
+window.App = {} # action cable consumer instance
 window.Modal = {}
 window.Footer = {}
 window.PageUrl = {}
