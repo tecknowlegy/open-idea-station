@@ -6,7 +6,6 @@ module Notifiable
 
   included do
     include ActionView::Helpers::DateHelper
-    include Acorn::NotificationBroadcast
     after_create :build_notification
   end
 
@@ -15,6 +14,8 @@ module Notifiable
   # the availablility of recipients list
   def build_notification
     return unless respond_to?(:prepare_recipients)
+
+    recipients = []
 
     prepare_recipients.each do |recipient|
       Notification.create(
@@ -25,20 +26,23 @@ module Notifiable
         is_read: false
       )
 
-      broadcast_content = {
-        actor: user.username,
-        topic: idea,
-        content: content,
-        picture: picture,
-        recipient: recipient[:username],
-        time: time,
-      }
-
-      send_broadcast(broadcast_content)
+      recipients << { recipient: recipient[:username] }
     end
+
+    ::NotificationBroadcastJob.new.perform(recipients, broadcast_content)
   end
 
   private
+
+  def broadcast_content
+    {
+      actor: user.username,
+      topic: idea,
+      content: content,
+      picture: picture,
+      time: time,
+    }
+  end
 
   def content
     case self.class::ACTION.to_s

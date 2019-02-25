@@ -1,10 +1,12 @@
 module Acorn
   module NotificationBroadcast
-    def send_broadcast(content)
-      ActionCable.server.broadcast(
-        "notifications-" + content[:recipient],
-        html: render_notification(content.except(:recipient))
-      )
+    def send_broadcast(recipients, notification_content)
+      recipients.each do |recipient|
+        ActionCable.server.broadcast(
+          "notifications-#{recipient[:recipient]}",
+          html: render_notification(notification_content)
+        )
+      end
     end
 
     private

@@ -47,7 +47,6 @@ class NotificationsController < ApplicationController
 
   def set_notification
     @notification = current_user.find_notification!(params[:id].to_s)
-
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "This notification does not exist or has already been deleted"
   end
