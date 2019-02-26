@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
     current_user.find_session_by_token(session[:token]).revoke!
     cookies[:user_id] = session["token"] = nil
     respond_to do |format|
-      format.html { redirect_to new_user_path, notice: "You are now signed out" }
+      format.html { redirect_to new_session_path, notice: "You are now signed out" }
     end
   end
 

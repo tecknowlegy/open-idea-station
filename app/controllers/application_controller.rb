@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       current_user_session&.revoke!
 
       respond_to do |format|
-        format.html { redirect_to new_user_path }
+        format.html { redirect_to new_session_path }
         format.json { render error: "Not Authorized", status: 401 }
       end
     end
