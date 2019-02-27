@@ -21,14 +21,17 @@ Rails.application.routes.draw do
       get "mark-all-as-read/:user_id", to: "notifications#update"
     end
   end
+  resources :users, only: %i[new create] do
+    collection do
+      post "create_omniauth_session", to: "users#create_omniauth_session", as: "omniauth_session"
+    end
+  end
 
   # External services authentication
   get "/auth/:provider/callback" => "users#omniauth_user"
   get "/auth/failure", to: redirect("/users/new")
 
-  resources :users, only: %i[new create]
-  post "users/create_omniauth_session", to: "users#create_omniauth_session", as: "omniauth_session"
-
+  resources :email_confirmations, only: %i[new create update]
   resources :sessions, only: %i[index new create destroy] do
     member do
       delete :revoke
