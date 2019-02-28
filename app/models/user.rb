@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   USERNAME_REGEX = /\A[a-zA-Z0-9_]+\Z/.freeze
   EMAIL_REGEX = /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i.freeze
+  LINK_VALIDITY = 2.hours
 
   has_secure_password
 
