@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20190227181944) do
     t.datetime "updated_at", null: false
     t.boolean "email_confirmed", default: false
     t.string "new_email"
+    t.string "locale"
   end
 
   create_table "viewers", force: :cascade do |t|
