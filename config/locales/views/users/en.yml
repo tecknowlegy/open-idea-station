@@ -9,7 +9,7 @@ en:
   users_mailer:
     email_confirmation:
       subject: "[open-idea-station] Confirm your email address"
-      hello: "Hello,"
+      hello: "Hello %{username},"
       intro: "Thank you for successfully signing up for open-idea-station (Home for your ideas)."
       body1: |
         To enjoy the full open-idea-station experience, ensure to click the link below to confirm that you intend to use %{new_email} with application.
