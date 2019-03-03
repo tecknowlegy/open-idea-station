@@ -43,7 +43,7 @@ class User < ApplicationRecord
   end
 
   def created?
-    self.email = normalize_email
+    self.email = Acorn::Normalize.email(email)
     self.new_email = email
 
     save
@@ -57,12 +57,6 @@ class User < ApplicationRecord
 
   def uid_prefix
     "usr"
-  end
-
-  private
-
-  def normalize_email
-    email&.strip&.downcase
   end
 
   concerning :Sessions do

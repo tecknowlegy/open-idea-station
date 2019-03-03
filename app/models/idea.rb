@@ -33,7 +33,7 @@ class Idea < ApplicationRecord
   # Even when we update an idea name this
   # should also get updated
   def save
-    self.slug_name = normalize_name
+    self.slug_name = Acorn::Normalize.slug_name(name)
 
     super
   end
@@ -48,10 +48,6 @@ class Idea < ApplicationRecord
     @all_categories&.split(",")&.each do |name|
       categories << Category.where(name: name.strip).first_or_create!
     end
-  end
-
-  def normalize_name
-    name.downcase.parameterize
   end
 
   concerning :Categories do
