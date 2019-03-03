@@ -9,6 +9,10 @@ module UniqueIdentifier
     before_create :generate_uid
   end
 
+  def to_param
+    uid
+  end
+
   private
 
   # Generate UID for model objects

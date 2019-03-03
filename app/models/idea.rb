@@ -26,8 +26,32 @@ class Idea < ApplicationRecord
     end
   end
 
+  def to_param
+    slug_name
+  end
+
+  # Even when we update an idea name this
+  # should also get updated
+  def save
+    self.slug_name = normalize_name
+
+    super
+  end
+
   def uid_prefix
     "ide"
+  end
+
+  private
+
+  def save_categories
+    @all_categories&.split(",")&.each do |name|
+      categories << Category.where(name: name.strip).first_or_create!
+    end
+  end
+
+  def normalize_name
+    name.downcase.parameterize
   end
 
   concerning :Categories do
@@ -38,14 +62,6 @@ class Idea < ApplicationRecord
 
     def all_categories
       categories.uniq.map(&:name).join(", ")
-    end
-
-    private
-
-    def save_categories
-      @all_categories&.split(",")&.each do |name|
-        categories << Category.where(name: name.strip).first_or_create!
-      end
     end
   end
 end

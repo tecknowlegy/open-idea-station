@@ -42,10 +42,11 @@ class User < ApplicationRecord
     save
   end
 
-  def save
+  def created?
+    self.email = normalize_email
     self.new_email = email
 
-    super
+    save
   end
 
   def send_email_confirmation
@@ -56,6 +57,12 @@ class User < ApplicationRecord
 
   def uid_prefix
     "usr"
+  end
+
+  private
+
+  def normalize_email
+    email&.strip&.downcase
   end
 
   concerning :Sessions do
