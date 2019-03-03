@@ -1,4 +1,6 @@
 class Idea < ApplicationRecord
+  include UniqueIdentifier
+
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :viewers, dependent: :destroy
@@ -22,6 +24,10 @@ class Idea < ApplicationRecord
     with_lock do
       increment!(:impression)
     end
+  end
+
+  def uid_prefix
+    "ide"
   end
 
   concerning :Categories do
