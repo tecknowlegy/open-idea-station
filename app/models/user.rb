@@ -5,6 +5,8 @@ class User < ApplicationRecord
   DEFAULT_LOCALE = "en".freeze
   DEFAULT_PROVIDER = "open-idea-station".freeze
 
+  include UniqueIdentifier
+
   has_secure_password
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, \
@@ -40,16 +42,21 @@ class User < ApplicationRecord
     save
   end
 
-  def save
+  def created?
+    self.email = Acorn::Normalize.email(email)
     self.new_email = email
 
-    super
+    save
   end
 
   def send_email_confirmation
     token = Acorn::JsonWebToken.encode({ data: [id, new_email] }, LINK_VALIDITY.from_now)
 
     UsersMailer.delay.email_confirmation(id, token)
+  end
+
+  def uid_prefix
+    "usr"
   end
 
   concerning :Sessions do

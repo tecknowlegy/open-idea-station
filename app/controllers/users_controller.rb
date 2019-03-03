@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
 
-    if user.save
+    if user.created?
       @success_message = "Your account was successfully created"
       create_session(session_params)
     else

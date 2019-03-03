@@ -31,3 +31,14 @@ unless Rails.env.production?
     end
   end
 end
+
+namespace :db do
+  desc "Update database with slug_name"
+  task update_slug: :environment do
+    Idea.all.each do |i|
+      i.slug_name = Acorn::Normalize.slug_name(i.name)
+    end
+  end
+end
+
+
