@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190227181944) do
+ActiveRecord::Schema.define(version: 20190303184431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20190227181944) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 20190227181944) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
     t.index ["idea_id"], name: "index_comments_on_idea_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 20190227181944) do
     t.bigint "idea_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
     t.index ["category_id"], name: "index_idea_categories_on_category_id"
     t.index ["idea_id"], name: "index_idea_categories_on_idea_id"
   end
@@ -51,6 +54,8 @@ ActiveRecord::Schema.define(version: 20190227181944) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "impression"
+    t.string "uid"
+    t.string "slug_name"
     t.index ["user_id"], name: "index_ideas_on_user_id"
   end
 
@@ -63,6 +68,7 @@ ActiveRecord::Schema.define(version: 20190227181944) do
     t.bigint "notifiable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
   end
 
@@ -103,6 +109,7 @@ ActiveRecord::Schema.define(version: 20190227181944) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "uid"
     t.index ["idea_id"], name: "index_viewers_on_idea_id"
     t.index ["user_id"], name: "index_viewers_on_user_id"
   end

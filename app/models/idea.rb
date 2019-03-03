@@ -1,4 +1,6 @@
 class Idea < ApplicationRecord
+  include UniqueIdentifier
+
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :viewers, dependent: :destroy
@@ -24,6 +26,30 @@ class Idea < ApplicationRecord
     end
   end
 
+  def to_param
+    slug_name
+  end
+
+  # Even when we update an idea name this
+  # should also get updated
+  def save
+    self.slug_name = Acorn::Normalize.slug_name(name)
+
+    super
+  end
+
+  def uid_prefix
+    "ide"
+  end
+
+  private
+
+  def save_categories
+    @all_categories&.split(",")&.each do |name|
+      categories << Category.where(name: name.strip).first_or_create!
+    end
+  end
+
   concerning :Categories do
     included do
       has_many :idea_categories, dependent: :destroy
@@ -32,14 +58,6 @@ class Idea < ApplicationRecord
 
     def all_categories
       categories.uniq.map(&:name).join(", ")
-    end
-
-    private
-
-    def save_categories
-      @all_categories&.split(",")&.each do |name|
-        categories << Category.where(name: name.strip).first_or_create!
-      end
     end
   end
 end

@@ -1,6 +1,4 @@
 class Session < ApplicationRecord
-  # include UniqueIdentifier
-
   # Device platforms:
   # Key = platform type
   # Value = for how long the session can be used (even if inactive)
@@ -10,6 +8,8 @@ class Session < ApplicationRecord
     browser: 8.hours,
     "": 8.hours,
   }.freeze
+
+  include UniqueIdentifier
 
   belongs_to :user
 
@@ -21,5 +21,9 @@ class Session < ApplicationRecord
 
   def revoke!
     update active: false
+  end
+
+  def uid_prefix
+    "ses"
   end
 end

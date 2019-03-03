@@ -13,7 +13,7 @@ class IdeasController < ApplicationController
 
   def show
     # TODO: put this check in it's own method like a before_action
-    return if logged_in? && current_user.ideas.find_by(id: @idea.id).present?
+    return if logged_in? && current_user.ideas.find_by_slug_name(@idea.slug_name).present?
 
     Acorn::IdeaViewerService.new(idea: @idea, user: current_user, viewed_at: Time.now, viewer_ip: request.remote_ip).call
   end
@@ -26,7 +26,7 @@ class IdeasController < ApplicationController
     @idea = current_user.ideas.new(idea_params)
     respond_to do |format|
       if @idea.save
-        @idea.update_attributes!("published_at", Time.now) if params[:commit] == "Publish"
+        @idea.update_columns({ published_at: Time.now }) if params[:commit] == "Publish"
         format.html { redirect_to @idea, notice: "Idea was successfully created" }
         format.json { render :show, status: :created, location: @idea }
       else
@@ -68,7 +68,7 @@ class IdeasController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_idea
-    @idea = Idea.find(params[:id])
+    @idea = Idea.find_by_slug_name(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list

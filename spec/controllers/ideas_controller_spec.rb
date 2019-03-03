@@ -74,7 +74,7 @@ RSpec.describe IdeasController, type: :controller do
   describe "Viewers" do
     context "when the viewer is the owner of the idea" do
       it "does not record the view on that idea" do
-        get_xhr(:show, { id: idea.id })
+        get_xhr(:show, { id: idea.slug_name })
         viewers = idea.viewers
 
         expect(response).to be_success
@@ -84,7 +84,7 @@ RSpec.describe IdeasController, type: :controller do
 
     context "when the viewer is not the owner of the idea" do
       it "records the view on that idea" do
-        get_xhr(:show, { id: idea2.id })
+        get_xhr(:show, { id: idea2.slug_name })
         viewers = idea2.viewers
 
         expect(response).to be_success
@@ -95,15 +95,15 @@ RSpec.describe IdeasController, type: :controller do
 
   describe "GET #edit" do
     it "does not allow an unauthorized user to edit an idea" do
-      get_xhr(:edit, { id: idea2.id })
+      get_xhr(:edit, { id: idea2.slug_name })
 
       expect(response.code).to eql "302"
-      expect(response).to redirect_to(idea_path(idea2.id))
+      expect(response).to redirect_to(idea_path(idea2.slug_name))
       expect(flash[:warning]).to eql "You are not authorized to perform this action"
     end
 
     it "allows an authorized user to edit an idea" do
-      get_xhr(:edit, { id: idea.id })
+      get_xhr(:edit, { id: idea.slug_name })
 
       expect(response).to be_success
     end
@@ -115,7 +115,7 @@ RSpec.describe IdeasController, type: :controller do
         update_params =
           {
             commit: "Publish",
-            id: idea.id,
+            id: idea.slug_name,
             idea: {
               name: "name changed",
               description: "some idea john created for test purpose",
@@ -137,7 +137,7 @@ RSpec.describe IdeasController, type: :controller do
       it "updates the idea, without publishing" do
         update_params =
           {
-            id: idea.id,
+            id: idea.slug_name,
             idea: {
               name: "name changed again",
               description: "some idea john created for test purpose",
@@ -148,9 +148,11 @@ RSpec.describe IdeasController, type: :controller do
           }
         patch_xhr(:update, update_params)
 
-        expect(assigns(:idea).name).to eq "name changed again"
-        expect(response).to redirect_to(idea_path(idea.id))
-        expect(assigns(:idea).published_at).to be nil
+        updated_idea = assigns(:idea)
+
+        expect(updated_idea.name).to eq "name changed again"
+        expect(response).to redirect_to(idea_path(updated_idea))
+        expect(updated_idea.published_at).to be nil
       end
     end
 
@@ -158,7 +160,7 @@ RSpec.describe IdeasController, type: :controller do
       it "does not update the idea" do
         update_params =
           {
-            id: idea2.id,
+            id: idea2.slug_name,
             idea: {
               name: "name won't change",
               description: "some idea john created for test purpose",
@@ -170,7 +172,7 @@ RSpec.describe IdeasController, type: :controller do
         patch_xhr(:update, update_params)
 
         expect(assigns(:idea).name).not_to eq "name won't change"
-        expect(response).to redirect_to(idea_path(idea2.id))
+        expect(response).to redirect_to(idea_path(idea2.slug_name))
         expect(assigns(:idea).published_at).to be nil
         expect(flash[:warning]).to eql "You are not authorized to perform this action"
       end
@@ -180,7 +182,7 @@ RSpec.describe IdeasController, type: :controller do
       it "does not update the idea for invalid parameters" do
         invalid_params =
           {
-            id: idea.id,
+            id: idea.slug_name,
             idea: {
               name: "jo",
             },
@@ -195,15 +197,15 @@ RSpec.describe IdeasController, type: :controller do
 
   describe "PATCH #destroy" do
     it "does not delete another users idea" do
-      delete_xhr(:destroy, { id: idea2.id })
+      delete_xhr(:destroy, { id: idea2.slug_name })
 
-      expect(response).to redirect_to(idea_path(idea2.id))
+      expect(response).to redirect_to(idea_path(idea2.slug_name))
       expect(assigns(:idea).is_archived).to be false
       expect(flash[:warning]).to eql "You are not authorized to perform this action"
     end
 
     it "successfully deletes the authorized user idea" do
-      delete_xhr(:destroy, { id: idea.id })
+      delete_xhr(:destroy, { id: idea.slug_name })
 
       expect(response).to redirect_to(ideas_path)
       expect(assigns(:idea).is_archived).to be true
