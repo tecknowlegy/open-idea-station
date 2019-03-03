@@ -2,6 +2,8 @@ class User < ApplicationRecord
   USERNAME_REGEX = /\A[a-zA-Z0-9_]+\Z/.freeze
   EMAIL_REGEX = /\A\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})\z/i.freeze
   LINK_VALIDITY = 2.hours
+  DEFAULT_LOCALE = "en".freeze
+  DEFAULT_PROVIDER = "open-idea-station".freeze
 
   has_secure_password
 
@@ -26,7 +28,28 @@ class User < ApplicationRecord
   end
 
   def provider
-    read_attribute(:provider) || "open-idea-station"
+    read_attribute(:provider) || DEFAULT_PROVIDER
+  end
+
+  def locale
+    read_attribute(:locale) || DEFAULT_LOCALE
+  end
+
+  def locale=(locale)
+    write_attribute(:locale, locale)
+    save
+  end
+
+  def save
+    self.new_email = email
+
+    super
+  end
+
+  def send_email_confirmation
+    token = Acorn::JsonWebToken.encode({ data: [id, new_email] }, LINK_VALIDITY.from_now)
+
+    UsersMailer.delay.email_confirmation(id, token)
   end
 
   concerning :Sessions do

@@ -1,0 +1,64 @@
+@import 'base';
+
+.last {
+  margin-bottom: 0;
+}
+
+.first {
+  margin-top: 0;
+}
+
+table.body-wrap {
+  width: 100%;
+}
+
+.address {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  padding: 0;
+}
+
+p, ul, ol {
+  font-family: $primary-font;
+  color: #000;
+  margin: 1rem 0;
+  line-height: 1.4rem;
+  font-size: 1rem;
+}
+
+ul li, ol li {
+  margin-left: 5px;
+  list-style-position: inside;
+}
+
+p.signature, p.hello {
+  font-family: $logo-font;
+}
+
+p.token {
+  font-size: 95%;
+  word-break: break-all;
+  a:hover {
+    color: $green;
+  }
+}
+
+.container {
+  display: block!important;
+  max-width: 600px!important;
+  margin: 0 auto!important; /* makes it centered */
+  clear: both!important;
+}
+
+.body-wrap .container {
+  padding: 20px;
+}
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+}
+.content table {
+  width: 100%;
+}

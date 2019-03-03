@@ -8,14 +8,23 @@
 en:
   users_mailer:
     email_confirmation:
-      subject: "[open-idea-station] Confirm your email address"
+      subject: "[OIS] Confirm your email address"
       hello: "Hello %{username},"
-      intro: "Thank you for successfully signing up for open-idea-station (Home for your ideas)."
+      intro: "Thank you for successfully signing up for an open-idea-station account (Home for your ideas)."
       body1: |
-        To enjoy the full open-idea-station experience, ensure to click the link below to confirm that you intend to use %{new_email} with application.
+        To enjoy the full experience, please click the link below to confirm that you intend to use %{new_email} with the application.
         Note that this link will be valid until %{time}.
       action: "Confirm email"
       alternative: "If you cannot click the link, please visit the following link to confirm your email."
       body2: ""
-      signature: "open-idea-station"
+      signature: "open idea station"
+  layouts:
+    mailer:
+      body:
+        signature: "Open Idea Station"
+        address: Lagos, Nigeria.
+      footer:
+        need_help: "Need help?"
+        contact_support: "Contact support."
+        address: Lagos, Nigeria.
 

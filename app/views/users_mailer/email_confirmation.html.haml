@@ -1,6 +1,6 @@
-%p= t(".hello", username: @user.username)
+%p.hello= t(".hello", username: @user.username)
 %p= t(".intro")
 %p= t(".body1", new_email: @user.new_email, time: l(User::LINK_VALIDITY.from_now))
-%p= link_to t(".action"), email_confirmation_url(@token), class: "acorn_btn"
+%p= link_to t(".action"), email_confirmation_url(@token), class: "acorn_btn get-started"
 %p= t(".alternative")
-%p.token= email_confirmation_url(@token)
+%p.token= link_to email_confirmation_url(@token), email_confirmation_url(@token)
