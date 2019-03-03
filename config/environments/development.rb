@@ -31,6 +31,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # For those using RSpec. Use this change action mailer preview directory
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
+
+  # configure default application host to generate URLs in
+  # email for ActionMailer
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.default_host, protocol: "http" }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

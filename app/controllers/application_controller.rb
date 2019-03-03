@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
-  before_action :authorize
   helper_method :current_user, :current_user_session, :logged_in?
+  before_action :authorize
+  before_action :set_locale
   after_action :clear_xhr_flash
 
   private
@@ -35,6 +36,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_locale
+    locale = params[:locale] || extract_locale_from_accept_language_header
+
+    locale.present? && I18n.available_locales.include?(locale.to_sym) && current_user&.locale = locale
+
+    I18n.locale = (current_user&.locale || locale).to_sym
+  end
+
+  def extract_locale_from_accept_language_header
+    request.env.fetch("HTTP_ACCEPT_LANGUAGE", "").scan(/^[a-z]{2}/).first
+  end
+
   def session_params
     {
       user_agent: request.user_agent,
@@ -44,12 +57,6 @@ class ApplicationController < ActionController::Base
       # create logic that will tell us device platforms
       device_platform: :browser,
     }
-  end
-
-  # Takes a string of IP address and lookup a geo location from it.
-  def humanize_location(ip_address)
-    location = Acorn::Location.by_ip(ip_address)
-    location ? location.name : t("general.na")
   end
 
   def clear_xhr_flash
