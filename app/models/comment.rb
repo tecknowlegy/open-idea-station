@@ -1,6 +1,8 @@
 class Comment < ApplicationRecord
   ACTION = :commented
 
+  include UniqueIdentifier
+
   include Notifiable
 
   belongs_to :idea
@@ -13,5 +15,9 @@ class Comment < ApplicationRecord
     end
 
     idea_commenters.uniq - [user]
+  end
+
+  def uid_prefix
+    "com"
   end
 end
