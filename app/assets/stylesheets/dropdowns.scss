@@ -8,18 +8,24 @@
   z-index: 90;
   background-color: #fff;
   border-radius: 1px;
-  border-top: 1px solid $profile-box-shadow;
-  border-left: 1px solid $profile-box-shadow;
+  border-top: 1px solid $box-shadow;
+  border-left: 1px solid $box-shadow;
 }
 
 .top-right {
   top: -7.5px;
-  right: 10px;
+  right: 18px;
   transform: rotate(45deg);
 }
+.top-right2 {
+  top: -7.5px;
+  right: 32px;
+  transform: rotate(45deg);
+}
+
 .top-left {
   top: -7.5px;
-  left: 10px;
+  left: 18px;
 }
 .top-center {
   top: -7.5px;
@@ -34,35 +40,38 @@
   transform: rotate(225deg);
 }
 
-.user-profile-dropdown {
-  top: 50px;
-  position: absolute;
+.user-profile-dropdown, .more-options-dropdown {
   display: inline-block;
-  margin: 0;
+  position: absolute;
+  top: 50px;
   right: 0;
+  max-width: 200px;
+  margin: 0;
   z-index: 100;
   color: $primary-black;
-  max-width: 120px;
   background-clip: padding-box;
-  border: 1px solid $profile-box-shadow;
+  border: 1px solid $box-shadow;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: $dropdown-shadow;
-  li.profile-link, li.divider, li.user {
+}
+
+.user-profile-dropdown, .more-options-dropdown {
+  li.profile-link, li.divider, li.user, li.option-link {
     width: 100%;
     min-height: 1px;
     a {
       text-align: left;
       color: $primary-black3;
-      text-transform: capitalize;
-      font-size: 14px;
-      font-weight: bold;
+      font-size: 1.4rem;
+      font-weight: 400 !important;
+      padding: 0 1.5rem !important;
       &:hover {
-        background-color: $primary-color;;
-        color: $white; 
+        color: $primary-black;
+        background: $very-light-green !important;
       }
     }
-    .greeting {
+    .greeting, .options-header {
       color: #000 !important;
       &:hover {
         background-color: $white !important;
@@ -70,8 +79,12 @@
     }
   }
   li.divider {
-    background-color: $profile-box-shadow;
+    background-color: $box-shadow-lighter;
   }
+}
+
+.more-options-dropdown {
+  right: 162px;
 }
 
 .idea-action-dropdown {
@@ -91,13 +104,132 @@
       display: inline-block;
       background: transparent !important;
       color: $primary-black4;
-      border: 1px solid $profile-box-shadow;
+      border: 1px solid $box-shadow;
       border-radius: 3px;
       transition: 0.2s ease-in-out;
       &:hover {
         background: $primary-color !important;
         color: $white !important;
         transition: 0.2s ease-in-out;
+      }
+    }
+  }
+}
+
+.notification-badge {
+  display: inline-block;
+  position: relative;
+  height: 1.6rem;
+  width: 1.6rem;
+  right: -7px;
+  top: -50px;
+  color: transparent;
+  background-color: transparent;
+  margin: 0 -.8em;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.notification-dropdown {
+  @extend .user-profile-dropdown;
+  right: 40px;
+  min-width: 30rem;
+  max-height: 80vh;
+  padding-bottom: 1rem;
+
+  .notification-header, .notification-footer {
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    font-weight: 400 !important;
+    a {
+      text-align: left;
+      color: $primary-black3;
+      text-transform: capitalize;
+      font-size: 1.4rem;
+      font-weight: 400 !important;
+      padding: 0 1.5rem !important;
+      &:hover {
+        color: $primary-black; 
+      }
+    }
+  }
+
+  .notification-footer {
+    a {
+      text-align: center !important;
+      &:hover {
+        background: $very-light-green !important;
+      }
+    }
+  }
+
+  li.notification-list {
+    width: 100%;
+    min-height: 1px;
+    font-weight: 400 !important;
+    overflow: scroll;
+    max-height: 60vh;
+    
+
+    a.notification-item {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      min-height: 1px;
+      max-height: 10.825rem !important;
+      line-height: 10.825rem !important;
+      justify-content: space-between;
+      padding: 0 1.5rem !important;
+      &:hover {
+        background: $very-light-green !important;
+      }
+
+      .notification-avatar {
+        flex: 1;
+        text-align: left !important;
+        img {
+          margin-top: 5.8rem;
+          display: inline-block;
+          height: 4rem;
+          width: 4rem !important;
+          border-radius: 50%;
+          border: 1px solid $box-shadow-lighter;
+        }
+      }
+
+      .notification-content {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: left;
+        color: $primary-black3;
+  
+        span.notification-time {
+          flex: 1;
+          color: $primary-black;
+          text-transform: capitalize;
+          font-size: 1rem;
+          font-weight: 400 !important;
+          line-height: 1.4rem;
+          padding-top: 0.4rem;
+        }
+        span.notification-body {
+          flex: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: wrap;
+          word-wrap: break-word;
+          line-height: 1.8rem;
+          color: $primary-black3;
+          font-size: 1.4rem;
+          font-weight: 400 !important;
+          em {
+            color: $primary-black !important;
+            font-weight: 400 !important;
+          }
+        }
       }
     }
   }

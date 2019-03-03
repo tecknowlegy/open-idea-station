@@ -1,0 +1,18 @@
+
+=form_with model: @user, local: true, id: :global do |form|
+  = form.hidden_field :provider, value: "open-idea-station"
+  .field.for-data.group
+    %label Username
+    =form.text_field :username, id: :username, placeholder: 'enter your username'
+  .field.for-data.group
+    %label Email
+    =form.text_field :email, id: :email, placeholder: 'enter your email'
+  .field.for-data.group
+    %label Password
+    =form.password_field :password, id: :password, placeholder: 'enter your password'
+  .field.for-data.group
+    %label Confirm Password
+    =form.password_field :password_confirmation, id: :password_confirmation, placeholder: 're-enter password'
+  .field.group
+    %span.actions
+      =form.submit "Sign up"

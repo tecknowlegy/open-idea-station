@@ -13,12 +13,12 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
-  if Rails.root.join('tmp/caching-dev.txt').exist?
+  if Rails.root.join("tmp/caching-dev.txt").exist?
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.seconds.to_i}",
     }
   else
     config.action_controller.perform_caching = false
@@ -30,6 +30,13 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
+
+  # For those using RSpec. Use this change action mailer preview directory
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
+
+  # configure default application host to generate URLs in
+  # email for ActionMailer
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.default_host, protocol: "http" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -53,5 +60,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Setup action cable default URL
-  config.action_cable.url = ENV['ACTION_CABLE_URL']
+  config.action_cable.url = ENV["ACTION_CABLE_URL"]
 end

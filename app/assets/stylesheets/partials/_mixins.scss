@@ -1,0 +1,44 @@
+@mixin cameleon($media) {
+  @if $media == handhelds {
+    @media only screen and (min-width: $break-point-smobile)
+    { 
+      @content;
+    }
+  } 
+  @else if $media == mobile {
+    @media only screen and (min-width: $break-point-nmobile + 1)
+    { 
+      @content;
+    }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: $break-point-ntablet + 1)
+    {
+      @content;
+    }
+  }
+  @else if $media == notebook {
+    @media only screen and (min-width: $break-point-ltablet + 1)
+    {
+      @content;
+    }
+  }
+  @else if $media == medium-notebook {
+    @media only screen and (min-width: $break-point-nnotebook + 1)
+    {
+      @content;
+    }
+  }
+  @else if $media == wide-screen {
+    @media only screen and (min-width: $break-point-lnotebook + 1)
+    {
+      @content;
+    }
+  }
+  @else if $media == wider-screen {
+    @media only screen and (min-width: $break-point-desktop + 1)
+    {
+      @content;
+    }
+  }
+}

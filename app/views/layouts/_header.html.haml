@@ -1,0 +1,21 @@
+%header#page-tray
+  .navbar
+    %nav.main-nav
+      .nav-wrapper
+        .menu-pane
+          %span.open-bar
+          %span.open-bar
+          %span.open-bar
+        .acorn-logo-main.ois-header-icon.hide-on-large
+          %span.open
+          %span.idea
+          %span.station
+        %ul.right.app-menu.hide-on-small
+          %li.nav-item
+            =link_to "Home", index_path
+          %li.nav-item
+            =link_to "Ideas", ideas_path
+          %li.nav-item.login-user
+            =link_to "Log in", new_session_path
+          %li.nav-item
+            =link_to "Sign up", new_user_path, class: "signup-user"

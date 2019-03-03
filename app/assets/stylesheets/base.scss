@@ -1,9 +1,179 @@
-@import url("https://fonts.googleapis.com/css?family=Muli");
-@import url("https://fonts.googleapis.com/css?family=Lora");
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Timmana");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css");
 @import 'material';
-@import 'partials/_variables';
-@import 'partials/_reset';
+@import 'partials/variables';
+@import 'partials/reset';
+@import 'partials/mixins';
+@import 'partials/typography';
 @import "font-awesome";
 
-$primary-font: 'Muli', verdana, sans-serif;
+
+$primary-font: 'Lato', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+$logo-font: 'Timmana', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+html{
+  margin: 0;
+  font-family: $primary-font;
+}
+
+.super-box {
+  position: relative;
+  left: 0;
+  right: 0;
+  min-height: 3rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.box {
+  padding-right: 3rem;
+  padding-left: 3rem;
+  margin: 0 auto;
+  min-height: 2px;
+}
+
+@media screen and (max-width:575px){
+	html {
+    font-size: 47.5%;
+  }
+}
+@media screen and (min-width:576px){
+  html {
+    font-size: 48.5%;
+  }
+}
+@media screen and (min-width:768px){
+	html {
+    font-size: 52.5%;
+  }
+}
+@media screen and (min-width:996px){
+	html {
+    font-size: 57.5%;
+  }
+  .box {
+    padding-right: 6rem;
+    padding-left: 6rem;
+  }
+}
+@media screen and (min-width:1200px){
+	html {
+		font-size: 62.5%;
+  }
+  .box {
+    padding-right: 12rem;
+    padding-left: 12rem;
+  }
+}
+
+body {
+	width: 100%;
+  padding: 0 auto;
+  font-family: $primary-font;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: $primary-black;
+  background-size: 40px;
+  background: $white;
+	text-align: center;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+.grid-box {
+  display: grid !important;
+}
+.super-box.top-section {
+  padding-top: 8rem !important;
+}
+
+p.empty-content {
+  font-size: 3rem;
+  color: $primary-black4;
+  font-weight: bold;
+  margin-top: 15%;
+}
+
+.lead {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  h1, h2 {
+    margin-bottom: 1.5rem;
+  }
+  h6 {
+    width: 80%;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 767px) {
+    h6 {
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 520px) {
+  .lead {
+    width: 100% !important;
+  }
+}
+
+.field_with_errors {
+  border-bottom: none;
+  background: none;
+}
+
+.hidden {
+  display: none;
+}
+.acorn-flex {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 40rem;
+}
+.acorn-flex-col {
+  flex: 1;
+}
+.col-left {
+  order: -1;
+}
+.acorn-align-text {
+  height: 20em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.acorn-aligner {
+  width: 60%;
+}
+.col-image {
+  background-size: cover;
+  background-position: 50%;
+}
+
+@media (max-width: 767px) {
+  .acorn-flex {
+    height: 48em;
+    display: flex;
+    flex-direction: column;
+  }
+  .acorn-flex-col {
+    order: vertical;
+  }
+  .col-left {
+    order: 0;
+  }
+  .acorn-align-text div {
+    padding: 1em;
+  }
+  .acorn-aligner {
+    width: 90%;
+  }
+}

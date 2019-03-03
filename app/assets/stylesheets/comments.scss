@@ -51,7 +51,7 @@
       background: $primary-background;
       &:focus {
         background: $white;
-        border-color: $profile-box-shadow;
+        border-color: $box-shadow;
       }
     }
     input[type=submit] {

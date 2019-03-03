@@ -20,5 +20,5 @@
 //= require material/mdlComponentHandler
 //= require material/rAF
 //= require material
+//= require cable
 //= require_tree .
-//= require_tree ./channels

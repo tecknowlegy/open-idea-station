@@ -1,0 +1,21 @@
+- content_for :user_actions do
+  %li.profile-link
+    =link_to "New Idea", new_idea_path
+
+.super-box
+  .box
+    #notification-wrapper
+      %h5.notification-header Notifications
+      .divider
+      - @notifications.each do |notification|
+        - present(notification) do |n|    
+          .notification-list
+            =link_to n.topic, class: "notification-item" do
+              %span.notification-avatar=image_tag(n.picture)
+              %span.notification-content
+                %span.notification-body
+                  %em= n.actor
+                  = n.content
+                %span.notification-time= n.time
+              %span{class: "status status-#{n.status}"}
+

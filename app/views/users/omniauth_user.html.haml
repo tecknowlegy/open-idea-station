@@ -1,0 +1,26 @@
+#user
+  - present(@user) do |u|
+    %section.user-form
+      %div{class: "title omniauth-#{u.provider}"}
+        %span.omniauth-logo
+          %i{class: "fa fa-#{u.provider}"}
+        %span.omniauth-text
+          Sign up as
+          = u.username
+        %span.omniauth-picture
+          %img{src: "#{u.picture}"}
+      .body
+        =form_with scope: :user, url: users_path, local: true , id: :global do |form|
+          = form.hidden_field :username, value: u.username
+          = form.hidden_field :email, value: u.email
+          = form.hidden_field :picture, value: u.picture
+          = form.hidden_field :provider, value: u.provider
+          .field.for-data.group
+            %label Password
+            =form.password_field :password, id: :password, placeholder: 'enter your password'
+          .field.for-data.group
+            %label Confirm Password
+            =form.password_field :password_confirmation, id: :password_confirmation, placeholder: 're-enter password'
+          .field.group
+            %span.actions
+              =form.submit "Sign up"

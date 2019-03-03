@@ -1,0 +1,14 @@
+<%# Don’t use Haml for plain text email templates. ERb is actually a little
+easier and doesn’t lose line breaks. Try it and see. %>
+
+<%= t(".hello", username: @user.username) %>
+
+<%= t(".intro") %>
+
+<%= t(".body1", new_email: @user.new_email, time: distance_of_time_in_words(User::LINK_VALIDITY)) %>
+
+<%= email_confirmation_url(@token) %>
+
+<%= t(".body2") %>
+
+<%= t(".signature") %>

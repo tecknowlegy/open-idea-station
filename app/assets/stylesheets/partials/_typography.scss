@@ -1,0 +1,55 @@
+h1, h2 {
+  font-weight: bold;
+  font-family: 'Timmana', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+	font-size: 50px;
+	font-size: 5rem;
+	line-height: 6rem;
+}
+h2 {
+	font-size: 42px;
+	font-size: 4.2rem;
+	line-height: 5rem ;
+}
+h3 {
+	font-size: 38px;
+	font-size: 3.8rem;
+	line-height: 4.2rem ;
+}
+h4 {
+	font-size: 30px;
+	font-size: 3rem;
+	line-height: 3.8rem ;
+}
+h5 {
+	font-size: 24px;
+	font-size: 2.4rem;
+	line-height: 3.6rem ;
+}
+h6 {
+	font-size: 20px;
+	font-size: 2rem;
+	line-height: 3rem ;
+}
+a {
+  text-decoration: none !important;
+  transition: all .2s ease-in-out;
+	cursor: pointer;
+	color: inherit;
+	&:hover {
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+    color: #82B1FF;
+	}
+}
+
+p {
+	font-size: 1.6rem;
+	line-height: 3rem;
+	letter-spacing: .03rem;
+	word-spacing: .05rem;
+	font-family: 'Lato', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	margin-top: 3rem;
+}

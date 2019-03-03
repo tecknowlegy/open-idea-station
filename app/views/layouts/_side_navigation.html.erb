@@ -17,8 +17,8 @@
       <ul class="main_navigation">
         <li class="side-nav-item"><a href="/"><i class="fa fa-home"></i><span>Home</span></a></li>
         <li class="side-nav-item"><a href="/ideas"><i class="fa fa-folder-o"></i><span>Ideas</span></a></li>
-        <li class="side-nav-item"><a class="nav-item login-user"><i class="fa fa-plug"></i><span>Login</span></a></li>
-        <li class="side-nav-item"><a href="/signup"><i class="fa fa-power-off"></i><span>Signup</span></a></li>
+        <li class="side-nav-item"><a class="nav-item login-user"><i class="fa fa-plug"></i><span>Log in</span></a></li>
+        <li class="side-nav-item"><a href="/users/new"><i class="fa fa-power-off"></i><span>Sign up</span></a></li>
       </ul>
       <div class="visitors-section">
         Hello
@@ -30,7 +30,11 @@
         <li class="side-nav-item"><a href="/"><i class="fa fa-home"></i><span>Home</span></a></li>
         <li class="side-nav-item"><a href="/ideas"><i class="fa fa-folder-o"></i><span>Ideas</span></a></li>
         <li class="side-nav-item"><a href="/ideas/new"><i class="fa fa-file-o"></i><span>New Idea</span></a></li>
-        <li class="side-nav-item"><a href="/logout"><i class="fa fa-eject"></i><span>Logout</span></a></li>
+        <li class="side-nav-item">
+          <%= link_to session_path(current_user_session.id), method: :delete do %>
+            <i class="fa fa-eject"></i><span>Logout</span>
+          <% end %>
+        </li>
       </ul>
       <div class="visitors-section">
         Hello

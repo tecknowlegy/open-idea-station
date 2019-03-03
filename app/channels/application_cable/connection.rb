@@ -4,19 +4,16 @@ module ApplicationCable
 
     def connect
       self.current_user = find_verified_user
-      logger.add_tags 'ActionCable', current_user[:username]
+      logger.add_tags "ActionCable", current_user[:username]
     end
 
     protected
 
     def find_verified_user
-      # Assuming a successful authentication sets a signed cookie with the `user_id`
-      if verified_user = User.find_by(id: cookies.signed[:user_id])
-        verified_user
-      else
-        # Raises ActionCable::Connection::Authorization::UnauthorizedError
-        reject_unauthorized_connection
-      end
+      @verified_user ||= User.find_user_by_session(cookies[:user_id]) if Acorn::AuthorizeUserService.new(cookies[:user_id]).call.result
+
+      # Raises ActionCable::Connection::Authorization::UnauthorizedError
+      @verified_user || reject_unauthorized_connection
     end
   end
 end

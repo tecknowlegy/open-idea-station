@@ -21,7 +21,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -62,6 +62,10 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "acorns_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+  # configure default application host to generate URLs in
+  # email for ActionMailer
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.default_host, protocol: "https" }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -80,7 +84,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV['RAILS_LOG_TO_STDOUT'].present?
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
@@ -90,8 +94,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Setup action cable default URL
-  config.action_cable.url = ENV['ACTION_CABLE_PROD_URL']
+  config.action_cable.url = ENV["ACTION_CABLE_PROD_URL"]
   # Set allowed request origins
-  origins = ['https://open-idea-station.herokuapp.com/', 'http://open-idea-station.herokuapp.com/']
+  origins = ["https://open-idea-station.herokuapp.com/", "http://open-idea-station.herokuapp.com/"]
   config.action_cable.allowed_request_origins = origins
 end

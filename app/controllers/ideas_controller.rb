@@ -1,28 +1,21 @@
 class IdeasController < ApplicationController
   skip_before_action :authorize, only: %i[index show]
   before_action :set_idea, only: %i[show edit update destroy]
+  before_action :ensure_idea_owner, only: %i[edit update destroy]
 
   def index
+    # TODO: move where methods to scope
     @ideas = Idea.includes(:categories)
-                 .where(is_archived: false)
-                 .where.not(published_at: nil)
-                 .order(published_at: :desc)
-  end
-
-  def viewed
-    # define local variable as its not needed in the view
-    idea = Idea.find(params[:idea_id])
-    @views = idea.viewers
+      .where(is_archived: false)
+      .where.not(published_at: nil)
+      .order(published_at: :desc)
   end
 
   def show
-    return if logged_in? && !@current_user.ideas.find_by(id: @idea.id).nil?
+    # TODO: put this check in it's own method like a before_action
+    return if logged_in? && current_user.ideas.find_by(id: @idea.id).present?
 
-    Viewer.create!(
-      idea_id: @idea.id,
-      time_viewed: Time.now,
-      viewer_ip: request.remote_ip
-    )
+    Acorn::IdeaViewerService.new(idea: @idea, user: current_user, viewed_at: Time.now, viewer_ip: request.remote_ip).call
   end
 
   def new
@@ -30,13 +23,11 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = @current_user.ideas.new(idea_params)
+    @idea = current_user.ideas.new(idea_params)
     respond_to do |format|
       if @idea.save
-        if params[:commit] == 'Publish'
-          @idea.update_attributes!('published_at', Time.now)
-        end
-        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
+        @idea.update_attributes!("published_at", Time.now) if params[:commit] == "Publish"
+        format.html { redirect_to @idea, notice: "Idea was successfully created" }
         format.json { render :show, status: :created, location: @idea }
       else
         format.html { render :new }
@@ -46,23 +37,15 @@ class IdeasController < ApplicationController
   end
 
   # GET /ideas/1/edit
-  def edit
-    if @idea.user[:id] != @current_user[:id]
-      flash[:warning] = 'You are not authorized to edit this idea'
-      redirect_to @idea
-    end
-  end
+  def edit; end
 
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
   def update
     respond_to do |format|
       if @idea.update(idea_params)
-        if params[:commit] == 'Publish'
-          puts idea_params
-          @idea.update_attributes!(published_at: Time.now)
-        end
-        format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
+        @idea.update_attributes!(published_at: Time.now) if params[:commit] == "Publish"
+        format.html { redirect_to @idea, notice: "Idea was successfully updated" }
         format.json { render :show, status: :ok, location: @idea }
       else
         format.html { render :edit }
@@ -74,8 +57,6 @@ class IdeasController < ApplicationController
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
   def destroy
-    return if @idea.user[:id] != @current_user[:id]
-    
     @idea.update_attributes!(is_archived: true)
     respond_to do |format|
       format.html { redirect_to ideas_url, notice: "#{@idea.name} was archived" }
@@ -92,6 +73,14 @@ class IdeasController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list
   def idea_params
-    params.require(:idea).permit(:name, :description, :url, :is_archived, :all_categories)
+    params
+      .require(:idea).permit(:name, :description, :url, :is_archived, :all_categories)
+  end
+
+  def ensure_idea_owner
+    raise StandardError if @idea.user.id != current_user.id
+  rescue StandardError
+    flash[:warning] = "You are not authorized to perform this action"
+    redirect_to @idea
   end
 end
