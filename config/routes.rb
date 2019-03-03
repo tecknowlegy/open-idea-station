@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "users#omniauth_user"
   get "/auth/failure", to: redirect("/users/new")
 
-  resources :email_confirmations, only: %i[new create update]
+  resources :email_confirmations, only: %i[create edit update], param: :token
   resources :sessions, only: %i[index new create destroy] do
     member do
       delete :revoke

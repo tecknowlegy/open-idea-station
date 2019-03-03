@@ -59,12 +59,6 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  # Takes a string of IP address and lookup a geo location from it.
-  def humanize_location(ip_address)
-    location = Acorn::Location.by_ip(ip_address)
-    location ? location.name : t("general.na")
-  end
-
   def clear_xhr_flash
     flash.discard if request.xhr?
   end
