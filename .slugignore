@@ -1,0 +1,4 @@
+# Add files not necessary to run your app in production here
+/test
+/spec
+/coverage
