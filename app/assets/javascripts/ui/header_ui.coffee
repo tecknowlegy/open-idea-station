@@ -72,8 +72,9 @@ class Header.UI
             self.toggleUnreadNotification()
           
           if response.data.length is 0
-            $notificationList.append """<p>Empty!</p>"""
+            $notificationList.append """<i class='material-icons light-color4'>work_outline</i>"""
             $(".notification-footer").addClass("hidden")
+            $(".footer-divider").addClass("hidden")
 
         (error) ->
           $notificationList.append """<p>An error occured while retrieving your notifications</p>"""
