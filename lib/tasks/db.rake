@@ -30,14 +30,33 @@ unless Rails.env.production?
       end
     end
   end
+else
+  namespace :db do
+    desc "Perform operations based on db existence"
+    task check_database: :environment do
+      database_existence_handler
+    end
+
+    desc "Fill database with sample data"
+    task seed: :environment do
+    end
+
+    desc "Update database with slug_name"
+    task update_slug: :environment do
+      Idea.all.map(&:save)
+    end
+  end
 end
 
-namespace :db do
-  desc "Update database with slug_name"
-  task update_slug: :environment do
-    Idea.all.each do |i|
-      i.slug_name = Acorn::Normalize.slug_name(i.name)
-    end
+def database_existence_handler
+  ActiveRecord::Base.connection
+rescue ActiveRecord::NoDatabaseError
+  task reseed: ["db:create", "db:migrate", "db:seed"] do
+    puts "Reseeding completed."
+  end
+else
+  task migrate: ["db:migrate", "db:update_slug"] do
+    puts "Migration completed."
   end
 end
 
