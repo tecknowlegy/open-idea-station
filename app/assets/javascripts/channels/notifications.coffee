@@ -19,6 +19,7 @@ $(document).on 'turbolinks:load', =>
       self = @
       self.toggleUnreadNotification()
       self.addNewNotification($(".notification-list"), notifications.html)
+      $(".material-icons.light-color4").addClass("hidden")
 
     toggleUnreadNotification: ->
       $(".notification-badge").addClass("status-unread")
