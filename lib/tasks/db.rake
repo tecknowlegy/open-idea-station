@@ -1,4 +1,20 @@
-unless Rails.env.production?
+if Rails.env.production?
+  namespace :db do
+    desc "Perform operations based on db existence"
+    task check_database: :environment do
+      database_existence_handler
+    end
+
+    desc "Fill database with sample data"
+    task seed: :environment do
+    end
+
+    desc "Update database with slug_name"
+    task update_slug: :environment do
+      Idea.all.map(&:save)
+    end
+  end
+else
   require "faker"
 
   # lib/tasks/db.rake
@@ -30,22 +46,6 @@ unless Rails.env.production?
       end
     end
   end
-else
-  namespace :db do
-    desc "Perform operations based on db existence"
-    task check_database: :environment do
-      database_existence_handler
-    end
-
-    desc "Fill database with sample data"
-    task seed: :environment do
-    end
-
-    desc "Update database with slug_name"
-    task update_slug: :environment do
-      Idea.all.map(&:save)
-    end
-  end
 end
 
 def database_existence_handler
@@ -59,5 +59,3 @@ else
     puts "Migration completed."
   end
 end
-
-

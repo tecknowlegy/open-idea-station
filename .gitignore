@@ -63,3 +63,4 @@ bower.json
 /config/application.yml
 /config.secret.yml
 proposals.yml
+/public/assets/

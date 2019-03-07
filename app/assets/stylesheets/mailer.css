@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  line-height: 1.6;
+}
+
+body {
+  -moz-osx-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-size-adjust: none;
+  width: 100%!important;
+  height: 100%;
+}
+
+.last {
+  margin-bottom: 0;
+}
+
+.first {
+  margin-top: 0;
+}
+
+table.body-wrap {
+  width: 100%;
+}
+
+.address {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  padding: 0;
+}
+
+p.signature, p.hello {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+p.token {
+  font-size: 95%;
+  word-break: break-all;
+}
+p.token a {
+  color: #43A047;
+}
+
+.container {
+  display: block!important;
+  max-width: 600px!important;
+  margin: 0 auto!important; /* makes it centered */
+  clear: both!important;
+}
+
+.body-wrap .container {
+  padding: 20px;
+}
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+}
+.content table {
+  width: 100%;
+}
