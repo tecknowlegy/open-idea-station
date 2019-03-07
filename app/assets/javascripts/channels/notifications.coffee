@@ -1,5 +1,4 @@
-$(document).on 'turbolinks:load', =>
-
+$(document).ready =>
   $notificationIcon = $(".material-icons.notification")
 
   if $notificationIcon.size() > 0
