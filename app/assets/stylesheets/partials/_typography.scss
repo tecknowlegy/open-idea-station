@@ -1,6 +1,9 @@
+$primary-font: 'Lato', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+$logo-font: 'Timmana', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 h1, h2 {
   font-weight: bold;
-  font-family: 'Timmana', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: $logo-font;
 }
 
 h1 {
@@ -50,6 +53,6 @@ p {
 	line-height: 3rem;
 	letter-spacing: .03rem;
 	word-spacing: .05rem;
-	font-family: 'Lato', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-family: $primary-font;
 	margin-top: 3rem;
 }

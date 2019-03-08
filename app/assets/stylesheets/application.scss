@@ -1,81 +1,28 @@
-/*
-* This is a manifest file that'll be compiled into application.css, which will include all the files
-* listed below.
-*
-* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
-* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
-*
-* You're free to add application-wide styles to this file and they'll appear at the bottom of the
-* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
-* files in this directory. Styles in this file should be added after the last require_* statement.
-* It is generally better to create a new file per style scope.
-*
-*= require_tree .
-*= require_self
-*/
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Timmana");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css");
 
-input:focus,
-a:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-em {
-  font-weight: 900;
-}
-
-form#global {
-  min-width: 300px;
-  min-height: 50px;
-  margin: 0 auto;
-  box-shadow: 0 0 20px transparent;
-  padding: 20px;
-  border-radius: 3px;
-  .field {
-    display: block;
-    margin: 2rem auto;
-    min-height: 40px;
-    label, .empty {
-      width: 20%;
-      height: 40px;
-      line-height: 40px;
-      color: #bbb;
-      float: left;
-      text-align: right;
-      padding: 0 2rem;
-    }
-    .actions {
-      height: 40px;
-      line-height: 40px;
-    }
-    textarea {
-      font-family: 'Lato';
-      width: 80%;
-      float: right;
-      height: 30rem;
-      text-align: left;
-      border: 1px solid rgba(27,31,35,0.15);
-      resize: vertical;
-      padding: 1rem 2rem;
-      border-radius: 2px;
-    }
-    input[type=text], input[type=password] {
-      width: 80%;
-      float: right;
-      height: 40px;
-      padding: 0 2rem;
-      line-height: 40px;
-      border: 1px solid rgba(27,31,35,0.15);
-      border-radius: 2px;
-      text-align: left;
-    }
-    input[type=file] {
-      display: inline-block;
-      width: 48%;
-      &:focus {
-        box-shadow: none;
-      }
-    }
-  }
-}
+@import 'material';
+@import 'partials/variables';
+@import 'partials/reset';
+@import 'partials/mixins';
+@import 'partials/typography';
+@import "font-awesome";
+@import "base";
+@import "index";
+@import "alerts";
+@import "buttons";
+@import "card";
+@import "category";
+@import "comments";
+@import "confirmation_modal";
+@import "dropdowns";
+@import "footer";
+@import "header";
+@import "ideas";
+@import "new-idea";
+@import "notifications";
+@import "ois-logo";
+@import "sessions";
+@import "side-nav";
+@import "users";

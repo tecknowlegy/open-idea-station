@@ -1,5 +1,3 @@
-@import 'base';
-
 .landing {
   display: flex;
   flex: 1;
@@ -47,19 +45,6 @@
   }
   .headline {
     text-align: left;
-  }
-}
-
-.get-started {
-  background: $green;
-  text-align: center;
-  color: $white;
-  font-weight: 400;
-  padding-top: 2px;
-  font-family: $logo-font;
-  &:hover {
-    background: $yellow;
-    color: $primary-black;
   }
 }
 
