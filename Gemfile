@@ -11,21 +11,23 @@ gem "rails", "~> 5.1.4"
 gem "pg", "~> 0.18"
 # Use Puma as the app server
 gem "puma", "~> 3.7"
-# Use SCSS for stylesheets
-gem "sass-rails", "~> 5.0"
-# Use haml
-gem "haml-rails"
-# use material design lite for rails
-gem "material_design_lite-sass"
-# Use Uglifier as compressor for JavaScript assets
-gem "uglifier", ">= 1.3.0"
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
-# Use CoffeeScript for .coffee assets and views
+# Assets handlers
+gem "sass-rails", "~> 5.0"
+gem "haml-rails"
+gem "material_design_lite-sass"
+gem "uglifier", ">= 2.7.2"
 gem "coffee-rails", "~> 4.2"
+gem "jquery-rails", "~> 4.3.1"
+gem "autoprefixer-rails", "~> 6.7.7"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
+# add jQuery support
+gem "jquery-turbolinks"
+gem "jquery-validation-rails"
+# add jquery autocomplete
+gem "jquery-ui-rails"
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.5"
 # Use Redis adapter to run Action Cable in production
@@ -108,18 +110,6 @@ gem "figaro"
 
 # add cloudinary to serve static images
 gem "cloudinary"
-
-# add jQuery support for Turbolinks
-gem "jquery-turbolinks"
-
-# Use jquery as the JavaScript library
-gem "jquery-rails"
-
-# add jquery validation
-gem "jquery-validation-rails"
-
-# add jquery autocomplete
-gem "jquery-ui-rails"
 
 # add kaminari for pagination
 gem "kaminari"
