@@ -1,5 +1,3 @@
-@import 'base';
-
 .back-btn {
   color: $primary-black !important;
   border-color: $primary-black !important;
@@ -39,4 +37,17 @@
   font-family: $primary-font;
   font-size: 16px;
   font-weight: bold;
+}
+
+.get-started {
+  background: $green;
+  text-align: center;
+  color: $white;
+  font-weight: 400;
+  padding-top: 2px;
+  font-family: $logo-font;
+  &:hover {
+    background: $yellow;
+    color: $primary-black;
+  }
 }
