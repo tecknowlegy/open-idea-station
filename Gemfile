@@ -33,7 +33,7 @@ gem "jbuilder", "~> 2.5"
 
 # Background job processing
 gem "redis", "~> 3.0"
-gem 'sidekiq'
+gem "sidekiq"
 
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
