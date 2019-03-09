@@ -36,7 +36,7 @@ class OmniauthsController < ApplicationController
     end
   end
 
-  #POST sign in user
+  # POST sign in user
   def update
     @success_message = "You are now signed in"
     create_session(session_params)
