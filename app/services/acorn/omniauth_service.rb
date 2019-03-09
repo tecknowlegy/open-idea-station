@@ -44,7 +44,7 @@ class Acorn::OmniauthService
                   u.picture  = omniauth_hash.extra["raw_info"].avatar_url unless omniauth_hash.extra["raw_info"]&.avatar_url.nil?
                 end
               end
-      [user, "user"]
+      [user, "new"]
     else
       errors.add(:omniauth_error, "User credential was not provided by external service")
     end

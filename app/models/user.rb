@@ -45,14 +45,20 @@ class User < ApplicationRecord
   def created?
     self.email = Acorn::Normalize.email(email)
     self.new_email = email
-
     save
   end
 
   def send_email_confirmation
     token = Acorn::JsonWebToken.encode({ data: [id, new_email] }, LINK_VALIDITY.from_now)
 
-    UsersMailer.delay.email_confirmation(id, token)
+    UsersMailer.email_confirmation(id, token)
+  end
+
+  def confirm_email
+    self.email = new_email unless new_email.blank?
+    self.email_confirmed = true
+    self.new_email = nil
+    save
   end
 
   def uid_prefix
