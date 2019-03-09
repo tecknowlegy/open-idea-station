@@ -51,8 +51,7 @@ class User < ApplicationRecord
   def send_email_confirmation
     token = Acorn::JsonWebToken.encode({ data: [id, new_email] }, LINK_VALIDITY.from_now)
 
-    # Send email confirmation immediately in a background job
-    ::MailJob.new.perform("UsersMailer", "email_confirmation", id, token)
+    UsersMailer.email_confirmation(id, token).deliver_later
   end
 
   def confirm_email

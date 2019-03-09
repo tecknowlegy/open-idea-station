@@ -29,7 +29,7 @@ module Acorns
     config.i18n.available_locales = %i[en]
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.yml").to_s]
 
-    # default background procession
+    # default background processing
     # when app grows bigger consider this:
     # https://github.com/mperham/sidekiq/wiki/Active+Job#performance
     config.active_job.queue_adapter = :sidekiq
