@@ -29,7 +29,7 @@ module Notifiable
       recipients << { recipient: recipient[:username] }
     end
 
-    ::NotificationBroadcastJob.new.perform(recipients, broadcast_content)
+    ::NotificationBroadcastJob.perform_later(recipients, broadcast_content)
   end
 
   private
