@@ -47,7 +47,7 @@ class SessionsController < ApplicationController
         format.html { redirect_to "/ideas" }
       else
         # << and this
-        flash[:error] = auth_token.errors[:user_authentication].first
+        flash[:error] = auth_token.errors[:authentication_error].first
         format.html { redirect_to new_session_path }
       end
     end
