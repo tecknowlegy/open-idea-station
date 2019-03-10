@@ -25,6 +25,14 @@ class User < ApplicationRecord
     session&.user
   end
 
+  def self.find_by_email_confirmation_token(token)
+    decoded_token = Acorn::JsonWebToken.decode(token)
+    return nil unless decoded_token
+
+    id, new_email = decoded_token[:data]
+    find_by(id: id, new_email: new_email)
+  end
+
   def bio
     read_attribute(:bio) || "Bio is yet to be updated"
   end
