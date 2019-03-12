@@ -33,7 +33,7 @@ class EmailConfirmationsController < ApplicationController
       flash[:success] = "Email successfully confirmed. Please sign in to continue"
       redirect_to new_session_path
     else
-      flash[:success] = "Link is invalid. It may have expired or have already been used"
+      flash[:notice] = "Link is invalid. It may have expired or have already been used"
       redirect_to new_email_confirmation_path
     end
   end
