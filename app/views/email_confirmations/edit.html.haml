@@ -1,0 +1,7 @@
+#user
+  %section.user-form
+    .title
+      %h6 Email Confirmation
+    .body
+      %p Click the button below to complete the process of confirming your email
+      =link_to "Confirm email", email_confirmation_path, method: :patch, class: "acorn_btn get-started"

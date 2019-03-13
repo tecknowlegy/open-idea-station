@@ -41,5 +41,6 @@ Rails.application.routes.draw do
     end
   end
   # Email confirmation
-  resources :email_confirmations, only: %i[create edit update], param: :token
+  resources :email_confirmations, only: %i[new create update], param: :token
+  get "email_confirmations/:token", to: "email_confirmations#edit"
 end
