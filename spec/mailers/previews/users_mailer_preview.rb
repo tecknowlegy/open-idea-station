@@ -5,7 +5,7 @@ class UsersMailerPreview < ActionMailer::Preview
   end
 
   def email_confirmation
-    token = Acorn::JsonWebToken.encode({ data: [@user.id, @user.email] }, 2.hours.from_now)
+    token = Acorn::Bubble.generate([@user.id, @user.email])
 
     UsersMailer.email_confirmation(@user.id, token)
   end

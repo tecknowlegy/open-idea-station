@@ -5,7 +5,7 @@ $(document).on 'turbolinks:load', =>
   pageUrl = new PageUrl.App
   currentLocation = pageUrl.start()
   
-  if (currentLocation[2] == 'new' || currentLocation[3] == 'edit')
+  if (currentLocation[1] == 'ideas' && currentLocation[2] == 'new' || currentLocation[3] == 'edit')
     newIdea = new Idea.App()
     newIdea.start()
 
