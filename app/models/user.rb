@@ -26,10 +26,12 @@ class User < ApplicationRecord
   end
 
   def self.find_by_email_confirmation_token(token)
-    decoded_token = Acorn::JsonWebToken.decode(token)
-    return nil unless decoded_token
+    return nil unless token.present?
 
-    id, new_email = decoded_token[:data]
+    id, new_email, expiry = Acorn::Bubble.verify(token)
+
+    return nil unless expiry.present? && expiry > Time.now
+
     find_by(id: id, new_email: new_email)
   end
 
@@ -57,7 +59,7 @@ class User < ApplicationRecord
   end
 
   def send_email_confirmation
-    token = Acorn::JsonWebToken.encode({ data: [id, new_email] }, LINK_VALIDITY.from_now)
+    token = Acorn::Bubble.generate([id, new_email])
 
     UsersMailer.email_confirmation(id, token).deliver_later
   end
