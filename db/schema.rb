@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190303184431) do
+ActiveRecord::Schema.define(version: 20190314204223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 20190303184431) do
     t.boolean "email_confirmed", default: false
     t.string "new_email"
     t.string "locale"
+    t.datetime "password_changed_at"
+    t.boolean "admin"
   end
 
   create_table "viewers", force: :cascade do |t|
