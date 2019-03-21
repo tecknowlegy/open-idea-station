@@ -18,6 +18,17 @@ en:
       alternative: "If you cannot click the link, please visit the following link to confirm your email."
       body2: ""
       signature: "open idea station"
+    reset_password:
+      subject: "[OIS] Reset Your Password"
+      hello: "Hello %{username},"
+      intro: "You recently requested for a new password to your Open Idea Station account"
+      body1: |
+        If indeed you can't remember your password, please click the button to change your password.
+        Note that this link will be valid until %{time}.
+      action: "Reset Password"
+      alternative: "If you cannot click the link, please visit the following link to change your password."
+      body2: ""
+      signature: "open idea station"
   layouts:
     mailer:
       body:
