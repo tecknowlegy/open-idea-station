@@ -1,0 +1,15 @@
+#user
+  %section.user-form
+    .title
+      %h6 Change Password
+    .body
+      =form_with scope: :reset_password, url: reset_password_path, method: :patch, local: true , id: :global do |form|
+        .field.for-data.group
+          %label Password
+          =form.password_field :password, id: :password, placeholder: 'enter new password'
+        .field.for-data.group
+          %label Confirm Password
+          =form.password_field :password_confirmation, id: :password_confirmation, placeholder: 're-enter new password'
+        .field.group
+          %span.actions
+            =form.submit "Reset password"

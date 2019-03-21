@@ -43,4 +43,7 @@ Rails.application.routes.draw do
   # Email confirmation
   resources :email_confirmations, only: %i[new create update], param: :token
   get "email_confirmations/:token", to: "email_confirmations#edit"
+  # Reset Password
+  resources :reset_passwords, only: %i[new create update], param: :token
+  get "reset_passwords/:token", to: "reset_passwords#edit", as: :change_password
 end
