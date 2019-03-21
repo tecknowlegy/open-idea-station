@@ -7,7 +7,7 @@ module Acorn
 
     # Public: generate recieves an array as argument
     def generate(payload, expiry = nil)
-      verifier.generate(payload << (expiry || EXPIRY))
+      verifier.generate(payload << (expiry.from_now || EXPIRY))
     end
 
     def verify(token)
