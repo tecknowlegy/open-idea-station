@@ -16,3 +16,12 @@
   .field.group
     %span.actions
       =form.submit "Sign up"
+
+  -# User management links
+  .field.group.user-management-links
+    =link_to new_session_path, class: "new-session" do
+      %i.fa.fa-asterisk
+      Already have an account?
+    =link_to new_email_confirmation_path, class: "new-email-confirmation" do
+      %i.fa.fa-asterisk
+      Resend email confirmation link?
