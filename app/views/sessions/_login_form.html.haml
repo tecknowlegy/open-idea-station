@@ -9,3 +9,12 @@
   .field.group
     %span.actions
       =form.submit "Log in"
+
+  -# User management links
+  .field.group.user-management-links
+    =link_to new_reset_password_path, class: "forgot-password" do
+      %i.fa.fa-asterisk
+      Forgot password?
+    =link_to new_user_path, class: "new-user" do
+      %i.fa.fa-asterisk
+      Don't have an account?

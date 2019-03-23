@@ -106,3 +106,14 @@
     }
   }
 }
+
+.user-management-links {
+  padding: 20px;
+  font-size: 1.2rem;
+  a:hover {
+    color: $green;
+  }
+  .new-user, .new-email-confirmation {
+    margin-left: 10px;
+  }
+}
