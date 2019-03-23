@@ -48,7 +48,7 @@ class Header.UI
       $pageTray = $('#page-tray')
       $mainNav = $('.main-nav')
       scroll = $(window).scrollTop()
-      if scroll >= 160
+      if scroll >= 200
         $pageTray.addClass 'fixed'
         $mainNav.removeClass 'no-shadow'
       else

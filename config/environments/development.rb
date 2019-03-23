@@ -71,4 +71,6 @@ Rails.application.configure do
 
   # Setup action cable default URL
   config.action_cable.url = ENV["ACTION_CABLE_URL"]
+  # Stop action cable from logging to stdout
+  ActionCable.server.config.logger = Logger.new(nil)
 end

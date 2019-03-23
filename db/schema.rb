@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190303184431) do
+ActiveRecord::Schema.define(version: 20190322180933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,14 @@ ActiveRecord::Schema.define(version: 20190303184431) do
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
   end
 
+  create_table "reset_passwords", force: :cascade do |t|
+    t.string "token"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reset_passwords_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id"
     t.boolean "active"
@@ -100,6 +108,8 @@ ActiveRecord::Schema.define(version: 20190303184431) do
     t.boolean "email_confirmed", default: false
     t.string "new_email"
     t.string "locale"
+    t.datetime "password_changed_at"
+    t.boolean "admin"
   end
 
   create_table "viewers", force: :cascade do |t|
@@ -119,6 +129,7 @@ ActiveRecord::Schema.define(version: 20190303184431) do
   add_foreign_key "idea_categories", "categories"
   add_foreign_key "idea_categories", "ideas"
   add_foreign_key "ideas", "users"
+  add_foreign_key "reset_passwords", "users"
   add_foreign_key "viewers", "ideas"
   add_foreign_key "viewers", "users"
 end

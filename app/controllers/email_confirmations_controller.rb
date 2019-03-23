@@ -27,7 +27,7 @@ class EmailConfirmationsController < ApplicationController
   def edit; end
 
   def update
-    user = User.find_by_email_confirmation_token(params[:token].to_s)
+    user = User.find_by_email_token(params[:token].to_s, :email_confirmation)
     if user
       user.confirm_email
       flash[:success] = "Email successfully confirmed. Please sign in to continue"

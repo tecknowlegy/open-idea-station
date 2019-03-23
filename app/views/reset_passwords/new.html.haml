@@ -1,0 +1,12 @@
+#user
+  %section.user-form
+    .title
+      %h6 Request New Password
+    .body
+      =form_with scope: :reset_password, url: reset_passwords_path, local: true , id: :global do |form|
+        .field.for-data.group
+          %label Email
+          =form.text_field :email, id: :email, placeholder: 'enter your email'
+        .field.group
+          %span.actions
+            =form.submit "Send reset link"

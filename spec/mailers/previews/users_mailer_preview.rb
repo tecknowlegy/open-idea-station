@@ -9,4 +9,10 @@ class UsersMailerPreview < ActionMailer::Preview
 
     UsersMailer.email_confirmation(@user.id, token)
   end
+
+  def reset_password
+    token = Acorn::Bubble.generate([@user.id, @user.email], 1.hour.from_now)
+
+    UsersMailer.reset_password(@user.id, token)
+  end
 end
