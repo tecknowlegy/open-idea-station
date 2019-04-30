@@ -33,11 +33,15 @@ class User < ApplicationRecord
 
     return nil unless expiry.present? && expiry > Time.now
 
-    user =  if purpose.to_sym == :email_confirmation
-              find_by(id: id, new_email: email)
-            else
-              find_by(id: id, email: email)
-            end
+    if purpose.to_sym == :email_confirmation
+      find_by(id: id, new_email: email)
+    else
+      find_by(id: id, email: email)
+    end
+  end
+
+  def self.find_reset_password_token(token, purpose)
+    user = find_by_email_token(token, purpose)
 
     return nil unless user.find_reset_password_by_token(token).present?
 
