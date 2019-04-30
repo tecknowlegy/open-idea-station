@@ -30,7 +30,7 @@ class ResetPasswordsController < ApplicationController
     user = if logged_in?
              current_user
            else
-             User.find_by_email_token(params[:token].to_s, :reset_password)
+             User.find_reset_password_token(params[:token].to_s, :reset_password)
            end
 
     if user.nil?
