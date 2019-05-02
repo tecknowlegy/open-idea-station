@@ -6,8 +6,8 @@ class ResetPasswordsController < ApplicationController
 
   def create
     respond_to do |format|
-      if reset_password_params[:email].present? && reset_password_params[:email].match(User::EMAIL_REGEX)
-        user = User.find_by_email(reset_password_params[:email])
+      if valid_email(reset_password_params[:email])
+        user ||= User.find_by_email(reset_password_params[:email])
 
         if user.present?
           user.send_reset_password_email
