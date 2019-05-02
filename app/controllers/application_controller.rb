@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   after_action :clear_xhr_flash
 
+  include EmailValidatable
+
   private
 
   def current_user_session

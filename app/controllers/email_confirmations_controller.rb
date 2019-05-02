@@ -6,8 +6,8 @@ class EmailConfirmationsController < ApplicationController
 
   def create
     respond_to do |format|
-      if email_confirmation_params[:email].present? && email_confirmation_params[:email].match(User::EMAIL_REGEX)
-        user = User.find_by_new_email(email_confirmation_params[:email])
+      if valid_email(email_confirmation_params[:email])
+        user ||= User.find_by_new_email(email_confirmation_params[:email])
         if user.present?
           user.send_email_confirmation
           flash[:notice] = "We have resent a confirmation email to your inbox"
