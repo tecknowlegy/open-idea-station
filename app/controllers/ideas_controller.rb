@@ -15,6 +15,7 @@ class IdeasController < ApplicationController
     # TODO: put this check in it's own method like a before_action
     return if logged_in? && current_user.ideas.find_by_slug_name(@idea.slug_name).present?
 
+    # Create an event model to handle events and make it run as a background task
     Acorn::IdeaViewerService.new(idea: @idea, user: current_user, viewed_at: Time.now, viewer_ip: request.remote_ip).call
   end
 
@@ -66,7 +67,10 @@ class IdeasController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_idea
-    @idea = Idea.find_by_slug_name(params[:id])
+    id = Slug[params[:id]]
+    @idea = id ? Idea.find_by_id!(id) : Idea.find_by_slug_name!(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to index_path
   end
 
   # Never trust parameters from the scary internet, only allow the white list

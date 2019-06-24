@@ -292,6 +292,8 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.4.0)
     redis (3.3.5)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (3.8.0)
@@ -449,6 +451,7 @@ DEPENDENCIES
   rails-controller-testing
   redcarpet
   redis (~> 3.0)
+  redis-namespace
   rspec-rails (~> 3.5)
   rubocop
   rubyzip (>= 1.2.1)
