@@ -21,7 +21,15 @@ class Idea < ApplicationRecord
   end
 
   def slug_name
-    read_attribute(:slug_name) || Acorn::Normalize.slug_name(name)
+    slug = read_attribute(:slug_name) || Acorn::Normalize.slug_name(name)
+    update_slug(slug)
+
+    slug
+  end
+
+  def slug_name=(slug)
+    write_attribute(:slug_name, slug)
+    update_slug(slug_name)
   end
 
   def increment_impression
@@ -36,9 +44,17 @@ class Idea < ApplicationRecord
 
   # Even when we update an idea name this
   # should also get updated
-  def save
-    self.slug_name = Acorn::Normalize.slug_name(name)
+  # def save
+  #   self.slug_name = Acorn::Normalize.slug_name(name)
+  #   Slug[slug_name] = id.to_s if Slug[slug_name].nil? || Slug[slug_name] != id.to_s
 
+  #   super
+  # end
+
+  def update_columns(attr)
+    # When archival is attempted, we want to remove 
+    # all related slugs in redis store
+    Slug.destroy(id) if attr[:is_archived]
     super
   end
 
@@ -52,6 +68,10 @@ class Idea < ApplicationRecord
     @all_categories&.split(",")&.each do |name|
       categories << Category.where(name: name.strip).first_or_create!
     end
+  end
+
+  def update_slug(slug)
+    Slug[slug] = id.to_s if Slug[slug].nil? || Slug[slug] != id.to_s
   end
 
   concerning :Categories do
