@@ -8,6 +8,10 @@ env:
 
 services:
 - postgresql
+- redis-server
+
+before_install:
+  - gem install bundler -v '1.17.3'
 
 before_script:
 - psql -c 'create database acorn_test_db;' -U postgres
