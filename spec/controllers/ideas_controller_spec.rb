@@ -71,7 +71,7 @@ RSpec.describe IdeasController, type: :controller do
     end
   end
 
-  describe "Viewers" do
+  describe "GET #show" do
     context "when the viewer is the owner of the idea" do
       it "does not record the view on that idea" do
         get_xhr(:show, { id: idea.slug_name })
@@ -89,6 +89,15 @@ RSpec.describe IdeasController, type: :controller do
 
         expect(response).to be_success
         expect(viewers.size).to be 1
+      end
+    end
+
+    context "when idea does not exist" do
+      it "redirects user to the idea index page" do
+        get_xhr(:show, { id: "unknown_name" })
+
+        expect(response).to be_redirect
+        expect(response).to redirect_to(index_path)
       end
     end
   end

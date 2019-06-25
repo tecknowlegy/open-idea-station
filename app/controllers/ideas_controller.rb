@@ -68,7 +68,7 @@ class IdeasController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_idea
     id = Slug[params[:id]]
-    @idea = id ? Idea.find_by_id!(id) : Idea.find_by_slug_name!(params[:id])
+    @idea = id ? Idea.find_by!(id: id) : Idea.find_by!(slug_name: params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to index_path
   end
