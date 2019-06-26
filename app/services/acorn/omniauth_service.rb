@@ -3,6 +3,7 @@ class Acorn::OmniauthService
 
   def initialize(omniauth_hash:)
     @omniauth_hash = omniauth_hash
+    @user = nil
   end
 
   def call
@@ -11,11 +12,11 @@ class Acorn::OmniauthService
 
   private
 
-  attr_reader :omniauth_hash
+  attr_reader :omniauth_hash, :user
 
   def omniauth_user
     if omniauth_hash.present?
-      user = User.find_by(email: omniauth_hash.info.email)
+      @user = User.find_by(email: omniauth_hash.info.email)
 
       if user.present?
         returning_user
@@ -30,7 +31,7 @@ class Acorn::OmniauthService
   end
 
   def returning_user
-    user.update(
+    @user.update(
       provider: omniauth_hash.provider || user.provider,
       picture: omniauth_hash.extra["raw_info"]&.avatar_url || omniauth_hash.info.image
     )
@@ -40,23 +41,53 @@ class Acorn::OmniauthService
 
   def new_user
     # else use normal create flow
-    user =  case omniauth_hash.provider
+    @user = case omniauth_hash.provider
             when "google_oauth2"
-              User.new do |u|
-                u.provider = omniauth_hash.provider
-                u.username = omniauth_hash.info.first_name unless omniauth_hash.info.first_name.nil?
-                u.email    = omniauth_hash.info.email
-                u.picture  = omniauth_hash.info.image
-              end
+              Acorn::OmniauthService::GoogleUser.new(omniauth_hash).data
             when "github"
-              User.new do |u|
-                u.provider = omniauth_hash.provider
-                u.username = omniauth_hash.extra["raw_info"].login unless omniauth_hash.extra["raw_info"]&.login.nil?
-                u.email    = omniauth_hash.extra["raw_info"].email unless omniauth_hash.extra["raw_info"]&.email.nil?
-                u.picture  = omniauth_hash.extra["raw_info"].avatar_url unless omniauth_hash.extra["raw_info"]&.avatar_url.nil?
-              end
+              Acorn::OmniauthService::GithubUser.new(omniauth_hash).data
             end
 
     [user, "new"]
+  end
+
+  # The class and it's subclasses define how we want to extract omniauth info
+  # based on the provider
+  class UserPayload
+    attr_reader :provider, :username, :email, :picture
+
+    def initialize(payload)
+      @provider = payload.provider
+      @username = payload.username
+      @email    = payload.email
+      @picture  = payload.picture
+    end
+
+    def data
+      User.new do |u|
+        u.provider = provider
+        u.username = username
+        u.email    = email
+        u.picture  = picture
+      end
+    end
+  end
+
+  class GoogleUser < UserPayload
+    def initialize(payload)
+      @provider = payload.provider
+      @username = payload.info.first_name unless payload.info.first_name.nil?
+      @email    = payload.info.email
+      @picture  = payload.info.image
+    end
+  end
+
+  class GithubUser < UserPayload
+    def initialize(payload)
+      @provider = payload.provider
+      @username = payload.extra["raw_info"].login unless payload.extra["raw_info"]&.login.nil?
+      @email    = payload.extra["raw_info"].email unless payload.extra["raw_info"]&.email.nil?
+      @picture  = payload.extra["raw_info"].avatar_url unless payload.extra["raw_info"]&.avatar_url.nil?
+    end
   end
 end

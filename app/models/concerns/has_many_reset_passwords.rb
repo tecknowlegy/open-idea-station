@@ -1,4 +1,6 @@
 module HasManyResetPasswords
+  extend ActiveSupport::Concern
+
   included do
     has_many :reset_passwords, dependent: :destroy
   end
