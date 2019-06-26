@@ -20,6 +20,7 @@ RSpec.describe SessionsController, type: :controller do
 
   before do
     stub_current_user(user)
+    confirm_user_email(user, user2)
   end
 
   describe "POST #create" do
@@ -187,5 +188,11 @@ RSpec.describe SessionsController, type: :controller do
         expect(session[:token]).to be nil
       end
     end
+  end
+
+  private
+
+  def confirm_user_email(*users)
+    users.each { |u| u.update(email_confirmed: true, new_email: nil) }
   end
 end
