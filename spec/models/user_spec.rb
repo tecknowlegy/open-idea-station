@@ -52,7 +52,6 @@ RSpec.describe User, type: :model do
       end
     end
 
-
     # it "does not create for invalid email" do
     #   invalid_params = {
     #     user: {

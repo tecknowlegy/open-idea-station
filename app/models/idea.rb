@@ -52,7 +52,7 @@ class Idea < ApplicationRecord
   # end
 
   def update_columns(attr)
-    # When archival is attempted, we want to remove 
+    # When archival is attempted, we want to remove
     # all related slugs in redis store
     Slug.destroy(id) if attr[:is_archived]
     super
