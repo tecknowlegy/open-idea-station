@@ -7,6 +7,8 @@ class User < ApplicationRecord
   DEFAULT_PROVIDER = "open-idea-station".freeze
 
   include UniqueIdentifier
+  include HasManySessions
+  include HasManyResetPasswords
 
   has_secure_password
 
@@ -87,69 +89,6 @@ class User < ApplicationRecord
       self.email_confirmed = true
       self.new_email = nil
       save
-    end
-  end
-
-  concerning :ResetPasswords do
-    included do
-      has_many :reset_passwords, dependent: :destroy
-    end
-
-    def all_reset_passwords
-      reset_passwords.order(created_at: :desc)
-    end
-
-    def find_reset_password_by_token(token)
-      all_reset_passwords.find_by(token: token)
-    end
-
-    def change_password(password_attributes)
-      if update(password_attributes.merge({ password_changed_at: Time.zone.now }))
-        all_reset_passwords.each(&:destroy)
-        true
-      else
-        false
-      end
-    end
-
-    def send_reset_password_email
-      token = Acorn::Bubble.generate([id, email], RESET_LINK_VALIDITY)
-      reset_passwords.create(token: token)
-
-      UsersMailer.reset_password(id, token).deliver_later
-    end
-
-    def send_reset_password_success_mail
-      true
-    end
-  end
-
-  concerning :Sessions do
-    included do
-      has_many :sessions, dependent: :destroy
-    end
-
-    def all_sessions
-      sessions.order(created_at: :desc)
-    end
-
-    def find_session!(id)
-      # TODO: ids should point to uids in objects
-      all_sessions.find_by!(id: id)
-    end
-
-    def find_session_by_token(token)
-      all_sessions.find_by(token: token)
-    end
-
-    def create_session(attributes)
-      sessions.create(attributes)
-    end
-
-    def revoke_all_sessions!(options = {})
-      relation = sessions.active
-      relation = relation.where.not(token: options[:except]) if options[:except]
-      relation.map(&:revoke!)
     end
   end
 
