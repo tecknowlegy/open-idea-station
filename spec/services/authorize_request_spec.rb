@@ -10,6 +10,10 @@ describe Acorn::AuthorizeUserService do
   # Instantiate valid request subject
   subject(:authorized_userB) { described_class.new(token).call.result }
 
+  before do
+    user1.update(email_confirmed: true, new_email: nil)
+  end
+
   context "when the user has a valid request token" do
     it "returns successfully authorizes the user" do
       expect(authorized_userB).to be true
