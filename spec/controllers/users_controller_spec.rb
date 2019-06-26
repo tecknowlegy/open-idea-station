@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe UsersController, type: :controller do
   let(:current_session) { Session.first }
   let(:user) { create :user }
+  let!(:all_users) { User.all }
   let(:user_params) do
     {
       user: {
@@ -18,6 +19,15 @@ RSpec.describe UsersController, type: :controller do
     stub_current_user(user)
   end
 
+  describe "GET #index" do
+    it "redirects to new user path" do
+      get_xhr(:index)
+
+      expect(response).to be_redirect
+      expect(response).to redirect_to new_user_path
+    end
+  end
+
   describe "GET #new" do
     it "returns a bare bone instance" do
       get_xhr(:new)
@@ -29,15 +39,11 @@ RSpec.describe UsersController, type: :controller do
 
   describe "POST #create" do
     context "when valid parameters are passed" do
-      it "creates a new user and session" do
-        post_xhr(:create, user_params)
-
+      it "creates a new user and send email confirmation" do
+        expect { post_xhr(:create, user_params) }.to change { all_users.size }.by(1)
         expect(response).to be_success
-        expect(current_session).not_to be nil
-        expect(current_session.user.username).to eql "johndoe"
-        expect(cookies[:user_id]).not_to be nil
-        expect(session[:token]).not_to be nil
-        expect(response).to redirect_to(ideas_path)
+        expect(flash[:notice]).to eql "We have sent you an email, please use the link to complete your registration"
+        expect(response).to redirect_to new_user_path
       end
     end
 
@@ -46,58 +52,15 @@ RSpec.describe UsersController, type: :controller do
         invalid_params = {
           user: {
             username: "john.doe",
-            email: "jphn_doe@gmail.com",
+            email: "john_doe@gmail.com",
             password: "12345678",
             password_confirmation: "12345678",
           },
         }
-        post_xhr(:create, invalid_params)
 
-        expect(current_session).to be nil
-        expect(response).to render_template(:new)
-        expect(flash[:error]).not_to be nil
-      end
-    end
-
-    context "when token generation fails" do
-      before do
-        allow_any_instance_of(SimpleCommand).to receive(:success?).and_return(
-          false
-        )
-      end
-      it "redirects the user to home" do
-        post_xhr(:create, user_params)
-
-        expect(response).to redirect_to(new_session_path)
-        expect(flash[:notice]).to eql "We could not sign you at this time. Please try again"
-      end
-    end
-  end
-
-  describe "#create_omniauth_session" do
-    context "when valid parameters are passed" do
-      it "creates a user session" do
-        post_xhr(:create, user_params)
-
-        post_xhr(:create_omniauth_session, user_params)
-
-        expect(response).to be_success
-        expect(current_session).not_to be nil
-        expect(current_session.user.username).to eql "johndoe"
-        expect(cookies[:user_id]).not_to be nil
-        expect(session[:token]).not_to be nil
-        expect(response).to redirect_to(ideas_path)
-      end
-    end
-
-    context "when invalid parameters are passed" do
-      it "does not creates a user session" do
-        post_xhr(:create_omniauth_session, user_params)
-
-        expect(current_session).to be nil
-        expect(cookies[:user_id]).to be nil
-        expect(session[:token]).to be nil
-        expect(response).to redirect_to(new_session_path)
+        expect { post_xhr(:create, invalid_params) }.to change { all_users.size }.by(0)
+        expect(response).to redirect_to new_user_path
+        expect(flash[:error]).to eql "Username is invalid"
       end
     end
   end

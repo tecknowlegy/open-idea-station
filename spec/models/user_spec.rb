@@ -51,5 +51,68 @@ RSpec.describe User, type: :model do
         expect(provider).to eql "open-idea-station"
       end
     end
+
+
+    # it "does not create for invalid email" do
+    #   invalid_params = {
+    #     user: {
+    #       username: "john",
+    #       email: "john_doe",
+    #       password: "12345678",
+    #       password_confirmation: "12345678",
+    #     },
+    #   }
+
+    #   expect { post_xhr(:create, invalid_params) }.to change { all_users.size }.by(0)
+    #   expect(response).to redirect_to new_user_path
+    #   expect(flash[:error]).to eql "Email is invalid"
+    # end
+
+    # it "does not create for password less than 6 characters" do
+    #   invalid_params = {
+    #     user: {
+    #       username: "john",
+    #       email: "john_doe@gmail.com",
+    #       password: "12345",
+    #       password_confirmation: "12345",
+    #     },
+    #   }
+
+    #   expect { post_xhr(:create, invalid_params) }.to change { all_users.size }.by(0)
+    #   expect(response).to redirect_to new_user_path
+    #   expect(flash[:error]).to eql "Password is too short (minimum is 6 characters)"
+    # end
+
+    # it "does not create for password more than 40 characters" do
+    #   pass = ""
+    #   41.times { pass += "p" }
+    #   invalid_params = {
+    #     user: {
+    #       username: "john",
+    #       email: "john_doe@gmail.com",
+    #       password: pass,
+    #       password_confirmation: pass,
+    #     },
+    #   }
+
+    #   expect { post_xhr(:create, invalid_params) }.to change { all_users.size }.by(0)
+    #   expect(response).to redirect_to new_user_path
+    #   expect(flash[:error]).to eql "Password is too long (maximum is 40 characters)"
+    # end
+
+    # it "does not create for password less than 6 characters" do
+    #   invalid_params = {
+    #     user: {
+    #       username: "john",
+    #       email: "john_doe@gmail.com",
+    #       password: "12345",
+    #       password_confirmation: "12345",
+    #     },
+    #   }
+
+    #   expect { post_xhr(:create, invalid_params) }.to change { all_users.size }.by(0)
+    #   expect(response).to redirect_to new_user_path
+    #   expect(flash[:error]).to eql "Password is too short (minimum is 6 characters)"
+    # end
   end
 end
