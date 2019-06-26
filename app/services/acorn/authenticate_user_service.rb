@@ -32,8 +32,8 @@ class Acorn::AuthenticateUserService
   def user
     @user = find_email_or_name
 
+    return errors.add(:authentication_error, "username or email not found") && nil if @user.nil?
     return errors.add(:authentication_error, "You have not confirmed your email") && nil unless @user.email_confirmed
-
     return @user if @user&.authenticate(password)
 
     errors.add(:authentication_error, "Invalid username or password")

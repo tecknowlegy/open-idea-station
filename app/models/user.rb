@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates_presence_of :email, :password_digest
   validates :email, uniqueness: { case_sensitive: false }, format: EMAIL_REGEX
 
-  validates :password, presence: true, if: :password
+  validates :password, presence: true, if: :password, length: { within: 6..40 }
   validates :password, confirmation: { case_sensitive: true }
 
   has_many :ideas, dependent: :destroy

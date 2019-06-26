@@ -10,7 +10,10 @@ class CommentsController < ApplicationController
   private
 
   def set_idea
-    @idea = Idea.find_by_slug_name(params[:idea_id])
+    id = Slug[params[:idea_id]]
+    @idea = id ? Idea.find_by!(id: id) : Idea.find_by!(slug_name: params[:idea_id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to ideas_path
   end
 
   def comment_params

@@ -5,7 +5,7 @@ RSpec.describe CommentsController, type: :controller do
   let!(:idea) { create :idea }
   let!(:comment_params) do
     {
-      idea_id: idea.id,
+      idea_id: idea.slug_name,
       comment: {
         user_id: user.id,
         body: "some comments I dropped on your idea",
@@ -27,12 +27,18 @@ RSpec.describe CommentsController, type: :controller do
         expect(assigns(:comment).body).to eql "some comments I dropped on your idea"
         expect(assigns(:comment).idea).to eql idea
       end
+
+      it "redirects to the idea page after creation" do
+        post_xhr(:create, comment_params)
+
+        expect(response).to redirect_to(idea_path(idea.slug_name))
+      end
     end
 
     context "when complete parameters are not passed" do
       it "creates a new comment on an idea" do
         missing_params = {
-          idea_id: idea.id,
+          idea_id: idea.slug_name,
           comment: {
             user_id: user.id,
           },
@@ -42,21 +48,5 @@ RSpec.describe CommentsController, type: :controller do
         expect(assigns(:comment)).to be nil
       end
     end
-
-    # it "does not create the idea for invalid parameters" do
-    #   invalid_params = {
-    #     idea: {
-    #       name: "jo",
-    #       description: "some",
-    #       url: "idea_url",
-    #       is_archived: false,
-    #       all_categories: [],
-    #     },
-    #   }
-    #   post_xhr(:create, invalid_params)
-
-    #   expect(assigns(:idea).id).to be nil
-    #   expect(subject).to render_template(:new)
-    # end
   end
 end

@@ -3,6 +3,10 @@ require "rails_helper"
 describe Acorn::AuthenticateUserService do
   let!(:user1) { create :user }
   let(:user_credentials) { { username: user1.username, password: user1.password } }
+  before do
+    user1.update(email_confirmed: true, new_email: nil)
+  end
+
   subject(:authenticate_status) { described_class.call(user_credentials) }
 
   describe ".call" do
@@ -25,7 +29,8 @@ describe Acorn::AuthenticateUserService do
 
       it "it fails to authenticate the user" do
         expect(authenticate_status).to be_failure
-        expect(authenticate_status.errors[:user_authentication][0]).to eql "Invalid username or password"
+
+        expect(authenticate_status.errors[:authentication_error][0]).to eql "Invalid username or password"
       end
     end
 
