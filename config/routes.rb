@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   # Users
   resources :users, only: %i[index new create]
   # External services authentication
-  resources :omniauth, only: %i[new create] do
+  resources :omniauths, only: %i[new create] do
     collection do
       post "session", to: "omniauths#update"
     end

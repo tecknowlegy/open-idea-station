@@ -2,7 +2,6 @@ class Comment < ApplicationRecord
   ACTION = :commented
 
   include UniqueIdentifier
-
   include Notifiable
 
   belongs_to :idea

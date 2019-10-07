@@ -10,7 +10,7 @@
         %span.omniauth-picture
           %img{src: "#{u.picture}"}
       .body
-        =form_with scope: :user, url: session_omniauth_index_path, local: true, id: :global do |form|
+        =form_with scope: :user, url: session_omniauths_path, local: true, id: :global do |form|
           = form.hidden_field :username, value: u.email
           .field.for-data.group
             %label Password
