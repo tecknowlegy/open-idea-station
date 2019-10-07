@@ -109,7 +109,7 @@ gem "rack", "~> 2.0.6"
 gem "font-awesome-rails"
 
 # For jwt authentication
-gem "jwt"
+gem 'jwt', '~> 2.2', '>= 2.2.1'
 
 # For env variables
 gem "figaro"
@@ -130,7 +130,7 @@ gem "simple_command"
 gem "puffly"
 
 # Google authentication
-gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'omniauth-google-oauth2', '~> 0.8.0'
 
 # Github authentication
 gem "omniauth-github"
