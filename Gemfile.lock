@@ -248,7 +248,7 @@ GEM
     public_suffix (4.0.1)
     puffly (1.1.0)
     puma (3.12.1)
-    rack (2.0.7)
+    rack (2.1.4)
     rack-attack (6.1.0)
       rack (>= 1.0, < 3)
     rack-cors (1.0.3)
@@ -447,7 +447,7 @@ DEPENDENCIES
   pry-rails
   puffly
   puma (~> 3.7)
-  rack (~> 2.0.6)
+  rack (~> 2.1.4)
   rack-attack
   rack-cors
   rack-utf8_sanitizer
